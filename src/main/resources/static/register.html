@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Register</title></head>
+<body style="font-family:Arial;text-align:center;margin-top:60px;">
+  <h3>Register</h3>
+  <input id="username" placeholder="username"><br><br>
+  <input id="password" placeholder="password" type="password"><br><br>
+  <button onclick="register()">Register</button>
+  <div id="msg" style="margin-top:12px;color:green"></div>
+  <p style="font-size:12px;color:#444">After registering, manually edit <code>src/main/resources/data/users.json</code> to set classType (A or B).</p>
+
+<script>
+function register(){
+  const u=document.getElementById("username").value.trim();
+  const p=document.getElementById("password").value.trim();
+  if(!u||!p){ document.getElementById("msg").innerText="Enter username & password"; return; }
+  fetch("/register",{ method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({username:u,password:p})
+  })
+  .then(r=>r.json()).then(o=>document.getElementById("msg").innerText=o.message||"")
+  .catch(e=>document.getElementById("msg").innerText="Error");
+}
+</script>
+</body>
+</html>

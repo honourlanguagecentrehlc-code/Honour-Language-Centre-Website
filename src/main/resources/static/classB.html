@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Class B</title></head>
+<body style="font-family:Arial;text-align:center;margin-top:60px;">
+  <h1>Class B Page</h1>
+  <p id="who"></p>
+  <button onclick="logout()">Logout</button>
+
+<script>
+fetch("/session").then(r=>r.json()).then(s=>{
+  if(!s.username) { location.href="login.html"; return; }
+  if(s.classType !== "B") { alert("Access denied"); location.href="login.html"; return; }
+  document.getElementById("who").innerText = "Logged in as: " + s.username;
+});
+function logout(){ fetch("/logout").then(()=>location.href="login.html"); }
+</script>
+</body>
+</html>

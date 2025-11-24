@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body { font-family: Arial; text-align:center; margin-top:100px; }
+button { padding:10px 20px; border:none; background:red; color:white; border-radius:4px; cursor:pointer; }
+</style>
+</head>
+<body>
+<h1>Welcome to your Dashboard!</h1>
+<p>You are successfully logged in.</p>
+<button onclick="logout()">Logout</button>
+
+<script>
+const apiBase = "http://localhost:8080";
+
+// Check session; redirect if not logged in
+fetch(`${apiBase}/session`).then(r=>r.text()).then(user=>{
+    if(!user) window.location.href = "login.html";
+});
+
+function logout() {
+    fetch(`${apiBase}/logout`).then(r=>r.text()).then(()=> {
+        window.location.href = "login.html";
+    });
+}
+</script>
+</body>
+</html>

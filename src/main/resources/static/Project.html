@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honour Language Centre</title>
+    <link rel="icon" type="image/x-icon" href="Slide1.jpg">
+
+    <!-- SOCIAL ICONS (FONT AWESOME) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ----------------------------------- */
+        /* GLOBAL / BODY STYLES */
+        /* ----------------------------------- */
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url(Slide1.jpg);
+            background-color:rgb(233, 230, );
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* ----------------------------------- */
+        /* NAVIGATION BAR (STICKY) */
+        /* ----------------------------------- */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            width: 100%;
+            padding: 10px 20px;
+
+            background-color: rgba(0, 0, 0, 1);
+            color: white;
+
+            box-sizing: border-box;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        #navbar #logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        /* ----------------------------------- */
+        /* MAIN CONTENT BOX */
+        /* ----------------------------------- */
+        #rectangle_box1 {
+            width: 100%;
+            min-height: 100vh;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+
+            padding-top: 110px; /* space for sticky nav */
+            padding-bottom: 40px;
+
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #titleintherectanglebox1 {
+            font-size: 5vw;
+            margin-bottom: 10px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        #coursename {
+            font-size: 3vw;
+            margin-bottom: 10px;
+        }
+
+        #announcements-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* ----------------------------------- */
+        /* VIDEO GALLERY */
+        /* ----------------------------------- */
+        #video-gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 18px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            background-color: #000;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Desktop: 3-column layout */
+        @media (min-width: 768px) {
+            #video-gallery {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .video-wrapper {
+                width: 33.33%;
+                margin: 0 10px;
+            }
+        }
+
+        /* ----------------------------------- */
+        /* CLICKABLE BOX */
+        /* ----------------------------------- */
+        .clickHere {
+            width: 300px;
+            height: 70px;
+
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+
+            border-radius: 12px;
+            cursor: pointer;
+
+            transition: 0.25s;
+            margin-top: 20px;
+        }
+
+        .clickHere:hover {
+            transform: scale(1.05);
+            background-color: white;
+        }
+
+        .clickHere h1 {
+            font-size: 20px;
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* ----------------------------------- */
+        /* FOOTER */
+        /* ----------------------------------- */
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        .social-icons a {
+            font-size: 30px;
+            color: white;
+            margin: 0 12px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+
+        <nav>
+            <ul>
+                <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div id="rectangle_box1">
+
+        <h1 id="titleintherectanglebox1">HONOUR LANGUAGE CENTRE</h1>
+        <h1 id="coursename">Basic English Grammar In Use Class</h1>
+        <h1 id="announcements-title">New Announcements</h1>
+
+        <!-- VIDEO GALLERY -->
+        <div id="video-gallery">
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CLICKABLE BOX -->
+        <a href="http://localhost:8080/login.html" class="clickHere">
+            <h1>Click Here to View the Resources</h1>
+        </a>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.language.centre" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Contact: honourlanguagecentrehlc@gmail.com</p>
+    </footer>
+
+</body>
+</html>
