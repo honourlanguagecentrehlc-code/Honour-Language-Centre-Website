@@ -1,9 +1,11 @@
-FROM maven:3.8.6-openjdk-11 AS build
+# Build stage
+FROM maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean install
 
-FROM eclipse-temurin:11-jre
+# Runtime stage
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /app/target/LoginApp-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
