@@ -24,13 +24,13 @@
             min-height: 100vh;
         }
 
-        /* Navigation */
+        /* Navigation - Consistent across all pages */
         #navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
+            padding: 15px 20px;
             background-color: rgba(0, 0, 0, 0.95);
             color: white;
             position: fixed;
@@ -41,25 +41,54 @@
         }
 
         #navbar #logo {
-            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-size: 1.1em;
             font-weight: bold;
             white-space: nowrap;
         }
 
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         #navbar nav ul {
             display: flex;
-            gap: clamp(10px, 2vw, 20px);
+            gap: 15px;
             list-style: none;
         }
 
         #navbar nav a {
             color: white;
             text-decoration: none;
-            padding: clamp(5px, 1vw, 8px) clamp(8px, 2vw, 12px);
+            padding: 8px 12px;
             transition: 0.3s;
             border-radius: 5px;
-            font-size: clamp(0.9rem, 2vw, 1rem);
             font-weight: 500;
+            white-space: nowrap;
         }
 
         #navbar nav a:hover,
@@ -182,15 +211,86 @@
             pointer-events: none;
         }
 
-        /* Mobile Menu */
-        @media (max-width: 768px) {
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+
+            #navbar #logo {
+                font-size: 1.3em;
+            }
+
+            #main-content {
+                padding: 100px 40px 50px;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.5em;
+            }
+
             #navbar nav ul {
-                gap: 8px;
+                gap: 25px;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                max-width: 1200px;
+            }
+
+            .video-item iframe {
+                height: 220px;
+            }
+        }
+
+        /* Mobile Menu Styles - Fixed Alignment */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                margin: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+
+            #navbar nav ul.active {
+                display: flex;
             }
 
             #navbar nav a {
-                padding: 6px 10px;
-                font-size: 0.85rem;
+                display: block;
+                padding: 15px 20px;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            #navbar nav a:last-child {
+                border-bottom: none;
+            }
+
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
             }
 
             .video-grid {
@@ -199,28 +299,6 @@
 
             .video-item iframe {
                 height: 180px;
-            }
-        }
-
-        /* Tablet */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Desktop */
-        @media (min-width: 1025px) {
-            .video-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
-                max-width: 1200px;
-                margin: 0 auto 50px;
-                padding: 0 20px;
-            }
-
-            .video-item iframe {
-                height: 220px;
             }
         }
 
@@ -237,8 +315,13 @@
     <!-- NAVBAR -->
     <header id="navbar">
         <div id="logo">Honour Language Centre</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Courses.html">Courses</a></li>
                 <li><a href="Aboutpage.html">About</a></li>
@@ -291,6 +374,41 @@
             { id: "dQw4w9WgXcQ", title: "Lesson 9: Advanced Topics" }
         ];
 
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'classA.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
         // Check session and load content
         fetch("/session")
         .then(r => r.json())
@@ -341,16 +459,6 @@
                     location.href = "login.html";
                 });
         }
-
-        // Set active page
-        const currentPage = window.location.pathname.split('/').pop() || 'classA.html';
-        document.querySelectorAll('#navbar a').forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
 
         // Handle page visibility change
         document.addEventListener('visibilitychange', function() {
