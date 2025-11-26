@@ -1,233 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class A</title>
-<link rel="icon" type="image/x-icon" href="Slide1.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class A - Honour Language Centre</title>
+    <link rel="icon" type="image/x-icon" href="Slide1.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- SOCIAL ICONS (FONT AWESOME) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    /* ----------------------------------- */
-    /* GLOBAL / BODY STYLES */
-    /* ----------------------------------- */
-    body {
-        margin: 0;
-        width: 100%;
-        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Slide1.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Slide1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+        }
 
-    /* ----------------------------------- */
-    /* NAVIGATION BAR (STICKY) */
-    /* ----------------------------------- */
-    #navbar {
+        /* Navigation */
+        #navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
             width: 100%;
-            padding: 10px 20px;
-
-            background-color: rgba(0, 0, 0, 1);
+            padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
+            background-color: rgba(0, 0, 0, 0.95);
             color: white;
-
-            box-sizing: border-box;
-
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-    #navbar #logo {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-
-    #navbar nav ul {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    #navbar nav a {
-        color: white;
-        text-decoration: none;
-        padding: 5px 10px;
-        transition: 0.3s;
-    }
-
-    #navbar nav a:hover {
-        color: #FFD700;
-    }
-
-    /* ----------------------------------- */
-    /* MAIN CONTENT */
-    /* ----------------------------------- */
-    #main-content {
-        padding-top: 80px; /* space for sticky nav */
-        text-align: center;
-    }
-
-    h1 {
-        margin: 10px 0;
-    }
-
-    #who {
-        margin-bottom: 20px;
-        font-size: 18px;
-    }
-
-    button.logout-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 8px;
-        background-color: #007bff;
-        color: white;
-        cursor: pointer;
-        margin-bottom: 20px;
-        transition: 0.2s;
-    }
-
-    button.logout-btn:hover {
-        background-color: #005fcc;
-    }
-
-    /* ----------------------------------- */
-    /* VIDEO GRID */
-    /* ----------------------------------- */
-    .video-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto 40px auto;
-        padding: 20px;
-    }
-
-    .video-grid iframe {
-        width: 360px;
-        height: 200px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    /* Responsive for tablets */
-    @media (max-width: 1200px) {
-        .video-grid iframe {
-            width: 300px;
-            height: 170px;
+        #navbar #logo {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: bold;
+            white-space: nowrap;
         }
-    }
 
-    /* Responsive for mobile */
-    @media (max-width: 768px) {
-        .video-grid iframe {
+        #navbar nav ul {
+            display: flex;
+            gap: clamp(10px, 2vw, 20px);
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: clamp(5px, 1vw, 8px) clamp(8px, 2vw, 12px);
+            transition: 0.3s;
+            border-radius: 5px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-weight: 500;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
+        #main-content {
+            padding: clamp(80px, 15vw, 120px) clamp(20px, 4vw, 40px) 40px;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #who {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 25px);
+            font-size: clamp(14px, 3vw, 16px);
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #0056b3, #004494);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: clamp(15px, 3vw, 25px);
+            width: 100%;
+            margin: 0 auto 40px;
+        }
+
+        .video-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            background: #000;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .video-item iframe {
             width: 100%;
             height: 200px;
+            border: none;
+            display: block;
         }
-    }
 
-    /* ----------------------------------- */
-    /* FOOTER */
-    /* ----------------------------------- */
-    footer {
-        background-color: black;
-        color: white;
-        text-align: center;
-        padding: 25px 10px;
-    }
+        .video-title {
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 0.9rem;
+            text-align: left;
+        }
 
-    .social-icons a {
-        font-size: 30px;
-        color: white;
-        margin: 0 12px;
-        transition: 0.3s;
-    }
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
 
-    .social-icons a:hover {
-        color: #FFD700;
-    }
-</style>
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            #navbar nav ul {
+                gap: 8px;
+            }
+
+            #navbar nav a {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-item iframe {
+                height: 180px;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1025px) {
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto 50px;
+                padding: 0 20px;
+            }
+
+            .video-item iframe {
+                height: 220px;
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1440px) {
+            .video-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- NAVBAR -->
-<header id="navbar">
-    <div id="logo">Honour Language Centre</div>
-    <nav>
-        <ul>
-            <li><a href="Aboutpage.html">About</a></li>
-            <li><a href="Courses.html">Courses</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+        <h1>Class A Resources</h1>
+        <p id="who">Loading...</p>
+        <button class="logout-btn" onclick="logout()">
+            <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i>Logout
+        </button>
 
-<!-- MAIN CONTENT -->
-<div id="main-content">
-    <h1>Class A Page</h1>
-    <p id="who"></p>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-
-    <!-- VIDEO GRID -->
-    <div class="video-grid">
-        <!-- 18 videos -->
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/ARk51_2OumU" allowfullscreen></iframe>
+        <!-- VIDEO GRID -->
+        <div class="video-grid" id="videoGrid">
+            <!-- Videos will be loaded dynamically -->
+        </div>
     </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/@honour.language.centre" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p>© 2025 Honour Language Centre – All rights reserved.</p>
-    <p>Contact: honourlanguagecentrehlc@gmail.com</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.language.centre" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Contact: honourlanguagecentrehlc@gmail.com</p>
+    </footer>
 
-<script>
-fetch("/session")
-.then(r => r.json())
-.then(s => {
-    if (!s.username) { location.href="login.html"; return; }
-    if (s.classType !== "A") { alert("Access denied"); location.href="login.html"; return; }
-    document.getElementById("who").innerText = "Logged in as: " + s.username;
-});
+    <script>
+        // Sample video data - replace with your actual videos
+        const classAVideos = [
+            { id: "ARk51_2OumU", title: "Lesson 1: Basic Grammar" },
+            { id: "BXNWPUNCDwg", title: "Lesson 2: Sentence Structure" },
+            { id: "dQw4w9WgXcQ", title: "Lesson 3: Vocabulary Building" },
+            { id: "ARk51_2OumU", title: "Lesson 4: Reading Practice" },
+            { id: "BXNWPUNCDwg", title: "Lesson 5: Writing Skills" },
+            { id: "dQw4w9WgXcQ", title: "Lesson 6: Listening Exercise" },
+            { id: "ARk51_2OumU", title: "Lesson 7: Speaking Practice" },
+            { id: "BXNWPUNCDwg", title: "Lesson 8: Grammar Review" },
+            { id: "dQw4w9WgXcQ", title: "Lesson 9: Advanced Topics" }
+        ];
 
-function logout() {
-    fetch("/logout").then(()=>location.href="login.html");
-}
-</script>
+        // Check session and load content
+        fetch("/session")
+        .then(r => r.json())
+        .then(s => {
+            if (!s.username) { 
+                location.href = "login.html"; 
+                return; 
+            }
+            if (s.classType !== "A") { 
+                alert("Access denied"); 
+                location.href = "login.html"; 
+                return; 
+            }
+            document.getElementById("who").innerText = "Welcome, " + s.username + "!";
+            loadVideos();
+        })
+        .catch(error => {
+            console.error('Session check failed:', error);
+            location.href = "login.html";
+        });
 
+        function loadVideos() {
+            const videoGrid = document.getElementById('videoGrid');
+            videoGrid.innerHTML = '';
+
+            classAVideos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <iframe src="https://www.youtube.com/embed/${video.id}" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy">
+                    </iframe>
+                    <div class="video-title">${video.title}</div>
+                `;
+                videoGrid.appendChild(videoItem);
+            });
+        }
+
+        function logout() {
+            document.body.classList.add('loading');
+            fetch("/logout")
+                .then(() => {
+                    location.href = "login.html";
+                })
+                .catch(() => {
+                    location.href = "login.html";
+                });
+        }
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'classA.html';
+        document.querySelectorAll('#navbar a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Handle page visibility change
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // Page became visible, refresh session
+                fetch("/session")
+                    .then(r => r.json())
+                    .then(s => {
+                        if (!s.username || s.classType !== "A") {
+                            location.href = "login.html";
+                        }
+                    });
+            }
+        });
+    </script>
 </body>
 </html>

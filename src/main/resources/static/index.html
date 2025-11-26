@@ -5,266 +5,346 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honour Language Centre</title>
     <link rel="icon" type="image/x-icon" href="Slide1.jpg">
-
-    <!-- SOCIAL ICONS (FONT AWESOME) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ----------------------------------- */
-        /* GLOBAL / BODY STYLES */
-        /* ----------------------------------- */
-        body {
+        /* Reset and Base Styles */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             background-image: url(Slide1.jpg);
-            background-color:rgb(233, 230, );
+            background-color: rgb(233, 230, 230);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* ----------------------------------- */
-        /* NAVIGATION BAR (STICKY) */
-        /* ----------------------------------- */
+        /* Mobile First Navigation */
         #navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
             width: 100%;
-            padding: 10px 20px;
-
-            background-color: rgba(0, 0, 0, 1);
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
             color: white;
-
-            box-sizing: border-box;
-
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         #navbar #logo {
-            font-size: 1.5em;
+            font-size: 1.1em;
             font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
         }
 
         #navbar nav ul {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
 
         #navbar nav a {
             color: white;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 8px 12px;
             transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
         }
 
-        /* ----------------------------------- */
-        /* MAIN CONTENT BOX */
-        /* ----------------------------------- */
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
         #rectangle_box1 {
             width: 100%;
             min-height: 100vh;
-
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             color: white;
-
-            padding-top: 110px; /* space for sticky nav */
-            padding-bottom: 40px;
-
+            padding: 100px 20px 40px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         #titleintherectanglebox1 {
-            font-size: 5vw;
-            margin-bottom: 10px;
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 15px;
             font-family: "Trebuchet MS", Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         #coursename {
-            font-size: 3vw;
-            margin-bottom: 10px;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin-bottom: 15px;
         }
 
         #announcements-title {
-            font-size: 2em;
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 30px;
         }
 
-        /* ----------------------------------- */
-        /* VIDEO GALLERY */
-        /* ----------------------------------- */
+        /* Video Gallery */
         #video-gallery {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
             max-width: 1200px;
+            margin: 0 auto;
         }
 
         .video-wrapper {
             width: 100%;
-            max-width: 350px;
-            margin-bottom: 18px;
         }
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             background-color: #000;
-            height: 0;
+            border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .video-container iframe {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            border: none;
         }
 
-        /* Desktop: 3-column layout */
-        @media (min-width: 768px) {
-            #video-gallery {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .video-wrapper {
-                width: 33.33%;
-                margin: 0 10px;
-            }
-        }
-
-        /* ----------------------------------- */
-        /* CLICKABLE BOX */
-        /* ----------------------------------- */
+        /* Clickable Box */
         .clickHere {
-            width: 300px;
+            width: min(300px, 90%);
             height: 70px;
-
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             color: black;
-
             display: flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
-
             border-radius: 12px;
             cursor: pointer;
-
-            transition: 0.25s;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            font-weight: bold;
         }
 
         .clickHere:hover {
             transform: scale(1.05);
             background-color: white;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
         }
 
-        .clickHere h1 {
-            font-size: 20px;
-            margin: 0;
-            font-family: 'Times New Roman', serif;
-        }
-
-        /* ----------------------------------- */
-        /* FOOTER */
-        /* ----------------------------------- */
+        /* Footer */
         footer {
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.9);
             color: white;
             text-align: center;
-            padding: 25px 10px;
+            padding: 30px 20px;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
         }
 
         .social-icons a {
-            font-size: 30px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: white;
-            margin: 0 12px;
+            margin: 0 10px;
             transition: 0.3s;
+            display: inline-block;
         }
 
         .social-icons a:hover {
             color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+
+            #navbar #logo {
+                font-size: 1.3em;
+            }
+
+            #rectangle_box1 {
+                padding: 120px 40px 60px;
+            }
+
+            #video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.5em;
+            }
+
+            #navbar nav ul {
+                gap: 25px;
+            }
+
+            #video-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .clickHere {
+                width: 350px;
+                height: 80px;
+            }
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+
+            #navbar nav ul.active {
+                display: flex;
+            }
+
+            #navbar nav a {
+                display: block;
+                padding: 15px;
+                margin: 5px 0;
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1440px) {
+            #rectangle_box1 {
+                padding: 150px 60px 80px;
+            }
         }
     </style>
 </head>
 
 <body>
-
     <!-- NAVBAR -->
     <header id="navbar">
         <div id="logo">Honour Language Centre</div>
-
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
-            <ul>
-                <li><a href="Aboutpage.html">About</a></li>
+            <ul id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="Courses.html">Courses</a></li>
-                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- MAIN CONTENT -->
     <div id="rectangle_box1">
-
         <h1 id="titleintherectanglebox1">HONOUR LANGUAGE CENTRE</h1>
-        <h1 id="coursename">Basic English Grammar In Use Class</h1>
-        <h1 id="announcements-title">New Announcements</h1>
+        <h2 id="coursename">Basic English Grammar In Use Class</h2>
+        <h3 id="announcements-title">New Announcements</h3>
 
         <!-- VIDEO GALLERY -->
         <div id="video-gallery">
-
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
                 </div>
             </div>
-
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
                 </div>
             </div>
-
         </div>
 
         <!-- CLICKABLE BOX -->
         <a href="login.html" class="clickHere">
-            <h1>Click Here to View the Resources</h1>
+            <h2>Click Here to View the Resources</h2>
         </a>
-
     </div>
 
     <!-- FOOTER -->
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank">
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
                 <i class="fab fa-youtube"></i>
             </a>
-            <a href="https://www.tiktok.com/@honour.language.centre" target="_blank">
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
                 <i class="fab fa-tiktok"></i>
             </a>
         </div>
@@ -272,5 +352,33 @@
         <p>Contact: honourlanguagecentrehlc@gmail.com</p>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
