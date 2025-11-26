@@ -12,13 +12,16 @@ import java.util.List;
 @Service
 public class UserService {
     private final ObjectMapper mapper = new ObjectMapper();
-    private final File file = new File("src/main/resources/data/users.json");
+    private final File file = new File("./data/users.json");
 
     public synchronized List<User> getAllUsers() {
         try {
             if (!file.exists()) {
                 file.getParentFile().mkdirs();
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, new ArrayList<User>());
+                // Create default users if file doesn't exist
+                List<User> defaultUsers = new ArrayList<>();
+                defaultUsers.add(new User("admin", "admin", "A"));
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, defaultUsers);
             }
             return mapper.readValue(file, new TypeReference<List<User>>() {});
         } catch (IOException e) {

@@ -1,4 +1,12 @@
-[ 
-    {"username":"zaynhtet227", "password":"2272008Zylh", "classType":"A"},
-    {"username":"zaynhtet2272", "password":"2272008Zylh2", "classType":"B"}
+[
+  {
+    "username": "zaynhtet227",
+    "password": "2272008Zylh",
+    "classType": "A"
+  },
+  {
+    "username": "test",
+    "password": "test", 
+    "classType": "B"
+  }
 ]
