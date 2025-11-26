@@ -1,55 +1,35 @@
 package com.example.LoginApp;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class UserService {
-    private final ObjectMapper mapper = new ObjectMapper();
-    private final File file = new File("./data/users.json");
+    private final List<User> defaultUsers = Arrays.asList(
+        new User("zaynhtet227", "2272008Zylh", "A"),
+        new User("test", "test", "B"),
+        new User("admin", "admin", "A")
+    );
 
     public synchronized List<User> getAllUsers() {
-        try {
-            if (!file.exists()) {
-                file.getParentFile().mkdirs();
-                // Create default users if file doesn't exist
-                List<User> defaultUsers = new ArrayList<>();
-                defaultUsers.add(new User("admin", "admin", "A"));
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, defaultUsers);
-            }
-            return mapper.readValue(file, new TypeReference<List<User>>() {});
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+        return new ArrayList<>(defaultUsers);
     }
 
     public synchronized void saveAllUsers(List<User> users) {
-        try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Do nothing - using hardcoded users
     }
 
     public synchronized boolean register(String username, String password) {
-        List<User> users = getAllUsers();
-        for (User u : users) {
+        for (User u : defaultUsers) {
             if (u.getUsername().equals(username)) return false;
         }
-        users.add(new User(username, password, ""));
-        saveAllUsers(users);
         return true;
     }
 
     public synchronized User findByUsername(String username) {
-        for (User u : getAllUsers()) {
+        for (User u : defaultUsers) {
             if (u.getUsername().equals(username)) return u;
         }
         return null;
