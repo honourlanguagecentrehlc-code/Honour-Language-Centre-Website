@@ -8,5 +8,10 @@
     "username": "test",
     "password": "test", 
     "classType": "B"
+  },
+  {
+    "username": "admin",
+    "password": "admin", 
+    "classType": "A"
   }
 ]
