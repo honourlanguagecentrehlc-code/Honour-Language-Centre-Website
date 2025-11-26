@@ -153,72 +153,157 @@
             text-align: justify;
         }
 
-        /* Future Plans */
-        .future-plans {
+        /* Language Courses Section */
+        .language-courses {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .plan-card {
+        .language-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #FFD700;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .language-card.current {
+            border-color: #4ade80;
+        }
+
+        .language-card.upcoming {
+            border-color: #f59e0b;
+        }
+
+        .language-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover .language-icon {
+            transform: scale(1.1);
+        }
+
+        .language-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #FFD700;
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover h3 {
+            color: white;
+        }
+
+        .language-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-current {
+            background: #4ade80;
+            color: black;
+        }
+
+        .status-upcoming {
+            background: #f59e0b;
+            color: black;
+        }
+
+        .language-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-top: 0;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .language-card:hover .language-description {
+            max-height: 200px;
+            margin-top: 15px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .review-card {
             background: rgba(255, 255, 255, 0.15);
             padding: 25px;
-            border-radius: 10px;
-            text-align: center;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .plan-card:hover {
+        .review-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.2);
         }
 
-        .plan-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #FFD700;
-        }
-
-        .plan-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #FFD700;
-        }
-
-        .plan-card p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Reviews Section */
-        .reviews-section {
-            margin-top: 20px;
-        }
-
-        .review-placeholder {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-        }
-
-        .review-placeholder i {
-            font-size: 3rem;
-            color: #FFD700;
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
             margin-bottom: 15px;
         }
 
-        .review-placeholder h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #FFD700;
+        .review-student {
+            flex: 1;
         }
 
-        .review-placeholder p {
+        .review-student h4 {
+            font-size: 1.2rem;
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
+        .review-class {
+            font-size: 0.9rem;
             opacity: 0.8;
+        }
+
+        .review-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .review-content p {
+            margin-bottom: 10px;
         }
 
         /* Ad Container */
@@ -280,6 +365,10 @@
             .content-section {
                 padding: 40px;
             }
+
+            .language-courses {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* Desktop Styles */
@@ -292,8 +381,8 @@
                 gap: 25px;
             }
 
-            .future-plans {
-                grid-template-columns: repeat(3, 1fr);
+            .language-courses {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -339,7 +428,11 @@
                 background-color: rgba(255, 255, 255, 0.15);
             }
 
-            .future-plans {
+            .language-courses {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -381,47 +474,94 @@
             </div>
         </div>
 
-        <!-- Future Plans Section -->
+        <!-- Language Courses Section -->
         <div class="content-section">
-            <h2 class="section-title">Future Language Expansion</h2>
-            <p class="mission-text" style="margin-bottom: 25px;">We are excited to announce our upcoming expansion into additional Asian languages to better serve our diverse student community and open up more international opportunities.</p>
-            
-            <div class="future-plans">
-                <div class="plan-card">
-                    <div class="plan-icon">
+            <h2 class="section-title">Our Language Courses</h2>
+            <div class="language-courses">
+                <!-- English Course -->
+                <div class="language-card current">
+                    <div class="language-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <span class="language-status status-current">Current</span>
+                    <h3>English</h3>
+                    <div class="language-description">
+                        Grammar, vocabulary, speaking & writing. Perfect for beginners to advanced learners.
+                    </div>
+                </div>
+                
+                <!-- Chinese Course -->
+                <div class="language-card upcoming">
+                    <div class="language-icon">
                         <i class="fas fa-dragon"></i>
                     </div>
-                    <h3>Chinese Mandarin</h3>
-                    <p>Comprehensive Chinese language courses focusing on speaking, reading, and writing. Perfect for business, travel, or cultural enrichment.</p>
+                    <span class="language-status status-upcoming">Coming Soon</span>
+                    <h3>Chinese</h3>
+                    <div class="language-description">
+                        Mandarin Chinese: Pinyin, characters, tones & conversation. Business & travel focus.
+                    </div>
                 </div>
                 
-                <div class="plan-card">
-                    <div class="plan-icon">
+                <!-- Japanese Course -->
+                <div class="language-card upcoming">
+                    <div class="language-icon">
                         <i class="fas fa-torii-gate"></i>
                     </div>
+                    <span class="language-status status-upcoming">Coming Soon</span>
                     <h3>Japanese</h3>
-                    <p>Learn Japanese with courses covering basic conversation to advanced business Japanese, including cultural insights and writing systems.</p>
+                    <div class="language-description">
+                        Hiragana, katakana, kanji & conversation. Study, work or travel in Japan.
+                    </div>
                 </div>
                 
-                <div class="plan-card">
-                    <div class="plan-icon">
+                <!-- Korean Course -->
+                <div class="language-card upcoming">
+                    <div class="language-icon">
                         <i class="fas fa-hat-cowboy"></i>
                     </div>
+                    <span class="language-status status-upcoming">Coming Soon</span>
                     <h3>Korean</h3>
-                    <p>Master the Korean language with our structured courses, from Hangul basics to fluent conversation, including K-culture context.</p>
+                    <div class="language-description">
+                        Hangul, pronunciation & grammar. Perfect for K-culture fans & travelers.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Reviews Section -->
+        <!-- Student Reviews Section -->
         <div class="content-section">
             <h2 class="section-title">Student Reviews</h2>
-            <div class="reviews-section">
-                <div class="review-placeholder">
-                    <i class="fas fa-comments"></i>
-                    <h3>Share Your Experience</h3>
-                    <p>We value feedback from our students! Your reviews help us improve and inspire others to begin their language learning journey.</p>
-                    <p style="margin-top: 15px; font-style: italic;">Add your review here to share how Honour Language Centre has helped you achieve your language goals.</p>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-student">
+                            <h4>Swan Thura Hla</h4>
+                            <div class="review-class">Basic English Grammar In Use Class - June 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>Honour Language Centre ရဲ့ Basic English Grammar class ကို တက်ရောက်နိုင်ခဲ့ တဲ့ အတွက် ဝမ်းသာပါတယ်။</p>
+                        <p>သင်ကြားမူ ၂ လ အတွင်းမှာ မသိတာတွေ၊နာမလည်တာတွေ ကို ပိုပြီး နာလည်လာ ခဲ့ပြီး အခြား ဗဟုသုတ တွေလည်း တော်တော်များများ ရရှိခဲ့ပါတယ်။</p>
+                        <p>မေးမြန်မှု တစ်ခုချင်းစီကို စိတ်ရှည်စွာ နဲ့ဖြေကြားပေးတဲ့ ဆရာ့ကိုလည်း အထူးကျေးဇူးတင်ပါတယ်။ နောက်ထပ် class တွေမှာ လည်း ဆရာနဲ့ အတူ လေ့လာဖို့ မျှော်လင့်ပါတယ်။</p>
+                        <p><strong>Thank you for your education and kindness</strong></p>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-student">
+                            <h4>Moe Naing Win</h4>
+                            <div class="review-class">Basic English Grammar In Use Class - June 2025</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>ကျွန်တော် Basic English Grammar Class သင်တန်းတက်တဲ့တစ်လအတွင်းမှာ မတူညီတဲ့ စာလုံးတွေ့နဲ့ တူညီပြီး အသံထွက်ကွဲတဲ့ Basic စာလုံးတွေ သိလာရတယ်။</p>
+                        <p>အခြေခံကျကျလဲဆရာကသင်ပေးတယ်။ စိတ်လဲရှည် သဘောလဲကောင်းတယ်။ ပျော်စရာလဲ ကောင်းတယ်။ စာကို နားလည်လွယ်အောင် ရှင်းပြပါတယ်။</p>
+                        <p>ဝါကျဖွဲ့ပုံတွေလဲဆရာက ရှင်းပြပါတယ် မသိတာမေးရင်လဲ တန်းဖြေပေးပါတယ်။ သင်တန်းက အချိန်မမှီလဲ Video recording ပြန်ပို့ထားမို့အချိန်မရွေး ပြန်လည် လေ့လာနိုင်တယ်။</p>
+                        <p>တက်ခဲ့တဲ့ ကာလအတွင်း အတွေ့အကြုံတွေကတော့ အဲလောက်ပါပဲဗျ။</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -449,7 +589,7 @@
             <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
                 <i class="fab fa-youtube"></i>
             </a>
-            <a href="https://www.tiktok.com/@honour.language.centre" target="_blank" aria-label="TikTok">
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
                 <i class="fab fa-tiktok"></i>
             </a>
         </div>
