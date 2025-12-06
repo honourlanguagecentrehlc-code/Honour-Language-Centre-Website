@@ -135,6 +135,130 @@
             margin-bottom: 30px;
         }
 
+        /* NEW ANNOUNCEMENTS BOX */
+        .announcement-box {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .announcement-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .announcement-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .announcement-image {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .announcement-image {
+                width: 300px;
+                margin: 0;
+            }
+        }
+
+        .announcement-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .announcement-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .announcement-details {
+            flex: 1;
+            text-align: left;
+            padding: 15px 0;
+        }
+
+        @media (min-width: 768px) {
+            .announcement-details {
+                padding: 0 0 0 30px;
+            }
+        }
+
+        .announcement-details h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .announcement-details p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            opacity: 0.9;
+        }
+
+        .course-features {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .course-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .course-features li:before {
+            
+            color: #4CAF50;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .announcement-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .announcement-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+
+        .announcement-button:active {
+            transform: translateY(-1px);
+        }
+
         /* Video Gallery */
         #video-gallery {
             display: grid;
@@ -270,6 +394,10 @@
                 width: 350px;
                 height: 80px;
             }
+
+            .announcement-image {
+                width: 350px;
+            }
         }
 
         /* Mobile Menu Styles - Fixed Alignment */
@@ -320,6 +448,10 @@
             #rectangle_box1 {
                 padding: 150px 60px 80px;
             }
+            
+            .announcement-box {
+                padding: 35px;
+            }
         }
     </style>
 </head>
@@ -347,6 +479,31 @@
         <h1 id="titleintherectanglebox1">HONOUR LANGUAGE CENTRE</h1>
         <h2 id="coursename">Basic English Grammar In Use Class</h2>
         <h3 id="announcements-title">New Announcements</h3>
+
+        <!-- NEW ANNOUNCEMENT BOX -->
+        <div class="announcement-box">
+            <div class="announcement-content">
+                <div class="announcement-image">
+                    <img src="1.jpg" alt="Basic English Grammar Course">
+                </div>
+                <div class="announcement-details">
+                    <h3>New Course: Basic English Grammar In Use Video Class</h3>
+                    <p>We're excited to announce our new comprehensive Basic English Grammar course designed for beginners and intermediate learners. This course will help you master the fundamentals of English grammar in a practical, engaging way.</p>
+                    
+                    <ul class="course-features">
+                        <li>2 videos every weekend + Friday night zoom meeting</li>
+                        <li>Zoom meeting: 10:00 pm - 10:45 pm</li>
+                        <li>Duration 2 months</li>
+                        <li>140,000 Ks <i>only before 2nd of January</i></li>
+                        <li>Age limit: 13 years old and above</li>
+                        <li>Starting date: 17th of January, 2026</li>
+                    </ul>
+                    
+                    
+                    <a href="Courses.html" class="announcement-button">View Course Details & Enroll Now</a>
+                </div>
+            </div>
+        </div>
 
         <!-- VIDEO GALLERY -->
         <div id="video-gallery">
@@ -442,6 +599,17 @@
             if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Add animation to announcement box on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const announcementBox = document.querySelector('.announcement-box');
+            if (announcementBox) {
+                setTimeout(() => {
+                    announcementBox.style.opacity = '1';
+                    announcementBox.style.transform = 'translateY(0)';
+                }, 300);
             }
         });
     </script>
