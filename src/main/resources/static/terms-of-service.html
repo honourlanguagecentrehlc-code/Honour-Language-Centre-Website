@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Honour Language Centre</title>
+    <link rel="icon" type="image/x-icon" href="BG.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Slide1.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Consistent across all pages */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        #navbar #logo {
+            font-size: 1.1em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
+        .terms-container {
+            padding: clamp(100px, 15vw, 120px) clamp(20px, 5vw, 40px) 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #FFD700;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .terms-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 20px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        .section-content ul, .section-content ol {
+            margin: 15px 0 20px 20px;
+            padding-left: 20px;
+        }
+
+        .section-content li {
+            margin-bottom: 10px;
+        }
+
+        .important-note {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .important-note strong {
+            color: #FFD700;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .warning-box strong {
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Info */
+        .contact-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-box h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .contact-box p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+
+            #navbar #logo {
+                font-size: 1.3em;
+            }
+
+            .terms-container {
+                padding: 120px 40px 80px;
+            }
+
+            .terms-section {
+                padding: 40px;
+            }
+
+            .footer-links {
+                gap: 30px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.5em;
+            }
+
+            #navbar nav ul {
+                gap: 25px;
+            }
+
+            .terms-section {
+                padding: 50px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                margin: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+
+            #navbar nav ul.active {
+                display: flex;
+            }
+
+            #navbar nav a {
+                display: block;
+                padding: 15px 20px;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            #navbar nav a:last-child {
+                border-bottom: none;
+            }
+
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="terms-container">
+        <div class="page-header">
+            <h1>Terms of Service</h1>
+            <p>Last Updated: January 2025</p>
+            <p>Please read these Terms of Service carefully before using our services.</p>
+        </div>
+
+        <!-- Agreement Section -->
+        <div class="terms-section">
+            <h2 class="section-title">1. Acceptance of Terms</h2>
+            <div class="section-content">
+                <p>By accessing or using the services provided by Honour Language Centre ("we," "us," or "our"), you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access our services.</p>
+                
+                <div class="important-note">
+                    <strong>Important:</strong>
+                    <p>These terms constitute a legal agreement between you and Honour Language Centre. By registering for our courses or using our website, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Description Section -->
+        <div class="terms-section">
+            <h2 class="section-title">2. Services Description</h2>
+            <div class="section-content">
+                <p>Honour Language Centre provides online language education services, including:</p>
+                
+                <ul>
+                    <li>Live online classes via Zoom and other platforms</li>
+                    <li>Pre-recorded video lessons and course materials</li>
+                    <li>Interactive learning resources and exercises</li>
+                    <li>Progress tracking and assessment tools</li>
+                    <li>Instructor support and feedback</li>
+                </ul>
+                
+                <p>We reserve the right to modify, suspend, or discontinue any aspect of our services at any time, including the availability of any feature or content.</p>
+            </div>
+        </div>
+
+        <!-- Registration Section -->
+        <div class="terms-section">
+            <h2 class="section-title">3. Registration & Account</h2>
+            <div class="section-content">
+                <p>To access certain features of our services, you must register for an account. You agree to:</p>
+                
+                <ol>
+                    <li>Provide accurate, current, and complete information during registration</li>
+                    <li>Maintain and promptly update your account information</li>
+                    <li>Keep your password secure and confidential</li>
+                    <li>Accept responsibility for all activities that occur under your account</li>
+                    <li>Notify us immediately of any unauthorized use of your account</li>
+                </ol>
+                
+                <div class="warning-box">
+                    <strong>Account Security:</strong>
+                    <p>You are solely responsible for maintaining the confidentiality of your account credentials. We are not liable for any loss or damage arising from your failure to protect your account information.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payments & Refunds Section -->
+        <div class="terms-section">
+            <h2 class="section-title">4. Payments, Fees & Refunds</h2>
+            <div class="section-content">
+                <p><strong>Course Fees:</strong> All course fees are clearly stated on our website and must be paid in full before course access is granted.</p>
+                
+                <p><strong>Payment Methods:</strong> We accept payment through approved payment gateways. All transactions are processed securely by third-party payment processors.</p>
+                
+                <p><strong>Refund Policy:</strong></p>
+                <ul>
+                    <li><strong>Full refund:</strong> Available within 7 days of purchase if no course content has been accessed</li>
+                    <li><strong>Partial refund:</strong> 50% refund available within 14 days of course start date</li>
+                    <li><strong>No refund:</strong> After 14 days from course start date or if significant course content has been accessed</li>
+                    <li><strong>Course cancellation:</strong> If we cancel a course, full refunds will be issued to all enrolled students</li>
+                </ul>
+                
+                <p><strong>Special Offers:</strong> Discounted pricing is valid only during the specified promotional period and may have additional terms and conditions.</p>
+            </div>
+        </div>
+
+        <!-- Student Conduct Section -->
+        <div class="terms-section">
+            <h2 class="section-title">5. Student Conduct & Responsibilities</h2>
+            <div class="section-content">
+                <p>As a student of Honour Language Centre, you agree to:</p>
+                
+                <ol>
+                    <li>Attend classes regularly and participate actively in learning activities</li>
+                    <li>Complete assignments and assessments within specified deadlines</li>
+                    <li>Respect instructors and fellow students at all times</li>
+                    <li>Use course materials for personal learning purposes only</li>
+                    <li>Not share your account or course materials with others</li>
+                </ol>
+                
+                <div class="warning-box">
+                    <strong>Prohibited Conduct:</strong>
+                    <p>The following activities are strictly prohibited and may result in immediate account termination without refund:</p>
+                    <ul>
+                        <li>Sharing course materials with non-enrolled individuals</li>
+                        <li>Recording classes without explicit permission</li>
+                        <li>Disruptive behavior during live classes</li>
+                        <li>Harassment of instructors or other students</li>
+                        <li>Any form of academic dishonesty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intellectual Property Section -->
+        <div class="terms-section">
+            <h2 class="section-title">6. Intellectual Property Rights</h2>
+            <div class="section-content">
+                <p>All course materials, including but not limited to videos, presentations, documents, exercises, and assessments, are the intellectual property of Honour Language Centre.</p>
+                
+                <p><strong>You may:</strong></p>
+                <ul>
+                    <li>Use course materials for your personal educational purposes</li>
+                    <li>Download materials provided specifically for download</li>
+                    <li>Take notes and create study aids for personal use</li>
+                </ul>
+                
+                <p><strong>You may NOT:</strong></p>
+                <ul>
+                    <li>Reproduce, distribute, or share course materials with others</li>
+                    <li>Sell, rent, or license course materials to third parties</li>
+                    <li>Modify or create derivative works from our materials</li>
+                    <li>Use our materials for commercial purposes</li>
+                </ul>
+                
+                <p>Violation of these intellectual property rights may result in legal action.</p>
+            </div>
+        </div>
+
+        <!-- Limitation of Liability Section -->
+        <div class="terms-section">
+            <h2 class="section-title">7. Limitation of Liability</h2>
+            <div class="section-content">
+                <p>To the maximum extent permitted by law, Honour Language Centre shall not be liable for:</p>
+                
+                <ul>
+                    <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+                    <li>Loss of profits, data, use, goodwill, or other intangible losses</li>
+                    <li>Technical issues, internet connectivity problems, or platform failures</li>
+                    <li>Any claims related to third-party services or platforms</li>
+                </ul>
+                
+                <p>Our total liability for any claims under these terms shall not exceed the amount you paid us for the specific course in question.</p>
+                
+                <div class="important-note">
+                    <strong>Educational Outcomes:</strong>
+                    <p>While we strive to provide quality education, we do not guarantee specific learning outcomes, test scores, or proficiency levels. Individual results may vary based on effort, engagement, and other factors.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Termination Section -->
+        <div class="terms-section">
+            <h2 class="section-title">8. Termination & Suspension</h2>
+            <div class="section-content">
+                <p>We may terminate or suspend your account and access to our services immediately, without prior notice or liability, for any reason, including but not limited to:</p>
+                
+                <ul>
+                    <li>Violation of these Terms of Service</li>
+                    <li>Non-payment of course fees</li>
+                    <li>Disruptive or inappropriate behavior</li>
+                    <li>Sharing of account credentials</li>
+                    <li>Violation of intellectual property rights</li>
+                </ul>
+                
+                <p>Upon termination, your right to use our services will cease immediately. If you wish to terminate your account, you may simply discontinue using our services.</p>
+            </div>
+        </div>
+
+        <!-- Changes to Terms Section -->
+        <div class="terms-section">
+            <h2 class="section-title">9. Changes to Terms</h2>
+            <div class="section-content">
+                <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect.</p>
+                
+                <p>By continuing to access or use our services after any revisions become effective, you agree to be bound by the revised terms.</p>
+                
+                <p>It is your responsibility to periodically review these Terms for changes.</p>
+            </div>
+        </div>
+
+        <!-- Governing Law Section -->
+        <div class="terms-section">
+            <h2 class="section-title">10. Governing Law & Dispute Resolution</h2>
+            <div class="section-content">
+                <p>These Terms shall be governed by and construed in accordance with the laws of Myanmar.</p>
+                
+                <p>Any disputes arising out of or relating to these Terms or our services shall be resolved through:</p>
+                
+                <ol>
+                    <li><strong>Informal Negotiation:</strong> Parties will attempt to resolve disputes informally within 30 days</li>
+                    <li><strong>Mediation:</strong> If informal negotiation fails, parties agree to mediation before pursuing legal action</li>
+                    <li><strong>Legal Action:</strong> As a last resort, legal action may be pursued in the courts of Yangon, Myanmar</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-box">
+            <h3>Contact Information</h3>
+            <p>If you have any questions about these Terms of Service, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Address:</strong> Yangon, Myanmar</p>
+            <p>We typically respond to inquiries within 3-5 business days.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Monday to Friday, 9:00 AM - 6:00 PM</p>
+        </div>
+        
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Professional English Language Education in Myanmar</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'terms-of-service.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

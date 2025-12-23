@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Honour Language Centre</title>
+    <link rel="icon" type="image/x-icon" href="BG.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Slide1.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Consistent across all pages */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        #navbar #logo {
+            font-size: 1.1em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
+        .privacy-container {
+            padding: clamp(100px, 15vw, 120px) clamp(20px, 5vw, 40px) 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #FFD700;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .policy-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 20px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        .section-content ul, .section-content ol {
+            margin: 15px 0 20px 20px;
+            padding-left: 20px;
+        }
+
+        .section-content li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #FFD700;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box strong {
+            color: #FFD700;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Info */
+        .contact-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-box h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .contact-box p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+
+            #navbar #logo {
+                font-size: 1.3em;
+            }
+
+            .privacy-container {
+                padding: 120px 40px 80px;
+            }
+
+            .policy-section {
+                padding: 40px;
+            }
+
+            .footer-links {
+                gap: 30px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.5em;
+            }
+
+            #navbar nav ul {
+                gap: 25px;
+            }
+
+            .policy-section {
+                padding: 50px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                margin: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+
+            #navbar nav ul.active {
+                display: flex;
+            }
+
+            #navbar nav a {
+                display: block;
+                padding: 15px 20px;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            #navbar nav a:last-child {
+                border-bottom: none;
+            }
+
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="privacy-container">
+        <div class="page-header">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: December 2025</p>
+        </div>
+
+        <!-- Introduction Section -->
+        <div class="policy-section">
+            <h2 class="section-title">1. Introduction</h2>
+            <div class="section-content">
+                <p>Welcome to Honour Language Centre. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+                <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site or use our services.</p>
+            </div>
+        </div>
+
+        <!-- Information Collection Section -->
+        <div class="policy-section">
+            <h2 class="section-title">2. Information We Collect</h2>
+            <div class="section-content">
+                <p>We collect personal information that you voluntarily provide to us when you:</p>
+                <ul>
+                    <li>Register for our courses</li>
+                    <li>Express an interest in obtaining information about us or our services</li>
+                    <li>Participate in activities on our website</li>
+                    <li>Contact us directly</li>
+                </ul>
+                
+                <p>The personal information we collect may include:</p>
+                <ul>
+                    <li><strong>Contact Information:</strong> Name, email address, phone number</li>
+                    <li><strong>Demographic Information:</strong> Age, location, educational background</li>
+                    <li><strong>Payment Information:</strong> When you register for paid courses (processed securely through third-party payment processors)</li>
+                    <li><strong>Technical Information:</strong> IP address, browser type, device information</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Use of Information Section -->
+        <div class="policy-section">
+            <h2 class="section-title">3. How We Use Your Information</h2>
+            <div class="section-content">
+                <p>We use personal information collected via our website for a variety of business purposes described below:</p>
+                
+                <div class="highlight-box">
+                    <strong>Service Delivery:</strong>
+                    <p>To provide, operate, and maintain our language learning services, process registrations, and deliver course materials.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Communication:</strong>
+                    <p>To send administrative information, course updates, schedule changes, and respond to inquiries.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Personalization:</strong>
+                    <p>To tailor course recommendations and learning experiences to individual student needs.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Security & Fraud Prevention:</strong>
+                    <p>To protect our website and services from malicious activity and ensure user safety.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Protection Section -->
+        <div class="policy-section">
+            <h2 class="section-title">4. Data Protection & Security</h2>
+            <div class="section-content">
+                <p>We implement appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure.</p>
+                
+                <p>We take the following measures to protect your data:</p>
+                <ol>
+                    <li>Encryption of sensitive information during transmission</li>
+                    <li>Regular security assessments and updates</li>
+                    <li>Limited access to personal information on a need-to-know basis</li>
+                    <li>Secure data storage with access controls</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Data Sharing Section -->
+        <div class="policy-section">
+            <h2 class="section-title">5. Data Sharing & Third Parties</h2>
+            <div class="section-content">
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share information only in the following situations:</p>
+                
+                <ul>
+                    <li><strong>Service Providers:</strong> With trusted third parties who assist in operating our website and services (e.g., payment processors, email service providers)</li>
+                    <li><strong>Legal Requirements:</strong> When required by law or to respond to legal processes</li>
+                    <li><strong>Business Transfers:</strong> In connection with any merger, sale of company assets, or acquisition</li>
+                </ul>
+                
+                <p>All third-party service providers are required to maintain the confidentiality and security of your information.</p>
+            </div>
+        </div>
+
+        <!-- Student Rights Section -->
+        <div class="policy-section">
+            <h2 class="section-title">6. Your Rights & Choices</h2>
+            <div class="section-content">
+                <p>As a student of Honour Language Centre, you have the following rights regarding your personal information:</p>
+                
+                <ul>
+                    <li><strong>Access:</strong> Request access to your personal information</li>
+                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your personal information under certain conditions</li>
+                    <li><strong>Withdraw Consent:</strong> Withdraw your consent at any time where we rely on consent to process your information</li>
+                    <li><strong>Opt-Out:</strong> Opt-out of marketing communications at any time</li>
+                </ul>
+                
+                <p>To exercise any of these rights, please contact us using the information provided below.</p>
+            </div>
+        </div>
+
+        <!-- Children's Privacy Section -->
+        <div class="policy-section">
+            <h2 class="section-title">7. Children's Privacy</h2>
+            <div class="section-content">
+                <p>Our services are designed for students aged 13 and above. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under age 13, we will delete that information as quickly as possible.</p>
+                
+                <p>Parents or guardians who believe their child has provided us with personal information should contact us immediately so we can take appropriate action.</p>
+            </div>
+        </div>
+
+        <!-- Policy Updates Section -->
+        <div class="policy-section">
+            <h2 class="section-title">8. Policy Updates</h2>
+            <div class="section-content">
+                <p>We may update this privacy policy from time to time. The updated version will be indicated by an updated "Last Updated" date and the updated version will be effective as soon as it is accessible.</p>
+                
+                <p>We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.</p>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-box">
+            <h3>Contact Us</h3>
+            <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Address:</strong> Yangon, Myanmar</p>
+            <p>We will respond to your inquiry within 7 business days.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Monday to Friday, 9:00 AM - 6:00 PM</p>
+        </div>
+        
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Professional English Language Education in Myanmar</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'privacy-policy.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
