@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honour Language Centre</title>
+    <title>Honour Language Centre - Professional English Grammar Courses in Myanmar</title>
+    <meta name="description" content="Honour Language Centre offers professional English grammar courses for all levels in Myanmar. Learn English with expert teachers through video classes and live Zoom sessions.">
+    <meta name="keywords" content="English grammar course, Myanmar English class, learn English online, Zoom English lessons, Honour Language Centre, English classes Myanmar">
+    <meta name="author" content="Honour Language Centre">
     <link rel="icon" type="image/x-icon" href="BG.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -25,6 +28,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            line-height: 1.6;
         }
 
         /* Navigation - Consistent across all pages */
@@ -213,20 +217,37 @@
         .course-features {
             margin: 20px 0;
             padding-left: 20px;
+            list-style: none;
         }
 
         .course-features li {
             margin-bottom: 10px;
             position: relative;
-            padding-left: 10px;
+            padding-left: 25px;
         }
 
         .course-features li:before {
-            
+            content: "✓";
             color: #4CAF50;
             font-weight: bold;
             position: absolute;
-            left: -15px;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .course-price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #FFD700;
+            margin: 15px 0;
+            display: block;
+        }
+
+        .course-note {
+            font-style: italic;
+            opacity: 0.8;
+            margin-top: 10px;
+            display: block;
         }
 
         .announcement-button {
@@ -251,8 +272,32 @@
             background: linear-gradient(135deg, #FFA500, #FFD700);
         }
 
-        .announcement-button:active {
-            transform: translateY(-1px);
+        /* Additional Content Sections */
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 20px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 10px;
+        }
+
+        .content-text {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
         }
 
         /* Video Gallery */
@@ -262,7 +307,7 @@
             gap: 20px;
             width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 30px auto;
         }
 
         .video-wrapper {
@@ -285,17 +330,6 @@
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        /* Ad Container */
-        .ad-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            max-width: 1200px;
-            width: 100%;
         }
 
         /* Clickable Box */
@@ -326,7 +360,8 @@
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
+            margin-top: 50px;
         }
 
         .social-icons {
@@ -346,9 +381,44 @@
             transform: translateY(-3px);
         }
 
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
         footer p {
             margin: 10px 0;
             font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* Tablet Styles */
@@ -368,6 +438,10 @@
             #video-gallery {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
+            }
+
+            .content-section {
+                padding: 40px;
             }
         }
 
@@ -394,9 +468,13 @@
             .announcement-image {
                 width: 350px;
             }
+
+            .footer-links {
+                gap: 30px;
+            }
         }
 
-        /* Mobile Menu Styles - Fixed Alignment */
+        /* Mobile Menu Styles */
         @media (max-width: 767px) {
             .menu-toggle {
                 display: flex;
@@ -437,16 +515,11 @@
             #navbar nav a:hover {
                 background-color: rgba(255, 255, 255, 0.15);
             }
-        }
 
-        /* Large Desktop */
-        @media (min-width: 1440px) {
-            #rectangle_box1 {
-                padding: 150px 60px 80px;
-            }
-            
-            .announcement-box {
-                padding: 35px;
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
         }
     </style>
@@ -466,6 +539,7 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="Courses.html">Courses</a></li>
                 <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -473,39 +547,74 @@
     <!-- MAIN CONTENT -->
     <div id="rectangle_box1">
         <h1 id="titleintherectanglebox1">HONOUR LANGUAGE CENTRE</h1>
-        <h2 id="coursename">Basic English Grammar In Use Class</h2>
+        <h2 id="coursename">Professional English Language Education in Myanmar</h2>
         <h3 id="announcements-title">New Announcements</h3>
 
         <!-- NEW ANNOUNCEMENT BOX -->
         <div class="announcement-box">
             <div class="announcement-content">
                 <div class="announcement-image">
-                    <img src="1.jpg" alt="Basic English Grammar Course">
+                    <img src="1.jpg" alt="Basic English Grammar Course - Honour Language Centre">
                 </div>
                 <div class="announcement-details">
                     <h3>New Course: Basic English Grammar In Use Video Class</h3>
-                    <p>We're excited to announce our new comprehensive Basic English Grammar course designed for beginners and intermediate learners. This course will help you master the fundamentals of English grammar in a practical, engaging way.</p>
+                    <p>We're excited to announce our new comprehensive Basic English Grammar course designed for beginners and intermediate learners. This course will help you master the fundamentals of English grammar in a practical, engaging way through a combination of video lessons and live interactive sessions.</p>
                     
                     <ul class="course-features">
-                        <li>2 videos every weekend + Friday night zoom meeting</li>
-                        <li>Zoom meeting: 10:00 pm - 10:45 pm</li>
-                        <li>Duration 2 months</li>
-                        <li>140,000 Ks <i>only before 2nd of January</i></li>
-                        <li>Age limit: 13 years old and above</li>
-                        <li>Starting date: 17th of January, 2026</li>
+                        <li>2 comprehensive video lessons every weekend</li>
+                        <li>Live Friday night Zoom meetings for practice</li>
+                        <li>Zoom meeting time: 10:00 PM - 10:45 PM (Myanmar Time)</li>
+                        <li>Complete course duration: 2 months</li>
+                        <li>Personalized feedback and support</li>
+                        <li>Course materials and resources included</li>
+                        <li>Age requirement: 13 years and above</li>
+                        <li>Starting date: January 17, 2026</li>
                     </ul>
                     
+                    <span class="course-price">Special Price: 140,000 Ks</span>
+                    <span class="course-note">(Special price valid only before January 2, 2026)</span>
                     
                     <a href="Courses.html" class="announcement-button">View Course Details & Enroll Now</a>
                 </div>
             </div>
         </div>
 
+        <!-- Why Choose Us Section -->
+        <div class="content-section">
+            <h2 class="section-title">Why Choose Honour Language Centre?</h2>
+            <div class="content-text">
+                <p>At Honour Language Centre, we believe that language learning should be accessible, effective, and enjoyable. Our innovative approach combines expert instruction with modern technology to create a comprehensive learning experience that works for everyone.</p>
+                
+                <p>Our courses are designed with the Myanmar learner in mind, addressing common challenges and providing practical solutions. We focus on real-world applications of English grammar, ensuring that our students can use what they learn in everyday situations.</p>
+                
+                <p>What sets us apart is our commitment to quality education combined with social responsibility. A portion of our proceeds goes toward educational charity initiatives, helping to provide free language resources to underprivileged communities across Myanmar.</p>
+            </div>
+        </div>
+
+        <!-- Teaching Methodology Section -->
+        <div class="content-section">
+            <h2 class="section-title">Our Teaching Methodology</h2>
+            <div class="content-text">
+                <p>We employ a unique blended learning approach that combines:</p>
+                <ul class="course-features">
+                    <li><strong>Interactive Video Lessons</strong>: High-quality pre-recorded lessons available 24/7</li>
+                    <li><strong>Live Zoom Sessions</strong>: Real-time practice and Q&A with instructors</li>
+                    <li><strong>Practical Exercises</strong>: Real-world application of grammar concepts</li>
+                    <li><strong>Personalized Feedback</strong>: Individual attention to each student's progress</li>
+                    <li><strong>Community Support</strong>: Peer learning and group activities</li>
+                </ul>
+                
+                <p>Our curriculum is based on Raymond Murphy's "English Grammar in Use" series, adapted for the Myanmar context. We focus on practical grammar usage rather than rote memorization, helping students build confidence in their English communication skills.</p>
+            </div>
+        </div>
+
         <!-- VIDEO GALLERY -->
+        <h3 style="margin: 40px 0 20px; font-size: clamp(1.5rem, 4vw, 2rem); color: #FFD700;">Course Previews & Student Success Stories</h3>
         <div id="video-gallery">
             <div class="video-wrapper">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            title="Honour Language Centre English Course Preview"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
@@ -513,6 +622,7 @@
             <div class="video-wrapper">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            title="English Grammar Lessons - Honour Language Centre"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
@@ -520,15 +630,26 @@
             <div class="video-wrapper">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/BXNWPUNCDwg" 
+                            title="Student Success Stories - Honour Language Centre"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
             </div>
         </div>
 
+        <!-- Testimonial Section -->
+        <div class="content-section">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="content-text">
+                <p>"Honour Language Centre ရဲ့ Basic English Grammar class ကို တက်ရောက်နိုင်ခဲ့ တဲ့ အတွက် ဝမ်းသာပါတယ်။ သင်ကြားမူ ၂ လ အတွင်းမှာ မသိတာတွေ၊နာမလည်တာတွေ ကို ပိုပြီး နာလည်လာခဲ့ပြီး အခြား ဗဟုသုတ တွေလည်း တော်တော်များများ ရရှိခဲ့ပါတယ်." - <strong>Swan Thura Hla</strong></p>
+                
+                <p>"ကျွန်တော် Basic English Grammar Class သင်တန်းတက်တဲ့တစ်လအတွင်းမှာ မတူညီတဲ့ စာလုံးတွေနဲ့ တူညီပြီး အသံထွက်ကွဲတဲ့ Basic စာလုံးတွေ သိလာရတယ်။ အခြေခံကျကျလဲဆရာကသင်ပေးတယ်။ စိတ်လဲရှည် သဘောလဲကောင်းတယ်။" - <strong>Moe Naing Win</strong></p>
+            </div>
+        </div>
+
         <!-- CLICKABLE BOX -->
         <a href="login.html" class="clickHere">
-            <h2>Click Here to View the Resources</h2>
+            <h2>Access Student Learning Resources</h2>
         </a>
     </div>
 
@@ -545,8 +666,23 @@
                 <i class="fab fa-tiktok"></i>
             </a>
         </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
+        </div>
+        
         <p>© 2025 Honour Language Centre – All rights reserved.</p>
-        <p>Contact: honourlanguagecentrehlc@gmail.com</p>
+        <p>Professional English Language Education in Myanmar</p>
     </footer>
 
     <script>
@@ -589,7 +725,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             const announcementBox = document.querySelector('.announcement-box');
             if (announcementBox) {
+                announcementBox.style.opacity = '0';
+                announcementBox.style.transform = 'translateY(30px)';
+                
                 setTimeout(() => {
+                    announcementBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                     announcementBox.style.opacity = '1';
                     announcementBox.style.transform = 'translateY(0)';
                 }, 300);

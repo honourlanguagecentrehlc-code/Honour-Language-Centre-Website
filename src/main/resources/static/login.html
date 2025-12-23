@@ -230,31 +230,20 @@
             min-height: 20px;
         }
 
-        /* Ad Container */
-        .ad-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            max-width: 400px;
-            width: 100%;
-        }
-
-        /* Footer */
+        /* Footer - Taken from index.html */
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
             text-align: center;
-            padding: 25px 20px;
+            padding: 40px 20px;
         }
 
         .social-icons {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .social-icons a {
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-size: clamp(1.5rem, 4vw, 2rem);
             color: white;
             margin: 0 10px;
             transition: 0.3s;
@@ -266,9 +255,44 @@
             transform: translateY(-3px);
         }
 
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
         footer p {
-            margin: 8px 0;
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* Tablet and Desktop */
@@ -296,6 +320,10 @@
 
             .login-btn, .home-btn {
                 flex: 1;
+            }
+
+            .footer-links {
+                gap: 30px;
             }
         }
 
@@ -351,12 +379,18 @@
             #navbar nav a:hover {
                 background-color: rgba(255, 255, 255, 0.15);
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
+    <!-- NAVBAR - Taken from index.html -->
     <header id="navbar">
         <div id="logo">Honour Language Centre</div>
         <div class="menu-toggle" id="mobile-menu">
@@ -369,6 +403,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Courses.html">Courses</a></li>
                 <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -400,7 +435,7 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - Taken from index.html -->
     <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
@@ -413,8 +448,23 @@
                 <i class="fab fa-tiktok"></i>
             </a>
         </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
+        </div>
+        
         <p>© 2025 Honour Language Centre – All rights reserved.</p>
-        <p>Contact: honourlanguagecentrehlc@gmail.com</p>
+        <p>Professional English Language Education in Myanmar</p>
     </footer>
 
     <script>
@@ -458,7 +508,7 @@
             window.location.href = "index.html";
         }
 
-        // Mobile menu toggle
+        // Mobile menu toggle - Taken from index.html
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
 
@@ -502,6 +552,21 @@
 
         // Auto-focus on username field
         document.getElementById('username').focus();
+
+        // Add animation to announcement box on load (keeping original from index.html)
+        document.addEventListener('DOMContentLoaded', () => {
+            const announcementBox = document.querySelector('.announcement-box');
+            if (announcementBox) {
+                announcementBox.style.opacity = '0';
+                announcementBox.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    announcementBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    announcementBox.style.opacity = '1';
+                    announcementBox.style.transform = 'translateY(0)';
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
