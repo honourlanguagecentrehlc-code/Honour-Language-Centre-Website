@@ -287,79 +287,6 @@
             text-align: left;
         }
 
-        /* Toggle Button for Week Sections */
-        .week-toggle {
-            background: none;
-            border: none;
-            color: #FFD700;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-left: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .week-toggle.collapsed {
-            transform: rotate(-90deg);
-        }
-
-        .week-content {
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.3s ease;
-            max-height: 1000px;
-            opacity: 1;
-        }
-
-        .week-content.collapsed {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        /* Progress Section */
-        .progress-section {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            border-radius: 10px;
-            width: 25%;
-            transition: width 0.5s ease;
-        }
-
-        .progress-stats {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 10px;
-        }
-
-        /* Ad Container */
-        .ad-container {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
         /* Footer */
         footer {
             background-color: rgba(0, 0, 0, 0.9);
@@ -531,62 +458,46 @@
             </div>
         </div>
 
-        <!-- Progress Tracker -->
-        <div class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-            <div class="progress-stats">
-                <span>Week 1: Completed</span>
-                <span>Week 2: In Progress</span>
-                <span>Overall: 25% Complete</span>
-            </div>
-        </div>
-
         <!-- Week 1 Videos -->
         <div class="week-section">
-            <div class="week-title">
+            <h2 class="week-title">
                 <i class="fas fa-calendar-week"></i>
-                <span>Week 1: Course Introduction & Basic Verbs</span>
-                <button class="week-toggle" onclick="toggleWeek('week1')">
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-            <div class="week-content" id="week1-content">
-                <div class="video-grid">
-                    <!-- Present Tense Video -->
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/ztQq3J-2Rd0?si=QV8eAX2wyMWgpH3g" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen
-                                    loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-title">
-                            <strong>Day 1: Course Introduction & Unit 1-2</strong>
-                        </div>
-                        <div class="video-details">
-                            Topics: Introduction to the course, Verbs to be (am, is, are), Present Simple basics
-                        </div>
+                Week 1: Course Introduction & Basic Verbs
+            </h2>
+            <div class="video-grid">
+                <!-- Present Tense Video -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/ztQq3J-2Rd0?si=QV8eAX2wyMWgpH3g" 
+                                title="Day 1: Course Introduction & Unit 1-2"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
                     </div>
+                    <div class="video-title">
+                        <strong>Day 1: Course Introduction & Unit 1-2</strong>
+                    </div>
+                    <div class="video-details">
+                        Topics: Introduction to the course, Verbs to be (am, is, are), Present Simple basics
+                    </div>
+                </div>
 
-                    <!-- Present Continuous Video -->
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/fYkY07S7NP4?si=2qSkMEXOhhLDENGh" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen
-                                    loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-title">
-                            <strong>Day 2: Present Continuous Tense</strong>
-                        </div>
-                        <div class="video-details">
-                            Topics: Unit 3-4 Present Continuous formation, usage, and practice exercises
-                        </div>
+                <!-- Present Continuous Video -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/fYkY07S7NP4?si=2qSkMEXOhhLDENGh" 
+                                title="Day 2: Present Continuous Tense"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-title">
+                        <strong>Day 2: Present Continuous Tense</strong>
+                    </div>
+                    <div class="video-details">
+                        Topics: Unit 3-4 Present Continuous formation, usage, and practice exercises
                     </div>
                 </div>
             </div>
@@ -594,64 +505,48 @@
 
         <!-- Week 2 Videos -->
         <div class="week-section">
-            <div class="week-title">
+            <h2 class="week-title">
                 <i class="fas fa-calendar-week"></i>
-                <span>Week 2: Present Simple & Continuous Comparison</span>
-                <button class="week-toggle" onclick="toggleWeek('week2')">
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-            <div class="week-content" id="week2-content">
-                <div class="video-grid">
-                    <!-- Present Simple vs Continuous Video 1 -->
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/EMZBGJHiCMo?si=ZqiaG3EaWmVdXWKW" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen
-                                    loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-title">
-                            <strong>Day 3: Present Simple vs Present Continuous - Part 1</strong>
-                        </div>
-                        <div class="video-details">
-                            Topics: Comparing Present Simple and Present Continuous, when to use each tense
-                        </div>
+                Week 2: Present Simple & Continuous Comparison
+            </h2>
+            <div class="video-grid">
+                <!-- Present Simple vs Continuous Video 1 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/EMZBGJHiCMo?si=ZqiaG3EaWmVdXWKW" 
+                                title="Day 3: Present Simple vs Present Continuous - Part 1"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
                     </div>
+                    <div class="video-title">
+                        <strong>Day 3: Present Simple vs Present Continuous - Part 1</strong>
+                    </div>
+                    <div class="video-details">
+                        Topics: Comparing Present Simple and Present Continuous, when to use each tense
+                    </div>
+                </div>
 
-                    <!-- Present Simple vs Continuous Video 2 -->
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dUy6f3_4TsU?si=FaAtVb5GvJJ4M4BA" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen
-                                    loading="lazy">
-                            </iframe>
-                        </div>
-                        <div class="video-title">
-                            <strong>Day 4: Present Simple vs Present Continuous - Part 2</strong>
-                        </div>
-                        <div class="video-details">
-                            Topics: Advanced usage, common mistakes, practice exercises for both tenses
-                        </div>
+                <!-- Present Simple vs Continuous Video 2 -->
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dUy6f3_4TsU?si=FaAtVb5GvJJ4M4BA" 
+                                title="Day 4: Present Simple vs Present Continuous - Part 2"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-title">
+                        <strong>Day 4: Present Simple vs Present Continuous - Part 2</strong>
+                    </div>
+                    <div class="video-details">
+                        Topics: Advanced usage, common mistakes, practice exercises for both tenses
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Ad Container (REMOVED - Add only after AdSense approval) -->
-        <!-- <div class="ad-container">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-6357373994928687"
-                 data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div> -->
 
     </div>
 
@@ -709,23 +604,6 @@
             }
         });
 
-        // Toggle week sections
-        function toggleWeek(weekId) {
-            const content = document.getElementById(`${weekId}-content`);
-            const toggle = event.currentTarget;
-            
-            content.classList.toggle('collapsed');
-            toggle.classList.toggle('collapsed');
-            
-            // Change icon
-            const icon = toggle.querySelector('i');
-            if (content.classList.contains('collapsed')) {
-                icon.className = 'fas fa-chevron-right';
-            } else {
-                icon.className = 'fas fa-chevron-down';
-            }
-        }
-
         // Check session and load content
         fetch("/session")
         .then(r => r.json())
@@ -740,9 +618,6 @@
                 return; 
             }
             document.getElementById("who").innerText = "Welcome, " + s.username + "!";
-            
-            // Update progress based on watched videos
-            updateProgress();
         })
         .catch(error => {
             console.error('Session check failed:', error);
@@ -759,56 +634,6 @@
                     location.href = "login.html";
                 });
         }
-
-        // Update progress bar
-        function updateProgress() {
-            // In a real app, you would track which videos the user has watched
-            // For now, we'll simulate progress
-            const progressFill = document.getElementById('progress-fill');
-            
-            // Check localStorage for watched videos
-            const watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
-            const totalVideos = 4; // Total videos in the course
-            
-            if (watchedVideos.length > 0) {
-                const progress = (watchedVideos.length / totalVideos) * 100;
-                progressFill.style.width = `${progress}%`;
-                
-                // Update progress text
-                const progressStats = document.querySelector('.progress-stats');
-                if (watchedVideos.length >= 2) {
-                    progressStats.innerHTML = `
-                        <span>Week 1: Completed</span>
-                        <span>Week 2: ${watchedVideos.length > 2 ? 'In Progress' : 'Not Started'}</span>
-                        <span>Overall: ${Math.round(progress)}% Complete</span>
-                    `;
-                }
-            }
-        }
-
-        // Track video watching
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframes = document.querySelectorAll('iframe');
-            
-            iframes.forEach((iframe, index) => {
-                iframe.addEventListener('load', function() {
-                    // This is a simplified version - in reality, you'd need more complex tracking
-                    // for YouTube iframe API to track actual watch time
-                    
-                    // For demo purposes, we'll track clicks
-                    iframe.closest('.video-item').addEventListener('click', function() {
-                        const videoId = index + 1;
-                        let watchedVideos = JSON.parse(localStorage.getItem('watchedVideos')) || [];
-                        
-                        if (!watchedVideos.includes(videoId)) {
-                            watchedVideos.push(videoId);
-                            localStorage.setItem('watchedVideos', JSON.stringify(watchedVideos));
-                            updateProgress();
-                        }
-                    });
-                });
-            });
-        });
 
         // Handle page visibility change
         document.addEventListener('visibilitychange', function() {
