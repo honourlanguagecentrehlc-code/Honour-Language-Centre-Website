@@ -10,7 +10,8 @@ public class UserService {
     private final List<User> defaultUsers = Arrays.asList(
         new User("zaynhtet227", "2272008Zylh", "A"),
         new User("test", "test", "B"),
-        new User("admin", "admin", "A")
+        new User("admin", "admin", "A"),
+        new User("zaynhtet227classB", "2272008Zylh", "B" )
     );
 
     public synchronized List<User> getAllUsers() {
