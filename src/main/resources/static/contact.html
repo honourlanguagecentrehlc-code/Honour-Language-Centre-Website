@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Honour Language Centre</title>
+    <link rel="icon" type="image/x-icon" href="BG.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Slide1.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Consistent across all pages */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        #navbar #logo {
+            font-size: 1.1em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
+        .contact-container {
+            padding: clamp(100px, 15vw, 120px) clamp(20px, 5vw, 40px) 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #FFD700;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Information Section */
+        .contact-info-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 30px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            padding-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #FFD700;
+        }
+
+        .info-card i {
+            font-size: 2.8rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .info-card p {
+            opacity: 0.9;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .info-card a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-note {
+            margin-top: 25px;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hours-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 500;
+            width: 40%;
+        }
+
+        .hours-table td:last-child {
+            opacity: 0.9;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 25px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 15px;
+            opacity: 0.9;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-note {
+            margin-top: 20px;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+
+            #navbar #logo {
+                font-size: 1.3em;
+            }
+
+            .contact-container {
+                padding: 120px 40px 80px;
+            }
+
+            .contact-info-section,
+            .hours-section,
+            .faq-section,
+            .map-section {
+                padding: 50px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.5em;
+            }
+
+            #navbar nav ul {
+                gap: 25px;
+            }
+
+            .map-container {
+                height: 500px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                margin: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+
+            #navbar nav ul.active {
+                display: flex;
+            }
+
+            #navbar nav a {
+                display: block;
+                padding: 15px 20px;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            #navbar nav a:last-child {
+                border-bottom: none;
+            }
+
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="contact-container">
+        <div class="page-header">
+            <h1>Contact Us</h1>
+            <p>Get in touch with Honour Language Centre. We're here to help you with your language learning journey!</p>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="contact-info-section">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="info-grid">
+                <!-- Email -->
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Address</h3>
+                    <p><a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+                    <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">Response time: 24-48 hours</p>
+                </div>
+
+                <!-- Phone -->
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Number</h3>
+                    <p><a href="tel:+959976585448">+95 997 658 5448</a></p>
+                    <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">Mon-Sun, 9:00 AM - 9:00 PM</p>
+                </div>
+
+                <!-- Location -->
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Yangon, Myanmar</p>
+                    <p style="margin-top: 15px; font-size: 1rem; opacity: 0.8;">Online classes available nationwide</p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="info-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Social Media</h3>
+                    <p>Follow us for updates</p>
+                    <div style="margin-top: 20px; font-size: 1.8rem;">
+                        <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" style="margin: 0 12px;"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" style="margin: 0 12px;"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" style="margin: 0 12px;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="contact-note">For course inquiries, registration help, or any other questions, please contact us via email or phone during business hours.</p>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="hours-section">
+            <h2 class="section-title">Business Hours</h2>
+            <table class="hours-table">
+                <tr>
+                    <td>Monday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>9:00 AM - 9:00 PM</td>
+                </tr>
+            </table>
+            <p style="margin-top: 25px; font-style: italic; opacity: 0.8; font-size: 1.1rem;">* Live classes may be scheduled outside regular business hours. Contact us for specific class schedules.</p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I register for a course?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can register for our courses by visiting the "Courses" page and clicking the "Apply Now" button for your desired course. This will redirect you to our online registration form. Complete the form with your details and follow the payment instructions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What payment methods do you accept?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept various payment methods including bank transfers, mobile banking (KBZ Pay, Wave Money), and online payment gateways. Specific payment instructions will be provided during the registration process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your refund policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer full refunds within 7 days of purchase if no course content has been accessed. Partial refunds (50%) are available within 14 days of the course start date. Please refer to our Terms of Service for complete details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need any special equipment for online classes?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You'll need a stable internet connection, a computer or smartphone with a camera and microphone, and the Zoom application installed. We recommend using headphones for better audio quality during live sessions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I access course materials after the course ends?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, enrolled students have access to course materials for 6 months after the course completion date. This allows you to review and practice at your own pace.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2 class="section-title">Our Location</h2>
+            <p>While we primarily operate online to serve students across Myanmar, our administrative office is based in Yangon. For in-person inquiries, please contact us first to schedule an appointment.</p>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d488799.6759135156!2d95.85190884071181!3d16.83887949381721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1949e223e196b%3A0x56fbd271f8080bb4!2sYangon%2C%20Myanmar%20(Burma)!5e0!3m2!1sen!2sth!4v1766570025409!5m2!1sen!2sth" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+            <p class="map-note">All our courses are conducted online. We serve students from all regions of Myanmar through our digital platform. Contact us via phone or email for any inquiries or to schedule a consultation about our language courses.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
+        </div>
+        
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Professional English Language Education in Myanmar</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Open clicked answer if it wasn't already active
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
