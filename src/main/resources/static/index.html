@@ -553,14 +553,14 @@
         <h2 id="coursename">Professional Language Education in Myanmar</h2>
         <h3 id="announcements-title">New Announcements</h3>
 
-        <!-- NEW ANNOUNCEMENT BOX -->
+        <!-- NEW ANNOUNCEMENT BOX - Basic English Grammar -->
         <div class="announcement-box">
             <div class="announcement-content">
                 <div class="announcement-image">
                     <img src="1.jpg" alt="Basic English Grammar Course - Honour Language Centre">
                 </div>
                 <div class="announcement-details">
-                    <h3>New Course: Basic English Grammar In Use Video Class</h3>
+                    <h3>Basic English Grammar In Use Video Class</h3>
                     <p>We're excited to announce our new comprehensive Basic English Grammar course designed for beginners and intermediate learners. This course will help you master the fundamentals of English grammar in a practical, engaging way through a combination of video lessons and live interactive sessions.</p>
                     
                     <ul class="course-features">
@@ -575,7 +575,61 @@
                     <span class="course-price">Special Price: 140,000 Ks</span>
                     <span class="course-note">(Special price valid only before January 2, 2026)</span>
                     
-                    <a href="Courses.html" class="announcement-button">View Course Details & Enroll Now</a>
+                    <a href="Courses.html#basic-english" class="announcement-button">View Course Details & Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW ANNOUNCEMENT BOX - GED Mathematical Reasoning -->
+        <div class="announcement-box">
+            <div class="announcement-content">
+                <div class="announcement-image">
+                    <img src="ged_preparation.jpg" alt="GED Mathematical Reasoning Preparation Class">
+                </div>
+                <div class="announcement-details">
+                    <h3>GED Mathematical Reasoning Preparation Class</h3>
+                    <p>Prepare for your GED Mathematical Reasoning exam with our comprehensive 3-month preparation course. Our expert instructors will guide you through all the mathematical concepts and problem-solving strategies needed to excel in the GED exam. Perfect for students aiming to complete their high school equivalency certification.</p>
+                    
+                    <ul class="course-features">
+                        <li>Class Schedule: Saturday, Sunday, Monday</li>
+                        <li>Time: 07:00 PM - 09:00 PM (Myanmar Time)</li>
+                        <li>Duration: 3 months</li>
+                        <li>Fee: 70,000 Ks per month</li>
+                        <li>Starting date: January 17, 2026</li>
+                        <li>Free Grammar Class Giveaway!!</li>
+                    </ul>
+                    
+                    <span class="course-price">Monthly Fee: 70,000 Ks</span>
+                    <span class="course-note">Complete 3-month program for comprehensive GED preparation</span>
+                    
+                    <a href="Courses.html#ged-math" class="announcement-button">View Course Details & Enroll Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW ANNOUNCEMENT BOX - Intensive GED Mathematical Reasoning Class -->
+        <div class="announcement-box">
+            <div class="announcement-content">
+                <div class="announcement-image">
+                    <img src="ged_intensive.jpg" alt="Intensive GED Mathematical Reasoning Class">
+                </div>
+                <div class="announcement-details">
+                    <h3>GED Mathematical Reasoning Intensive Class</h3>
+                    <p>Accelerate your GED Mathematical Reasoning preparation with our intensive 2-month program. Designed for students who want to complete their GED math requirements quickly, this intensive course covers all essential topics with focused, in-depth instruction and extensive practice sessions.</p>
+                    
+                    <ul class="course-features">
+                        <li>Class Schedule: Tuesday, Wednesday, Thursday</li>
+                        <li>Time: 07:00 PM - 09:00 PM (Myanmar Time)</li>
+                        <li>Duration: 2 months</li>
+                        <li>Fee: 70,000 Ks per month</li>
+                        <li>Starting date: January 21, 2026</li>
+                        <li>Free Grammar Class Giveaway!!</li>
+                    </ul>
+                    
+                    <span class="course-price">Monthly Fee: 70,000 Ks</span>
+                    <span class="course-note">Complete 2-month intensive GED Math program</span>
+                    
+                    <a href="Courses.html#intensive-ged-math" class="announcement-button">View Course Details & Enroll Now</a>
                 </div>
             </div>
         </div>
@@ -614,16 +668,16 @@
         <div id="video-gallery">
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/sWLI9HcG_EQ?si=sWSJWwFAuUm_QdV4" 
-                            title="Honour Language Centre English Course Preview"
+                    <iframe src="https://www.youtube.com/embed/sWLI9HcG_EQ?si=ACIgvcWDq-Gp6T63" 
+                            title="What's the longest word in the world?"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
             </div>
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/sWLI9HcG_EQ?si=sWSJWwFAuUm_QdV4" 
-                            title="English Grammar Lessons - Honour Language Centre"
+                    <iframe src="https://www.youtube.com/embed/sWLI9HcG_EQ?si=ACIgvcWDq-Gp6T63" 
+                            title="What's the longest word in the world?"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
@@ -722,19 +776,36 @@
             }
         });
 
-        // Add animation to announcement box on load
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add animation to announcement boxes on load
         document.addEventListener('DOMContentLoaded', () => {
-            const announcementBox = document.querySelector('.announcement-box');
-            if (announcementBox) {
-                announcementBox.style.opacity = '0';
-                announcementBox.style.transform = 'translateY(30px)';
+            const announcementBoxes = document.querySelectorAll('.announcement-box');
+            announcementBoxes.forEach((box, index) => {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    announcementBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    announcementBox.style.opacity = '1';
-                    announcementBox.style.transform = 'translateY(0)';
-                }, 300);
-            }
+                    box.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
         });
     </script>
 </body>

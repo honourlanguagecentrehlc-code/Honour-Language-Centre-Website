@@ -490,7 +490,7 @@
     <div id="main-content">
         <div class="page-header">
             <h1>Our Language Courses</h1>
-            <p>Choose from our current offerings or explore upcoming language programs</p>
+            <p>Choose from our wide range of current courses or explore upcoming language programs</p>
         </div>
 
         <!-- Current Courses Section -->
@@ -498,7 +498,7 @@
             <h2 class="section-title">Available Courses</h2>
             <div class="courses-grid">
                 <!-- Basic English Grammar Course -->
-                <div class="course-card current">
+                <div class="course-card current" id="basic-english">
                     <div class="course-header">
                         <div class="course-icon">
                             <i class="fas fa-language"></i>
@@ -516,17 +516,83 @@
                     <div class="course-features">
                         <h4>Course Features:</h4>
                         <ul class="features-list">
-                        <li>2 videos every weekend + Friday night zoom meeting</li>
-                        <li>Zoom meeting: 10:00 pm - 10:45 pm</li>
-                        <li>Duration 2 months</li>
-                        <li>140,000 Ks <i>only before 2nd of January</i></li>
-                        <li>Age limit: 13 years old and above</li>
-                        <li>Starting date: 17th of January, 2026</li>
+                            <li>2 videos every weekend + Friday night zoom meeting</li>
+                            <li>Zoom meeting: 10:00 pm - 10:45 pm</li>
+                            <li>Duration 2 months</li>
+                            <li>140,000 Ks <i>only before 2nd of January</i></li>
+                            <li>Age limit: 13 years old and above</li>
+                            <li>Starting date: 17th of January, 2026</li>
                         </ul>
                     </div>
 
                     <a href="https://forms.gle/vHYN3JKR5F4JrUBg7" target="_blank" class="apply-btn">
                         <i class="fas fa-edit" style="margin-right: 10px;"></i>Apply Now for English Course
+                    </a>
+                </div>
+
+                <!-- GED Mathematical Reasoning Course -->
+                <div class="course-card current" id="ged-math">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="course-title">
+                            <h3>GED Mathematical Reasoning Preparation Class</h3>
+                            <span class="course-status status-current">Enrolling Now for Jan 2026 Intake</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-description">
+                        <p>Prepare for your GED Mathematical Reasoning exam with our comprehensive 3-month preparation course. Our expert instructors will guide you through algebra, geometry, data analysis, and mathematical problem-solving strategies needed to excel in the GED exam. Perfect for students aiming to complete their high school equivalency certification.</p>
+                    </div>
+
+                    <div class="course-features">
+                        <h4>Course Features:</h4>
+                        <ul class="features-list">
+                            <li>Class Schedule: Saturday, Sunday, Monday</li>
+                            <li>Time: 07:00 PM - 09:00 PM</li>
+                            <li>Duration: 3 months</li>
+                            <li>Fee: 70,000 Ks per month</li>
+                            <li>Starting date: 17th January, 2026</li>
+                            <li>Free Grammar Class Giveaway!!</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://forms.gle/5b5fxUM3rdW6jbJh7" target="_blank" class="apply-btn">
+                        <i class="fas fa-edit" style="margin-right: 10px;"></i>Apply Now for GED Math Course
+                    </a>
+                </div>
+
+                <!-- Intensive GED Mathematical Reasoning Course -->
+                <div class="course-card current" id="intensive-ged-math">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="course-title">
+                            <h3>GED Mathematical Reasoning Intensive Class</h3>
+                            <span class="course-status status-current">Enrolling Now for Jan 2026 Intake</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-description">
+                        <p>Accelerate your GED Mathematical Reasoning preparation with our intensive 2-month program. Designed for students who want to complete their GED math requirements quickly, this intensive course covers algebra, geometry, data analysis, and mathematical problem-solving with focused, in-depth instruction and extensive practice sessions.</p>
+                    </div>
+
+                    <div class="course-features">
+                        <h4>Course Features:</h4>
+                        <ul class="features-list">
+                            <li>Class Schedule: Tuesday, Wednesday, Thursday</li>
+                            <li>Time: 07:00 PM - 09:00 PM</li>
+                            <li>Duration: 2 months</li>
+                            <li>Fee: 70,000 Ks per month</li>
+                            <li>Starting date: 21st January, 2026</li>
+                            <li>Free Grammar Class Giveaway!!</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://forms.gle/5b5fxUM3rdW6jbJh7" target="_blank" class="apply-btn">
+                        <i class="fas fa-edit" style="margin-right: 10px;"></i>Apply Now for Intensive GED Math
                     </a>
                 </div>
             </div>
@@ -670,19 +736,36 @@
             }
         });
 
-        // Add animation to announcement box on load (keeping original from index.html)
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add animation to course cards on load
         document.addEventListener('DOMContentLoaded', () => {
-            const announcementBox = document.querySelector('.announcement-box');
-            if (announcementBox) {
-                announcementBox.style.opacity = '0';
-                announcementBox.style.transform = 'translateY(30px)';
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    announcementBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    announcementBox.style.opacity = '1';
-                    announcementBox.style.transform = 'translateY(0)';
-                }, 300);
-            }
+                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 150));
+            });
         });
     </script>
 </body>
