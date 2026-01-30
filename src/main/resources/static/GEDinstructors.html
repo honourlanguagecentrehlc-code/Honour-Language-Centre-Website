@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Selection - Honour Language Centre</title>
+    <title>GED Instructors - Honour Language Centre</title>
+    <meta name="description" content="GED Instructors Portal - Access schedules and teaching materials for Honour Language Centre GED courses.">
+    <meta name="keywords" content="GED instructors, GED teaching materials, GED schedule, Honour Language Centre">
+    <meta name="author" content="Honour Language Centre">
     <link rel="icon" type="image/x-icon" href="BG.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6357373994928687"
+     crossorigin="anonymous"></script>
+
     <style>
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -17,16 +24,17 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
             width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Slide1.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
             min-height: 100vh;
+            background-image: url(Slide1.jpg);
+            background-color: rgb(233, 230, 230);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Navigation - Consistent with index.html */
         #navbar {
             display: flex;
             justify-content: space-between;
@@ -100,39 +108,45 @@
         }
 
         /* Main Content */
-        #main-content {
-            padding: clamp(80px, 15vw, 120px) clamp(20px, 4vw, 40px) 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .page-header {
+        #rectangle_box1 {
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 100px 20px 40px;
             text-align: center;
-            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .page-header h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+        #titleintherectanglebox1 {
+            font-size: clamp(2rem, 8vw, 4rem);
             margin-bottom: 15px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #coursename {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin-bottom: 30px;
             color: #FFD700;
         }
 
-        .page-header p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Course Selection Cards */
-        .selection-section {
+        /* Schedule Box */
+        .schedule-box {
+            display: flex;
+            flex-direction: column;
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 40px;
+            max-width: 1200px;
+            width: 100%;
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .section-title {
@@ -144,117 +158,115 @@
             text-align: center;
         }
 
-        .selection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .selection-card {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+        .schedules-container {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            gap: 40px;
+            width: 100%;
         }
 
-        .selection-card:hover {
-            transform: translateY(-10px);
-            border-color: #FFD700;
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        @media (min-width: 768px) {
+            .schedules-container {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: flex-start;
+            }
         }
 
-        .selection-icon {
-            font-size: 3.5rem;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        .selection-card h3 {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 15px;
-            min-height: 60px;
+        .schedule-item {
+            flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            text-align: center;
         }
 
-        .selection-card p {
-            flex-grow: 1;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+        .schedule-item h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #FFD700;
         }
 
-        .status-current {
-            background: #4ade80;
-            color: black;
+        .schedule-image {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        .status-upcoming {
-            background: #f59e0b;
-            color: black;
+        .schedule-image:hover {
+            transform: scale(1.02);
         }
 
-        .selection-btn {
+        .schedule-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .schedule-description {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            opacity: 0.9;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Materials Button */
+        .materials-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .materials-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 20px;
+            color: #FFD700;
+        }
+
+        .materials-description {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .materials-button {
             display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
             color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            width: 100%;
-            max-width: 250px;
-            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
 
-        .selection-btn:hover {
-            background: linear-gradient(135deg, #0056b3, #004494);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,123,255,0.4);
+        .materials-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
         }
 
-        .coming-soon-btn {
-            background: #6c757d;
-            cursor: not-allowed;
-        }
-
-        .coming-soon-btn:hover {
-            background: #6c757d;
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Course Categories */
-        .category-title {
-            font-size: 1.3rem;
-            color: #4ade80;
-            margin: 40px 0 20px 0;
-            padding-left: 10px;
-            border-left: 4px solid #4ade80;
+        .materials-button i {
+            margin-right: 10px;
         }
 
         /* Footer */
@@ -323,7 +335,7 @@
             text-decoration: underline;
         }
 
-        /* Responsive Styles */
+        /* Tablet Styles */
         @media (min-width: 768px) {
             #navbar {
                 padding: 15px 40px;
@@ -333,19 +345,20 @@
                 font-size: 1.3em;
             }
 
-            #main-content {
-                padding: 100px 40px 50px;
+            #rectangle_box1 {
+                padding: 120px 40px 60px;
             }
 
-            .selection-section {
+            .schedule-box {
                 padding: 40px;
             }
 
-            .selection-grid {
-                gap: 40px;
+            .materials-section {
+                padding: 40px;
             }
         }
 
+        /* Desktop Styles */
         @media (min-width: 1024px) {
             #navbar #logo {
                 font-size: 1.5em;
@@ -355,11 +368,16 @@
                 gap: 25px;
             }
 
-            .selection-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .schedule-image {
+                max-width: 550px;
+            }
+
+            .footer-links {
+                gap: 30px;
             }
         }
 
+        /* Mobile Menu Styles */
         @media (max-width: 767px) {
             .menu-toggle {
                 display: flex;
@@ -397,8 +415,8 @@
                 border-bottom: none;
             }
 
-            .selection-grid {
-                grid-template-columns: 1fr;
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
             }
 
             .footer-links {
@@ -422,112 +440,63 @@
         <nav>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Courses.html" class="active">Courses</a></li>
+                <li><a href="Courses.html">Courses</a></li>
                 <li><a href="Aboutpage.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="GEDinstructors.html" class="active">GED Instructors</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- MAIN CONTENT -->
-    <div id="main-content">
-        <div class="page-header">
-            <h1>Choose Your Course</h1>
-            <p>Select from our comprehensive language and exam preparation programs</p>
-        </div>
+    <div id="rectangle_box1">
+        <h1 id="titleintherectanglebox1">GED INSTRUCTORS PORTAL</h1>
+        <h2 id="coursename">Teaching Materials and Schedules</h2>
 
-        <!-- Current Courses Section -->
-        <div class="selection-section">
-            <h2 class="section-title">Available Courses</h2>
-            <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">Click on any course below to view detailed information, schedules, and enrollment options.</p>
-            
-            <div class="selection-grid">
-                <!-- Basic English Grammar Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-language"></i>
+        <!-- Batch 2 Schedule Box -->
+        <div class="schedule-box">
+            <h2 class="section-title">Batch 2 Schedule</h2>
+            <div class="schedules-container">
+                <div class="schedule-item">
+                    <h3>Intensive Class Schedule</h3>
+                    <div class="schedule-image">
+                        <img src="Batch2_Intensive Schedule.png" alt="GED Batch 2 Intensive Class Schedule">
                     </div>
-                    <span class="status-badge status-current">Enrolling Now</span>
-                    <h3>Basic English Grammar In Use Class</h3>
-                    <p>Master English fundamentals with our comprehensive beginner-friendly course. Perfect for building strong grammar foundation.</p>
-                    <a href="BEGIU.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
+                    <p class="schedule-description">
+                        Tuesday, Wednesday, Thursday<br>
+                        07:00 PM - 09:00 PM (Myanmar Time)<br>
+                        2-month intensive program
+                    </p>
                 </div>
 
-                <!-- GED Mathematical Reasoning Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-calculator"></i>
+                <div class="schedule-item">
+                    <h3>Preparation Class Schedule</h3>
+                    <div class="schedule-image">
+                        <img src="Batch2_Preparation Schedule.png" alt="GED Batch 2 Preparation Class Schedule">
                     </div>
-                    <span class="status-badge status-current">Enrolling Now</span>
-                    <h3>GED Preparation Class</h3>
-                    <p>Prepare for your GED exam with our comprehensive 4-month preparation course.</p>
-                    <a href="GEDP.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
-                </div>
-
-                <!-- Intensive GED Mathematical Reasoning Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <span class="status-badge status-current">Enrolling Now</span>
-                    <h3>GED Intensive Class</h3>
-                    <p>Accelerate your GED preparation with our intensive 2-month program designed for quick completion.</p>
-                    <a href="GEDI.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
+                    <p class="schedule-description">
+                        Saturday, Sunday, Monday<br>
+                        07:00 PM - 09:00 PM (Myanmar Time)<br>
+                        3-month comprehensive program
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Upcoming Courses Section -->
-        <div class="selection-section">
-            <h2 class="section-title">Coming Soon</h2>
-            <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">New language courses launching soon. Register your interest now!</p>
-            
-            <div class="selection-grid">
-                <!-- Chinese Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-dragon"></i>
-                    </div>
-                    <span class="status-badge status-upcoming">Coming Soon</span>
-                    <h3>Chinese Mandarin</h3>
-                    <p>Learn Mandarin Chinese with our comprehensive course covering pronunciation, characters, and conversation skills.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
-                </div>
-
-                <!-- Japanese Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-torii-gate"></i>
-                    </div>
-                    <span class="status-badge status-upcoming">Coming Soon</span>
-                    <h3>Japanese</h3>
-                    <p>Master Japanese with courses covering hiragana, katakana, kanji characters, and conversational skills.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
-                </div>
-
-                <!-- Korean Course -->
-                <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-hat-cowboy"></i>
-                    </div>
-                    <span class="status-badge status-upcoming">Coming Soon</span>
-                    <h3>Korean</h3>
-                    <p>Learn Korean with our structured curriculum covering Hangul writing system, pronunciation, and conversation.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
-                </div>
-            </div>
+        <!-- Supported Materials Section -->
+        <div class="materials-section">
+            <h2 class="materials-title">Teaching Materials</h2>
+            <p class="materials-description">
+                Access comprehensive teaching materials for GED Mathematical Reasoning courses. This package includes lesson plans, practice worksheets, answer keys, PowerPoint presentations, and additional resources to support effective instruction.
+            </p>
+            <a href="https://drive.google.com/file/d/1GIAscLA5MkqHJiGxx___6p8aDPQsw_dR/view?usp=drive_link" 
+               target="_blank" 
+               class="materials-button">
+                <i class="fas fa-download"></i> Download Supported Materials (ZIP)
+            </a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                File size: Approximately 250MB | Contains: Lesson plans, worksheets, PPTs, answer keys
+            </p>
         </div>
     </div>
 
@@ -551,6 +520,7 @@
             <a href="Aboutpage.html">About Us</a>
             <a href="Courses.html">Our Courses</a>
             <a href="contact.html">Contact Us</a>
+            <a href="GEDinstructors.html">GED Instructors</a>
         </div>
         
         <div class="contact-info">
@@ -599,19 +569,32 @@
             }
         });
 
-        // Animation for selection cards
+        // Add animation to schedule box on load
         document.addEventListener('DOMContentLoaded', () => {
-            const selectionCards = document.querySelectorAll('.selection-card');
-            selectionCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
+            const scheduleBox = document.querySelector('.schedule-box');
+            const materialsSection = document.querySelector('.materials-section');
+            
+            if (scheduleBox) {
+                scheduleBox.style.opacity = '0';
+                scheduleBox.style.transform = 'translateY(30px)';
                 
                 setTimeout(() => {
-                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 300 + (index * 150));
-            });
+                    scheduleBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    scheduleBox.style.opacity = '1';
+                    scheduleBox.style.transform = 'translateY(0)';
+                }, 300);
+            }
+            
+            if (materialsSection) {
+                materialsSection.style.opacity = '0';
+                materialsSection.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    materialsSection.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    materialsSection.style.opacity = '1';
+                    materialsSection.style.transform = 'translateY(0)';
+                }, 500);
+            }
         });
     </script>
     <script src="keep-alive.js"></script>

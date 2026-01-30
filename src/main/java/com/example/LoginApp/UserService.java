@@ -11,7 +11,8 @@ public class UserService {
         new User("zaynhtet227", "2272008Zylh", "A"),
         new User("test", "test", "B"),
         new User("admin", "admin", "A"),
-        new User("zaynhtet227classB", "2272008Zylh", "B" )
+        new User("zaynhtet227classB", "2272008Zylh", "B" ),
+        new User("HonourGEDInstructors", "HonourGEDInstructors", "GEDI")
     );
 
     public synchronized List<User> getAllUsers() {

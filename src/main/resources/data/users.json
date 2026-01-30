@@ -18,5 +18,10 @@
     "username": "zaynhtet227classB",
     "password": "2272008Zylh",
     "classType": "B"
+  },
+  {
+    "username": "HonourGEDInstructors",
+    "password": "HonourGEDInstructors",
+    "classType": "GEDI"
   }
 ]
