@@ -23,5 +23,10 @@
     "username": "HonourGEDInstructors",
     "password": "HonourGEDInstructors",
     "classType": "GEDI"
+  },
+  {
+    "username" : "BEG4StuBOOK",
+    "password" : "BEG4StuBOOK",
+    "classType" : "BEG4StuBOOK"  
   }
 ]
