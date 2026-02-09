@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEG4 Student Book | Honour Language Centre</title>
+    <meta name="description" content="Read the Basic English Grammar for Students Book (PDF) online at Honour Language Centre. No download required - view directly in your browser.">
+    <meta name="keywords" content="English grammar book, online English book, BEG4 student book PDF, Honour Language Centre, Myanmar English resources">
+    <meta name="author" content="Honour Language Centre">
+    <link rel="icon" type="image/x-icon" href="BG.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- PDF.js Library for better PDF viewing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6357373994928687"
+     crossorigin="anonymous"></script>
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url(Slide1.jpg);
+            background-color: rgb(233, 230, 230);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation - Consistent across all pages */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        #navbar #logo {
+            font-size: 1.1em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        /* Main Content */
+        #rectangle_box1 {
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 100px 15px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #titleintherectanglebox1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 10px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .book-title {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .book-subtitle {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            margin-bottom: 20px;
+            opacity: 0.9;
+            max-width: 800px;
+            padding: 0 10px;
+        }
+
+        /* Book Viewer Container */
+        .book-viewer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* PDF Viewer Container - Updated for Two Pages */
+        #pdf-viewer-container {
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: auto;
+            background: white;
+            position: relative;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        /* Two Pages Container */
+        .two-pages-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
+        }
+
+        .page-canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+        }
+
+        .page-number {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Page Mode Controls */
+        .page-mode-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 10px;
+        }
+
+        .page-mode-btn {
+            background: #e0e0e0;
+            color: #666;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .page-mode-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .page-mode-btn.active {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+            color: white;
+            box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+        }
+
+        /* Canvas for crisp rendering */
+        canvas {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Controls */
+        .pdf-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .page-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+
+        .control-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-info {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .zoom-input-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .zoom-input-label {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .zoom-input {
+            width: 60px;
+            padding: 6px 8px;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .zoom-input:focus {
+            outline: none;
+            border-color: #FFA500;
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.3);
+        }
+
+        .zoom-percent {
+            font-weight: bold;
+            color: #333;
+            min-width: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Quality Settings */
+        .quality-settings {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .quality-btn {
+            background: #e0e0e0;
+            color: #666;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .quality-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .quality-btn.active {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Loading and Error States */
+        .loading-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FFD700;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Download Option */
+        .download-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .secondary-btn {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* Page Navigation Controls */
+        .page-nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Quick Page Input */
+        #page-input {
+            padding: 8px 12px;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            width: 70px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .social-icons {
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+            color: white;
+            margin: 0 8px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 30px;
+            }
+
+            #navbar #logo {
+                font-size: 1.2em;
+            }
+
+            #rectangle_box1 {
+                padding: 100px 20px 40px;
+            }
+
+            .book-viewer-container {
+                padding: 20px;
+            }
+
+            .pdf-controls {
+                padding: 12px 20px;
+            }
+            
+            #pdf-viewer-container {
+                height: 80vh;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            #navbar #logo {
+                font-size: 1.4em;
+            }
+
+            #navbar nav ul {
+                gap: 20px;
+            }
+
+            .control-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            #rectangle_box1 {
+                padding: 110px 30px 50px;
+            }
+            
+            #pdf-viewer-container {
+                height: 85vh;
+                max-height: 800px;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 15px;
+                text-align: center;
+                margin: 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+
+            #navbar nav ul.active {
+                display: flex;
+            }
+
+            #navbar nav a {
+                display: block;
+                padding: 12px 15px;
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            #navbar nav a:last-child {
+                border-bottom: none;
+            }
+
+            #navbar nav a:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+
+            .pdf-controls, .page-nav-controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .page-controls, .zoom-controls {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            #pdf-viewer-container {
+                height: 65vh;
+                min-height: 400px;
+            }
+            
+            .two-pages-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header id="navbar">
+        <div id="logo">Honour Language Centre</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Courses.html">Courses</a></li>
+                <li><a href="Aboutpage.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="BEG4StuBOOK.html" class="active">Student Book</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div id="rectangle_box1">
+        <h1 id="titleintherectanglebox1">STUDENT BOOK</h1>
+        <h2 class="book-title">Basic English Grammar for Students</h2>
+        <p class="book-subtitle">Read two pages at once for better context and navigation</p>
+
+        <!-- Book Viewer Container -->
+        <div class="book-viewer-container">
+            <!-- PDF Controls -->
+            <div class="pdf-controls">
+                <div class="page-controls">
+                    <button class="control-btn" id="first-page" disabled>
+                        <i class="fas fa-fast-backward"></i>
+                    </button>
+                    <button class="control-btn" id="prev-page" disabled>
+                        <i class="fas fa-chevron-left"></i> Prev
+                    </button>
+                    <div class="page-info">
+                        Pages: <span id="current-page">1-2</span> of <span id="total-pages">?</span>
+                    </div>
+                    <button class="control-btn" id="next-page" disabled>
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="control-btn" id="last-page" disabled>
+                        <i class="fas fa-fast-forward"></i>
+                    </button>
+                    
+                    <!-- Page Mode Controls -->
+                    <div class="page-mode-controls">
+                        <span style="color: #666; font-size: 0.8rem; margin-right: 5px;">View:</span>
+                        <button class="page-mode-btn" id="single-page-btn">Single Page</button>
+                        <button class="page-mode-btn active" id="two-pages-btn">Two Pages</button>
+                    </div>
+                </div>
+                
+                <div class="zoom-controls">
+                    <button class="control-btn" id="zoom-out" disabled>
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    
+                    <!-- Manual Zoom Input -->
+                    <div class="zoom-input-container">
+                        <input type="number" 
+                               id="zoom-input" 
+                               class="zoom-input" 
+                               value="100" 
+                               min="10" 
+                               max="500" 
+                               step="5"
+                               disabled>
+                        <span class="zoom-percent">%</span>
+                    </div>
+                    
+                    <button class="control-btn" id="zoom-in" disabled>
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    
+                    <button class="control-btn" id="fit-width">
+                        Fit Width
+                    </button>
+                    <button class="control-btn" id="fit-page">
+                        Fit Page
+                    </button>
+                    <button class="control-btn" id="fullscreen-btn">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    
+                    <!-- Quality Settings -->
+                    <div class="quality-settings">
+                        <span style="color: #666; font-size: 0.8rem; margin-right: 5px;">Quality:</span>
+                        <button class="quality-btn" id="quality-standard">Standard</button>
+                        <button class="quality-btn active" id="quality-high">High</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF Viewer - Two Pages Container -->
+            <div id="pdf-viewer-container">
+                <div class="loading-container" id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading PDF...</p>
+                </div>
+                <div class="two-pages-container" id="two-pages-container">
+                    <!-- Two pages will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Page Navigation -->
+            <div class="page-nav-controls">
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="color: #333; font-weight: bold;">Go to page:</span>
+                    <input type="number" id="page-input" min="1" value="1">
+                    <button class="control-btn" id="go-to-page">
+                        Go
+                    </button>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span style="color: #666; font-size: 0.8rem; font-style: italic;">
+                        <i class="fas fa-lightbulb"></i> Two-page view for better context
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Viewing Tips -->
+        <div class="download-section" style="text-align: left; max-width: 800px;">
+            <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.2rem;">📖 Two-Page View Features</h3>
+            <p style="margin-bottom: 10px; font-size: 0.95rem;"><strong>Benefits of Two-Page View:</strong></p>
+            <ol style="padding-left: 20px; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px;"><strong>See context</strong> - View facing pages together</li>
+                <li style="margin-bottom: 8px;"><strong>Better navigation</strong> - Jump 2 pages at a time</li>
+                <li style="margin-bottom: 8px;"><strong>Compare content</strong> - See related information side by side</li>
+                <li style="margin-bottom: 8px;"><strong>Book-like experience</strong> - Just like reading a physical book</li>
+            </ol>
+            <p style="margin-bottom: 10px; font-size: 0.95rem;"><strong>Controls:</strong></p>
+            <ul style="list-style: none; padding-left: 0; margin-bottom: 15px;">
+                <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                    <span style="display: inline-block; width: 10px; height: 10px; background: #FFD700; border-radius: 50%; margin-right: 10px;"></span>
+                    <span><strong>Single Page</strong>: Focus on one page at a time</span>
+                </li>
+                <li style="margin-bottom: 8px; display: flex; align-items: center;">
+                    <span style="display: inline-block; width: 10px; height: 10px; background: #2196F3; border-radius: 50%; margin-right: 10px;"></span>
+                    <span><strong>Two Pages</strong>: See facing pages together</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Download Options -->
+        <div class="download-section">
+            <h3 style="color: #FFD700; margin-bottom: 15px; font-size: 1.2rem;">Download Options</h3>
+            <p style="margin-bottom: 15px; font-size: 0.95rem;">For the best reading experience offline:</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <a href="BEG4StuBOOK.pdf" class="download-btn" download>
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                
+                <a href="BEG4StuBOOK.pdf" class="download-btn secondary-btn" target="_blank">
+                    <i class="fas fa-print"></i> Print
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="Aboutpage.html">About Us</a>
+            <a href="Courses.html">Our Courses</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+            <p><strong>Location:</strong> Yangon, Myanmar</p>
+            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
+        </div>
+        
+        <p>© 2025 Honour Language Centre – All rights reserved.</p>
+        <p>Professional Language Education in Myanmar</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Set active page
+        const currentPageFile = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            if (link.getAttribute('href') === currentPageFile) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // PDF Viewer Functionality with TWO-PAGE VIEW
+        let pdfDoc = null;
+        let pdfCurrentPage = 1; // First page of the current view
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.0; // 1.0 = 100%
+        let isFullscreen = false;
+        let renderQuality = 2.0; // Start with high quality
+        let pageMode = 'two-pages'; // 'single-page' or 'two-pages'
+        const viewerContainer = document.getElementById('pdf-viewer-container');
+        const twoPagesContainer = document.getElementById('two-pages-container');
+        const zoomInput = document.getElementById('zoom-input');
+
+        // Initialize PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Set quality
+        function setQuality(level) {
+            document.querySelectorAll('.quality-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (level === 'high') {
+                document.getElementById('quality-high').classList.add('active');
+                renderQuality = 2.0; // High quality
+            } else {
+                document.getElementById('quality-standard').classList.add('active');
+                renderQuality = 1.0; // Standard quality
+            }
+            
+            // Re-render current page with new quality
+            if (pdfDoc) {
+                queueRenderPages();
+            }
+        }
+
+        // Set page mode
+        function setPageMode(mode) {
+            pageMode = mode;
+            
+            // Update active button
+            document.querySelectorAll('.page-mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (mode === 'single-page') {
+                document.getElementById('single-page-btn').classList.add('active');
+                document.getElementById('current-page').textContent = pdfCurrentPage;
+            } else {
+                document.getElementById('two-pages-btn').classList.add('active');
+                document.getElementById('current-page').textContent = `${pdfCurrentPage}-${Math.min(pdfCurrentPage + 1, pdfDoc.numPages)}`;
+            }
+            
+            // Re-render with new mode
+            if (pdfDoc) {
+                queueRenderPages();
+            }
+        }
+
+        // Page mode button event listeners
+        document.getElementById('single-page-btn').addEventListener('click', () => setPageMode('single-page'));
+        document.getElementById('two-pages-btn').addEventListener('click', () => setPageMode('two-pages'));
+
+        // Manual zoom input handler
+        function applyManualZoom() {
+            let zoomValue = parseFloat(zoomInput.value);
+            
+            // Validate input
+            if (isNaN(zoomValue)) {
+                zoomInput.value = Math.round(scale * 100);
+                return;
+            }
+            
+            // Clamp between 10% and 500%
+            zoomValue = Math.max(10, Math.min(500, zoomValue));
+            
+            // Update scale and input value
+            scale = zoomValue / 100;
+            zoomInput.value = Math.round(zoomValue);
+            
+            // Re-render pages
+            if (pdfDoc) {
+                queueRenderPages();
+            }
+        }
+
+        // Zoom input event listeners
+        zoomInput.addEventListener('change', applyManualZoom);
+        zoomInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                applyManualZoom();
+            }
+        });
+
+        // Quality button event listeners
+        document.getElementById('quality-standard').addEventListener('click', () => setQuality('standard'));
+        document.getElementById('quality-high').addEventListener('click', () => setQuality('high'));
+
+        // Load the PDF
+        const pdfUrl = 'BEG4StuBOOK.pdf';
+        
+        async function loadPDF() {
+            try {
+                const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                pdfDoc = await loadingTask.promise;
+                
+                document.getElementById('total-pages').textContent = pdfDoc.numPages;
+                document.getElementById('page-input').max = pdfDoc.numPages;
+                
+                // Enable buttons and inputs
+                document.getElementById('prev-page').disabled = false;
+                document.getElementById('next-page').disabled = false;
+                document.getElementById('zoom-in').disabled = false;
+                document.getElementById('zoom-out').disabled = false;
+                document.getElementById('first-page').disabled = false;
+                document.getElementById('last-page').disabled = false;
+                document.getElementById('go-to-page').disabled = false;
+                document.getElementById('page-input').disabled = false;
+                zoomInput.disabled = false;
+                
+                // Hide loading indicator
+                document.getElementById('loading').style.display = 'none';
+                
+                // Render first pages
+                queueRenderPages();
+                setTimeout(() => {
+                    document.getElementById('fit-width').click();
+                }, 100);
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #d32f2f; padding: 20px;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                        <h3 style="margin-bottom: 15px;">Error Loading PDF</h3>
+                        <p style="margin-bottom: 10px;">Please make sure "BEG4StuBOOK.pdf" is in the same folder.</p>
+                        <a href="BEG4StuBOOK.pdf" style="color: #FFD700; text-decoration: underline; font-weight: bold;">Download the PDF instead</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Render multiple pages based on mode
+        async function renderPages() {
+            pageRendering = true;
+            
+            try {
+                // Clear previous pages
+                twoPagesContainer.innerHTML = '';
+                
+                if (pageMode === 'single-page') {
+                    // Render single page
+                    await renderSinglePage(pdfCurrentPage);
+                } else {
+                    // Render two pages
+                    const page1 = pdfCurrentPage;
+                    const page2 = pdfCurrentPage + 1 <= pdfDoc.numPages ? pdfCurrentPage + 1 : null;
+                    
+                    await renderTwoPages(page1, page2);
+                }
+                
+                // Update page info
+                document.getElementById('current-page').textContent = 
+                    pageMode === 'single-page' 
+                    ? pdfCurrentPage 
+                    : `${pdfCurrentPage}-${Math.min(pdfCurrentPage + 1, pdfDoc.numPages)}`;
+                
+                document.getElementById('page-input').value = pdfCurrentPage;
+                zoomInput.value = Math.round(scale * 100);
+                
+                // Update button states
+                updateNavigationButtons();
+                
+                pageRendering = false;
+                
+                // Render pending pages if any
+                if (pageNumPending !== null) {
+                    renderPages();
+                    pageNumPending = null;
+                }
+                
+            } catch (error) {
+                console.error('Error rendering pages:', error);
+                pageRendering = false;
+            }
+        }
+
+        // Render a single page
+        async function renderSinglePage(pageNum) {
+            const page = await pdfDoc.getPage(pageNum);
+            
+            // Create canvas wrapper
+            const pageWrapper = document.createElement('div');
+            pageWrapper.className = 'page-wrapper';
+            
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            canvas.className = 'page-canvas';
+            canvas.id = `page-canvas-${pageNum}`;
+            
+            // Create page number label
+            const pageNumber = document.createElement('div');
+            pageNumber.className = 'page-number';
+            pageNumber.textContent = `Page ${pageNum}`;
+            
+            // Add to wrapper
+            pageWrapper.appendChild(canvas);
+            pageWrapper.appendChild(pageNumber);
+            
+            // Add to container
+            twoPagesContainer.appendChild(pageWrapper);
+            
+            // Render page to canvas
+            await renderPageToCanvas(page, canvas, pageNum);
+        }
+
+        // Render two pages side by side
+        async function renderTwoPages(pageNum1, pageNum2) {
+            // Create container for two pages
+            const pagesContainer = document.createElement('div');
+            pagesContainer.className = 'two-pages-container';
+            
+            // Render first page
+            if (pageNum1) {
+                const page1 = await pdfDoc.getPage(pageNum1);
+                const pageWrapper1 = document.createElement('div');
+                pageWrapper1.className = 'page-wrapper';
+                
+                const canvas1 = document.createElement('canvas');
+                canvas1.className = 'page-canvas';
+                canvas1.id = `page-canvas-${pageNum1}`;
+                
+                const pageNumber1 = document.createElement('div');
+                pageNumber1.className = 'page-number';
+                pageNumber1.textContent = `Page ${pageNum1}`;
+                
+                pageWrapper1.appendChild(canvas1);
+                pageWrapper1.appendChild(pageNumber1);
+                pagesContainer.appendChild(pageWrapper1);
+                
+                await renderPageToCanvas(page1, canvas1, pageNum1);
+            }
+            
+            // Render second page if exists
+            if (pageNum2) {
+                const page2 = await pdfDoc.getPage(pageNum2);
+                const pageWrapper2 = document.createElement('div');
+                pageWrapper2.className = 'page-wrapper';
+                
+                const canvas2 = document.createElement('canvas');
+                canvas2.className = 'page-canvas';
+                canvas2.id = `page-canvas-${pageNum2}`;
+                
+                const pageNumber2 = document.createElement('div');
+                pageNumber2.className = 'page-number';
+                pageNumber2.textContent = `Page ${pageNum2}`;
+                
+                pageWrapper2.appendChild(canvas2);
+                pageWrapper2.appendChild(pageNumber2);
+                pagesContainer.appendChild(pageWrapper2);
+                
+                await renderPageToCanvas(page2, canvas2, pageNum2);
+            }
+            
+            // Add to main container
+            twoPagesContainer.appendChild(pagesContainer);
+        }
+
+        // Render a page to a canvas
+        async function renderPageToCanvas(page, canvas, pageNum) {
+            const ctx = canvas.getContext('2d');
+            
+            // Get viewport at default scale
+            const viewport = page.getViewport({ scale: 1 });
+            
+            // Calculate adjusted scale for two-page view
+            let adjustedScale = scale;
+            if (pageMode === 'two-pages') {
+                // Slightly reduce scale for two pages to fit side by side
+                adjustedScale = scale * 0.9;
+            }
+            
+            // Apply quality multiplier
+            const pixelRatio = window.devicePixelRatio || 1;
+            const qualityScale = adjustedScale * renderQuality * pixelRatio;
+            
+            // Create viewport with calculated scale
+            const qualityViewport = page.getViewport({ scale: qualityScale });
+            
+            // Set canvas dimensions
+            canvas.width = Math.floor(qualityViewport.width);
+            canvas.height = Math.floor(qualityViewport.height);
+            
+            // Set CSS dimensions (scaled down by quality multiplier for display)
+            canvas.style.width = `${qualityViewport.width / (renderQuality * pixelRatio)}px`;
+            canvas.style.height = `${qualityViewport.height / (renderQuality * pixelRatio)}px`;
+            
+            // Reset transform and clear canvas
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Fill with white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Render the page
+            const renderContext = {
+                canvasContext: ctx,
+                viewport: qualityViewport,
+                background: 'rgba(255, 255, 255, 1)'
+            };
+            
+            await page.render(renderContext).promise;
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            if (pageMode === 'single-page') {
+                document.getElementById('prev-page').disabled = pdfCurrentPage <= 1;
+                document.getElementById('next-page').disabled = pdfCurrentPage >= pdfDoc.numPages;
+                document.getElementById('first-page').disabled = pdfCurrentPage <= 1;
+                document.getElementById('last-page').disabled = pdfCurrentPage >= pdfDoc.numPages;
+            } else {
+                // In two-page mode, we move by 2 pages
+                document.getElementById('prev-page').disabled = pdfCurrentPage <= 1;
+                document.getElementById('next-page').disabled = pdfCurrentPage + 1 >= pdfDoc.numPages;
+                document.getElementById('first-page').disabled = pdfCurrentPage <= 1;
+                document.getElementById('last-page').disabled = pdfCurrentPage >= pdfDoc.numPages - 1;
+            }
+        }
+
+        // Queue page rendering
+        function queueRenderPages() {
+            if (pageRendering) {
+                pageNumPending = true;
+            } else {
+                renderPages();
+            }
+        }
+
+        // Navigation functions
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (pageMode === 'single-page') {
+                if (pdfCurrentPage > 1) {
+                    pdfCurrentPage--;
+                    queueRenderPages();
+                }
+            } else {
+                // In two-page mode, move back by 2 pages
+                if (pdfCurrentPage > 1) {
+                    pdfCurrentPage = Math.max(1, pdfCurrentPage - 2);
+                    queueRenderPages();
+                }
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (pageMode === 'single-page') {
+                if (pdfCurrentPage < pdfDoc.numPages) {
+                    pdfCurrentPage++;
+                    queueRenderPages();
+                }
+            } else {
+                // In two-page mode, move forward by 2 pages
+                if (pdfCurrentPage + 1 < pdfDoc.numPages) {
+                    pdfCurrentPage += 2;
+                    queueRenderPages();
+                }
+            }
+        });
+
+        document.getElementById('first-page').addEventListener('click', () => {
+            pdfCurrentPage = 1;
+            queueRenderPages();
+        });
+
+        document.getElementById('last-page').addEventListener('click', () => {
+            if (pageMode === 'single-page') {
+                pdfCurrentPage = pdfDoc.numPages;
+            } else {
+                // In two-page mode, go to last two pages
+                pdfCurrentPage = pdfDoc.numPages - 1;
+                if (pdfCurrentPage < 1) pdfCurrentPage = 1;
+            }
+            queueRenderPages();
+        });
+
+        // Go to specific page
+        document.getElementById('go-to-page').addEventListener('click', () => {
+            const input = document.getElementById('page-input');
+            let pageNum = parseInt(input.value);
+            
+            if (pageNum && pageNum >= 1 && pageNum <= pdfDoc.numPages) {
+                pdfCurrentPage = pageNum;
+                if (pageMode === 'two-pages' && pdfCurrentPage % 2 === 0) {
+                    // In two-page mode, ensure we start on an odd page for proper pairing
+                    pdfCurrentPage = Math.max(1, pdfCurrentPage - 1);
+                }
+                queueRenderPages();
+            } else {
+                input.value = pdfCurrentPage;
+            }
+        });
+
+        // Page input enter key
+        document.getElementById('page-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('go-to-page').click();
+            }
+        });
+
+        // Zoom controls
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            if (scale < 3.0) {
+                scale += 0.1;
+                zoomInput.value = Math.round(scale * 100);
+                queueRenderPages();
+            }
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            if (scale > 0.5) {
+                scale -= 0.1;
+                zoomInput.value = Math.round(scale * 100);
+                queueRenderPages();
+            }
+        });
+
+        // Fit width - shows page width to fit container
+        document.getElementById('fit-width').addEventListener('click', async () => {
+            const page = await pdfDoc.getPage(1);
+            const viewport = page.getViewport({ scale: 1 });
+            const containerWidth = viewerContainer.clientWidth - 40;
+            
+            if (pageMode === 'two-pages') {
+                // For two pages, we need to fit two pages in the width
+                scale = (containerWidth / 2) / viewport.width;
+            } else {
+                scale = containerWidth / viewport.width;
+            }
+            
+            zoomInput.value = Math.round(scale * 100);
+            queueRenderPages();
+        });
+
+        // Fit page - shows entire page in container
+        document.getElementById('fit-page').addEventListener('click', async () => {
+            const page = await pdfDoc.getPage(1);
+            const viewport = page.getViewport({ scale: 1 });
+            const container = viewerContainer;
+            const containerWidth = container.clientWidth - 40;
+            const containerHeight = container.clientHeight - 40;
+            
+            let widthScale, heightScale;
+            
+            if (pageMode === 'two-pages') {
+                // For two pages, fit two pages in width
+                widthScale = (containerWidth / 2) / viewport.width;
+                heightScale = containerHeight / viewport.height;
+            } else {
+                widthScale = containerWidth / viewport.width;
+                heightScale = containerHeight / viewport.height;
+            }
+            
+            scale = Math.min(widthScale, heightScale);
+            zoomInput.value = Math.round(scale * 100);
+            queueRenderPages();
+        });
+
+        // Fullscreen toggle
+        document.getElementById('fullscreen-btn').addEventListener('click', toggleFullscreen);
+
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        }
+
+        function enterFullscreen() {
+            const container = document.querySelector('.book-viewer-container');
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+            }
+            isFullscreen = true;
+            document.getElementById('fullscreen-btn').innerHTML = '<i class="fas fa-compress"></i>';
+        }
+
+        function exitFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            isFullscreen = false;
+            document.getElementById('fullscreen-btn').innerHTML = '<i class="fas fa-expand"></i>';
+        }
+
+        // Handle fullscreen change
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+
+        function handleFullscreenChange() {
+            isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+            document.getElementById('fullscreen-btn').innerHTML = isFullscreen ? 
+                '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+            
+            setTimeout(() => {
+                queueRenderPages();
+            }, 100);
+        }
+
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (pdfDoc) {
+                    queueRenderPages();
+                }
+            }, 250);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (!pdfDoc) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    document.getElementById('prev-page').click();
+                    break;
+                case 'ArrowRight':
+                    document.getElementById('next-page').click();
+                    break;
+                case '+':
+                    document.getElementById('zoom-in').click();
+                    e.preventDefault();
+                    break;
+                case '-':
+                    document.getElementById('zoom-out').click();
+                    e.preventDefault();
+                    break;
+                case '0':
+                    scale = 1.0;
+                    zoomInput.value = 100;
+                    queueRenderPages();
+                    e.preventDefault();
+                    break;
+                case 'f':
+                    toggleFullscreen();
+                    e.preventDefault();
+                    break;
+                case '1':
+                    setPageMode('single-page');
+                    e.preventDefault();
+                    break;
+                case '2':
+                    setPageMode('two-pages');
+                    e.preventDefault();
+                    break;
+            }
+        });
+
+        // Initialize PDF viewer when page loads
+        window.addEventListener('DOMContentLoaded', loadPDF);
+    </script>
+
+</body>
+</html>

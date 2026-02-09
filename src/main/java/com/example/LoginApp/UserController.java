@@ -58,6 +58,8 @@ public class UserController {
             res.put("redirect", "/classB.html");
         } else if ("GEDI".equalsIgnoreCase(cls)) {
             res.put("redirect", "/GEDinstructors.html");
+        } else if ("BEG4StuBOOK".equalsIgnoreCase(cls)) {
+            res.put("redirect", "/BEG4StuBOOK.html");
         } else {
             res.put("redirect", "/unassigned.html");
         }
