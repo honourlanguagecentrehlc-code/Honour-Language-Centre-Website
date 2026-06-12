@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Certificate Verification | Honour Language Centre</title>
-    <meta name="description" content="Verify GED certificates issued by Honour Language Centre. Enter certificate ID to check authenticity and view score distribution.">
+    <meta name="description" content="Verify GED certificates issued by Honour Language Centre. Scan barcode or enter certificate ID to check authenticity.">
     <link rel="icon" type="image/x-icon" href="BG.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- HTML5 QR Code library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -221,13 +223,21 @@
             text-align: center;
         }
 
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
         .search-box input {
-            width: 70%;
+            flex: 2;
+            min-width: 180px;
             padding: 12px 15px;
             border: none;
             border-radius: 50px;
             font-size: 1rem;
-            margin-right: 10px;
             background: white;
         }
 
@@ -243,6 +253,37 @@
 
         .search-box button:hover {
             transform: scale(1.03);
+        }
+
+        .scan-btn {
+            background: linear-gradient(135deg, #2196F3, #0b7dda) !important;
+            color: white !important;
+        }
+
+        .scanner-container {
+            margin-top: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #reader {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: black;
+        }
+
+        .close-scanner {
+            margin-top: 15px;
+            background: rgba(255, 0, 0, 0.8);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         footer {
@@ -320,9 +361,11 @@
                 width: 100%;
                 margin-bottom: 5px;
             }
-            .search-box input {
+            .input-group {
+                flex-direction: column;
+            }
+            .search-box input, .search-box button {
                 width: 100%;
-                margin-bottom: 10px;
             }
             .score-table th, .score-table td {
                 font-size: 0.85rem;
@@ -365,10 +408,16 @@
     </div>
 
     <div class="search-box">
-        <h3 style="margin-bottom: 15px; color: #FFD700;">Enter Certificate ID</h3>
-        <input type="text" id="manualId" placeholder="e.g., 98765432" value="">
-        <button onclick="verifyManual()">Verify</button>
-        <p style="margin-top: 15px; font-size: 0.85rem;">Example: 98765432 (this is just an example – use a real ID)</p>
+        <h3 style="margin-bottom: 15px; color: #FFD700;">Enter Certificate ID or Scan Barcode</h3>
+        <div class="input-group">
+            <input type="text" id="manualId" placeholder="e.g., 98765432" value="">
+            <button onclick="verifyManual()">Verify</button>
+            <button onclick="startScanner()" class="scan-btn"><i class="fas fa-camera"></i> Scan Barcode</button>
+        </div>
+        <div id="scannerContainer" class="scanner-container">
+            <div id="reader"></div>
+            <button onclick="stopScanner()" class="close-scanner">Close Scanner</button>
+        </div>
     </div>
 </div>
 
@@ -402,14 +451,17 @@
             issueDate: "2026-July-15",
             overall: "PASS",
             scores: {
-                rla: { score: null, grade: "Not available" },      // Add actual score when ready
+                rla: { score: null, grade: "Not available" },
                 math: { score: 165, grade: "College Ready" },
                 science: { score: 170, grade: "College Ready" },
-                social: { score: null, grade: "Not available" }     // Add actual score when ready
+                social: { score: null, grade: "Not available" }
             }
         }
     };
     // ------------------------------------------------------------------
+
+    let html5QrCode = null;
+    let scannerActive = false;
 
     function displayCertificate(certId, cert) {
         const resultDiv = document.getElementById('result-area');
@@ -468,7 +520,7 @@
                 <strong>Overall Result:</strong> ${escapeHtml(cert.overall)}
             </div>
             <div style="margin-top: 20px; text-align: center; font-size: 0.9rem; opacity: 0.8;">
-                <i class="fas fa-shield-alt"></i> This certificate is issued by Honour Language Centre. Verify authenticity at honourlanguagecentre.site
+                <i class="fas fa-shield-alt"></i> This certificate is issued by Honour Learning Centre.
             </div>
         `;
         resultDiv.innerHTML = html;
@@ -492,7 +544,7 @@
     function verifyManual() {
         const idInput = document.getElementById('manualId').value.trim();
         if (!idInput) {
-            alert('Please enter a Certificate ID (e.g., GED98765432)');
+            alert('Please enter a Certificate ID (e.g., 98765432)');
             return;
         }
         const cert = certificates[idInput];
@@ -501,6 +553,77 @@
         window.history.pushState({ path: newUrl }, '', newUrl);
     }
 
+    // Barcode scanner functions
+    async function startScanner() {
+        const scannerContainer = document.getElementById('scannerContainer');
+        if (scannerActive) {
+            stopScanner();
+        }
+        scannerContainer.style.display = 'flex';
+        
+        html5QrCode = new Html5Qrcode("reader");
+        try {
+            const devices = await Html5Qrcode.getCameras();
+            if (devices && devices.length) {
+                let backCamera = devices.find(device => device.label.toLowerCase().includes('back') || device.label.toLowerCase().includes('environment'));
+                const cameraId = backCamera ? backCamera.id : devices[0].id;
+                
+                await html5QrCode.start(
+                    cameraId,
+                    {
+                        fps: 10,
+                        qrbox: { width: 250, height: 250 },
+                        aspectRatio: 1.0
+                    },
+                    (decodedText, decodedResult) => {
+                        // On successful scan
+                        console.log(`Scanned: ${decodedText}`);
+                        const scannedId = decodedText.trim();
+                        // Look up certificate
+                        const cert = certificates[scannedId];
+                        displayCertificate(scannedId, cert);
+                        // Also set the manual input field
+                        document.getElementById('manualId').value = scannedId;
+                        // Update URL
+                        const newUrl = window.location.pathname + '?id=' + encodeURIComponent(scannedId);
+                        window.history.pushState({ path: newUrl }, '', newUrl);
+                        // Stop scanner after successful scan
+                        stopScanner();
+                    },
+                    (errorMessage) => {
+                        // Ignore scanning errors (usually just no barcode found yet)
+                        // console.log(errorMessage);
+                    }
+                );
+                scannerActive = true;
+            } else {
+                alert("No cameras found. Please use a device with a camera.");
+                scannerContainer.style.display = 'none';
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Unable to start camera. Error: " + err.message);
+            scannerContainer.style.display = 'none';
+        }
+    }
+
+    function stopScanner() {
+        if (html5QrCode && scannerActive) {
+            html5QrCode.stop().then(() => {
+                document.getElementById('scannerContainer').style.display = 'none';
+                scannerActive = false;
+            }).catch(err => {
+                console.error("Error stopping scanner: ", err);
+                document.getElementById('scannerContainer').style.display = 'none';
+                scannerActive = false;
+            });
+        } else {
+            document.getElementById('scannerContainer').style.display = 'none';
+            scannerActive = false;
+        }
+    }
+
+    // Handle URL parameter on page load
     window.addEventListener('DOMContentLoaded', () => {
         let certId = getCertificateIdFromUrl();
         if (certId) {
@@ -513,8 +636,8 @@
                     🔍 No Certificate ID Provided
                 </div>
                 <div class="student-info">
-                    <p style="text-align: center;">Please enter a Certificate ID in the box below or use a link with <strong>?id=98765432</strong> (real ID)</p>
-                    <p style="text-align: center; margin-top: 15px;">Example: <code>https://yourdomain.com/verify.html?id=98765432</code> (example only)</p>
+                    <p style="text-align: center;">Please enter a Certificate ID above or scan the barcode on your certificate.</p>
+                    <p style="text-align: center; margin-top: 15px;">Example real ID: <strong>98765432</strong></p>
                 </div>
             `;
         }
