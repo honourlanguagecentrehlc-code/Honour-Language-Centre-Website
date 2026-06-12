@@ -366,9 +366,9 @@
 
     <div class="search-box">
         <h3 style="margin-bottom: 15px; color: #FFD700;">Enter Certificate ID</h3>
-        <input type="text" id="manualId" placeholder="e.g., GED01012001" value="">
+        <input type="text" id="manualId" placeholder="e.g., 98765432" value="">
         <button onclick="verifyManual()">Verify</button>
-        <p style="margin-top: 15px; font-size: 0.85rem;">Example: GED22022026</p>
+        <p style="margin-top: 15px; font-size: 0.85rem;">Example: 98765432 (this is just an example – use a real ID)</p>
     </div>
 </div>
 
@@ -394,18 +394,18 @@
 </footer>
 
 <script>
-    // ---------- CERTIFICATE DATABASE (Only one student for now) ----------
+    // ---------- CERTIFICATE DATABASE (Real student) ----------
     const certificates = {
-        "GED22022026": {
+        "23022026": {   // ← Real certificate ID
             name: "Kaung Khant Naing",
             course: "GED 1-On-1 Course",
-            issueDate: "2026-07-15",
+            issueDate: "2026-July-15",
             overall: "PASS",
             scores: {
-                rla: { score: null, grade: "Not available" },      // ← Add actual score when ready
+                rla: { score: null, grade: "Not available" },      // Add actual score when ready
                 math: { score: 165, grade: "College Ready" },
                 science: { score: 170, grade: "College Ready" },
-                social: { score: null, grade: "Not available" }     // ← Add actual score when ready
+                social: { score: null, grade: "Not available" }     // Add actual score when ready
             }
         }
     };
@@ -427,7 +427,6 @@
         }
 
         const scores = cert.scores;
-        // Helper to show score or "—" if null
         const scoreValue = (val) => (val === null || val === undefined) ? "—" : val;
         const gradeValue = (grade) => (grade === null || grade === undefined) ? "Not available" : grade;
 
@@ -493,7 +492,7 @@
     function verifyManual() {
         const idInput = document.getElementById('manualId').value.trim();
         if (!idInput) {
-            alert('Please enter a Certificate ID (e.g., GED22022026)');
+            alert('Please enter a Certificate ID (e.g., GED98765432)');
             return;
         }
         const cert = certificates[idInput];
@@ -514,8 +513,8 @@
                     🔍 No Certificate ID Provided
                 </div>
                 <div class="student-info">
-                    <p style="text-align: center;">Please enter a Certificate ID in the box below or use a link with <strong>?id=GED22022026</strong></p>
-                    <p style="text-align: center; margin-top: 15px;">Example: <code>https://yourdomain.com/verify.html?id=GED22022026</code></p>
+                    <p style="text-align: center;">Please enter a Certificate ID in the box below or use a link with <strong>?id=23022026</strong> (real ID)</p>
+                    <p style="text-align: center; margin-top: 15px;">Example: <code>https://yourdomain.com/verify.html?id=GED98765432</code> (example only)</p>
                 </div>
             `;
         }
