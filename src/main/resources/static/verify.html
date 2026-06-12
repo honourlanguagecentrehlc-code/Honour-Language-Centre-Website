@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification | Honour Language Centre</title>
+    <meta name="description" content="Verify GED certificates issued by Honour Language Centre. Enter certificate ID to check authenticity and view score distribution.">
+    <link rel="icon" type="image/x-icon" href="BG.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url(Slide1.jpg);
+            background-color: rgb(233, 230, 230);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            line-height: 1.6;
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        #navbar #logo {
+            font-size: 1.1em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        #navbar nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        #navbar nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        #navbar nav a:hover,
+        #navbar nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+
+        .verification-container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 120px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verification-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .verification-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 30px;
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
+        }
+
+        .status-badge {
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .status-valid {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 6px solid #4CAF50;
+            color: #c8e6c9;
+        }
+
+        .status-invalid {
+            background: rgba(244, 67, 54, 0.2);
+            border-left: 6px solid #f44336;
+            color: #ffcdd2;
+        }
+
+        .student-info {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .info-label {
+            width: 140px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .info-value {
+            flex: 1;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .score-table th, .score-table td {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .score-table th {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .score-table td {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .overall-result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 600px;
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .search-box input {
+            width: 70%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-right: 10px;
+            background: white;
+        }
+
+        .search-box button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.03);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .social-icons a {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            margin: 15px 0;
+        }
+
+        .contact-info a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+            #navbar nav ul {
+                display: none;
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+            #navbar nav ul.active {
+                display: flex;
+            }
+            #navbar nav a {
+                display: block;
+                padding: 15px;
+            }
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .search-box input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .score-table th, .score-table td {
+                font-size: 0.85rem;
+                padding: 6px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #navbar {
+                padding: 15px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header id="navbar">
+    <div id="logo">Honour Language Centre</div>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav>
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="Aboutpage.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="verification-container">
+    <div class="verification-card">
+        <h1 class="verification-title">Certificate Verification</h1>
+        <div id="result-area">
+            <div style="text-align: center; padding: 30px;">Loading certificate information...</div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <h3 style="margin-bottom: 15px; color: #FFD700;">Enter Certificate ID</h3>
+        <input type="text" id="manualId" placeholder="e.g., GED01012001" value="">
+        <button onclick="verifyManual()">Verify</button>
+        <p style="margin-top: 15px; font-size: 0.85rem;">Example: GED22022026</p>
+    </div>
+</div>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@honour.languae.centre" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="Aboutpage.html">About Us</a>
+        <a href="Courses.html">Our Courses</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+        <p><strong>Location:</strong> Yangon, Myanmar</p>
+        <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
+    </div>
+    <p>© 2025 Honour Language Centre - All rights reserved.</p>
+</footer>
+
+<script>
+    // ---------- CERTIFICATE DATABASE (Only one student for now) ----------
+    const certificates = {
+        "GED22022026": {
+            name: "Kaung Khant Naing",
+            course: "GED 1-On-1 Course",
+            issueDate: "2026-07-15",
+            overall: "PASS",
+            scores: {
+                rla: { score: null, grade: "Not available" },      // ← Add actual score when ready
+                math: { score: 165, grade: "College Ready" },
+                science: { score: 170, grade: "College Ready" },
+                social: { score: null, grade: "Not available" }     // ← Add actual score when ready
+            }
+        }
+    };
+    // ------------------------------------------------------------------
+
+    function displayCertificate(certId, cert) {
+        const resultDiv = document.getElementById('result-area');
+        if (!cert) {
+            resultDiv.innerHTML = `
+                <div class="status-badge status-invalid">
+                    ❌ INVALID CERTIFICATE ID
+                </div>
+                <div class="student-info">
+                    <p style="text-align: center;">No certificate found with ID: <strong>${escapeHtml(certId)}</strong></p>
+                    <p style="text-align: center; margin-top: 15px;">Please check the ID and try again. If you believe this is an error, contact Honour Language Centre.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const scores = cert.scores;
+        // Helper to show score or "—" if null
+        const scoreValue = (val) => (val === null || val === undefined) ? "—" : val;
+        const gradeValue = (grade) => (grade === null || grade === undefined) ? "Not available" : grade;
+
+        const html = `
+            <div class="status-badge status-valid">
+                ✅ VALID CERTIFICATE
+            </div>
+            <div class="student-info">
+                <div class="info-row">
+                    <div class="info-label">Certificate ID:</div>
+                    <div class="info-value">${escapeHtml(certId)}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Student Name:</div>
+                    <div class="info-value">${escapeHtml(cert.name)}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Course:</div>
+                    <div class="info-value">${escapeHtml(cert.course)}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Issue Date:</div>
+                    <div class="info-value">${escapeHtml(cert.issueDate)}</div>
+                </div>
+            </div>
+            <h3 style="margin: 20px 0 15px; color: #FFD700;">Score & Grade Distribution</h3>
+            <table class="score-table">
+                <thead>
+                    <tr><th>Subject</th><th>Score</th><th>Grade Level</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Reasoning through Language Arts</td><td>${scoreValue(scores.rla.score)}</td><td>${escapeHtml(gradeValue(scores.rla.grade))}</td></tr>
+                    <tr><td>Mathematical Reasoning</td><td>${scoreValue(scores.math.score)}</td><td>${escapeHtml(gradeValue(scores.math.grade))}</td></tr>
+                    <tr><td>Science</td><td>${scoreValue(scores.science.score)}</td><td>${escapeHtml(gradeValue(scores.science.grade))}</td></tr>
+                    <tr><td>Social Studies</td><td>${scoreValue(scores.social.score)}</td><td>${escapeHtml(gradeValue(scores.social.grade))}</td></tr>
+                </tbody>
+            </table>
+            <div class="overall-result">
+                <strong>Overall Result:</strong> ${escapeHtml(cert.overall)}
+            </div>
+            <div style="margin-top: 20px; text-align: center; font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-shield-alt"></i> This certificate is issued by Honour Language Centre. Verify authenticity at honourlanguagecentre.com
+            </div>
+        `;
+        resultDiv.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function getCertificateIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+    }
+
+    function verifyManual() {
+        const idInput = document.getElementById('manualId').value.trim();
+        if (!idInput) {
+            alert('Please enter a Certificate ID (e.g., GED22022026)');
+            return;
+        }
+        const cert = certificates[idInput];
+        displayCertificate(idInput, cert);
+        const newUrl = window.location.pathname + '?id=' + encodeURIComponent(idInput);
+        window.history.pushState({ path: newUrl }, '', newUrl);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        let certId = getCertificateIdFromUrl();
+        if (certId) {
+            const cert = certificates[certId];
+            displayCertificate(certId, cert);
+            document.getElementById('manualId').value = certId;
+        } else {
+            document.getElementById('result-area').innerHTML = `
+                <div class="status-badge status-invalid" style="background: rgba(255,152,0,0.2); border-left-color: #ff9800;">
+                    🔍 No Certificate ID Provided
+                </div>
+                <div class="student-info">
+                    <p style="text-align: center;">Please enter a Certificate ID in the box below or use a link with <strong>?id=GED22022026</strong></p>
+                    <p style="text-align: center; margin-top: 15px;">Example: <code>https://yourdomain.com/verify.html?id=GED22022026</code></p>
+                </div>
+            `;
+        }
+    });
+
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+    if (window.location.pathname.split('/').pop() === 'verify.html') {
+        document.querySelectorAll('#nav-menu a').forEach(a => {
+            if (a.getAttribute('href') === 'verify.html') a.classList.add('active');
+        });
+    }
+</script>
+</body>
+</html>
