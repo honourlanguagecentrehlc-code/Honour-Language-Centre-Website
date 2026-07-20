@@ -4,421 +4,462 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Courses - Honour Learning Centre</title>
+    <meta name="description" content="Browse all courses at Honour Learning Centre. GED preparation, English grammar, and upcoming language classes in Myanmar.">
     <link rel="icon" type="image/x-icon" href="BG.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #f59e0b;
+            --primary-light: #fbbf24;
+            --primary-dark: #d97706;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --dark: #0a0a0f;
+            --dark-card: rgba(16, 16, 22, 0.88);
+            --dark-elevated: rgba(28, 28, 38, 0.75);
+            --text-primary: #fafafa;
+            --text-secondary: #b0b0b8;
+            --text-muted: #6b6b76;
+            --border: rgba(255,255,255,0.07);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
+            font-family: var(--font-body);
             width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Slide1.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
             min-height: 100vh;
-            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
-        /* Navigation */
+        /* ===== TEXTURED BACKGROUND SYSTEM ===== */
+        .bg-image {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url(Slide1.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;
+            opacity: 0.18; z-index: -6;
+        }
+        .bg-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -5;
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 10%, rgba(245, 158, 11, 0.09) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 80% at 90% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+                radial-gradient(ellipse 70% 50% at 50% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(244, 63, 94, 0.04) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(10,10,15,0.6) 0%, rgba(10,10,15,0.8) 40%, rgba(10,10,15,0.95) 100%);
+        }
+        .bg-dots {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -4;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .bg-crosshatch {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -4; opacity: 0.5;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px);
+        }
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.07; pointer-events: none;
+        }
+        .bg-noise svg { width: 100%; height: 100%; }
+        .bg-hexagons {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.25; pointer-events: none;
+        }
+        .bg-hexagons svg { width: 100%; height: 100%; }
+        .bg-weave {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .bg-orbs {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden;
+        }
+        .bg-orbs .orb { position: absolute; border-radius: 50%; filter: blur(70px); animation: float 20s ease-in-out infinite; }
+        .bg-orbs .orb:nth-child(1) { width: 500px; height: 500px; background: rgba(245, 158, 11, 0.08); top: -10%; left: -8%; animation-duration: 26s; }
+        .bg-orbs .orb:nth-child(2) { width: 420px; height: 420px; background: rgba(99, 102, 241, 0.06); top: 25%; right: -12%; animation-delay: -6s; animation-duration: 22s; }
+        .bg-orbs .orb:nth-child(3) { width: 380px; height: 380px; background: rgba(16, 185, 129, 0.055); bottom: 5%; left: 8%; animation-delay: -12s; animation-duration: 30s; }
+        .bg-orbs .orb:nth-child(4) { width: 280px; height: 280px; background: rgba(244, 63, 94, 0.04); top: 55%; left: 55%; animation-delay: -18s; animation-duration: 24s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(35px, -45px) scale(1.06); }
+            50% { transform: translate(-25px, 25px) scale(0.94); }
+            75% { transform: translate(20px, 40px) scale(1.03); }
+        }
+        .bg-shapes {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .bg-shapes .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245, 158, 11, 0.08); }
+        .bg-shapes .ring:nth-child(1) { width: 400px; height: 400px; top: 8%; right: -100px; animation: spin-slow 60s linear infinite; }
+        .bg-shapes .ring:nth-child(2) { width: 250px; height: 250px; top: 12%; right: -25px; border-color: rgba(99, 102, 241, 0.06); animation: spin-slow 45s linear infinite reverse; }
+        .bg-shapes .ring:nth-child(3) { width: 500px; height: 500px; bottom: -150px; left: -150px; border-color: rgba(16, 185, 129, 0.06); animation: spin-slow 80s linear infinite; }
+        .bg-shapes .ring:nth-child(4) { width: 180px; height: 180px; top: 45%; left: 5%; border-style: dashed; border-color: rgba(255,255,255,0.04); animation: spin-slow 35s linear infinite reverse; }
+        .bg-shapes .line-h { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.06), transparent); }
+        .bg-shapes .line-h:nth-child(5) { width: 60%; top: 20%; left: 20%; }
+        .bg-shapes .line-h:nth-child(6) { width: 40%; top: 65%; left: 35%; background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent); }
+        .bg-shapes .line-h:nth-child(7) { width: 50%; top: 85%; left: 10%; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.04), transparent); }
+        .bg-shapes .cross { position: absolute; width: 12px; height: 12px; opacity: 0.15; }
+        .bg-shapes .cross::before, .bg-shapes .cross::after { content: ''; position: absolute; background: rgba(255,255,255,0.3); }
+        .bg-shapes .cross::before { width: 12px; height: 1px; top: 50%; left: 0; }
+        .bg-shapes .cross::after { width: 1px; height: 12px; left: 50%; top: 0; }
+        .bg-shapes .cross:nth-child(8) { top: 15%; left: 12%; }
+        .bg-shapes .cross:nth-child(9) { top: 35%; right: 8%; }
+        .bg-shapes .cross:nth-child(10) { top: 70%; left: 20%; }
+        .bg-shapes .cross:nth-child(11) { top: 50%; right: 15%; }
+        .bg-shapes .cross:nth-child(12) { top: 88%; right: 25%; }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* ===== NAVIGATION ===== */
         #navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 15px 20px;
-            background-color: rgba(0, 0, 0, 0.95);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 16px 24px;
+            background: rgba(10, 10, 15, 0.82); color: white; position: fixed; top: 0; left: 0; z-index: 1000;
+            backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--border); transition: all 0.3s ease;
         }
-
-        #navbar #logo {
-            font-size: 1.1em;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        #navbar nav ul {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
+        #navbar.scrolled { padding: 12px 24px; background: rgba(10, 10, 15, 0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+        #navbar #logo { font-family: var(--font-body); font-size: 1.15em; font-weight: 700; white-space: nowrap; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+        #navbar #logo::before { content: ''; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 12px var(--primary); }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; padding: 8px; gap: 5px; z-index: 1001; }
+        .menu-toggle span { width: 22px; height: 2px; background: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 2px; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+        #navbar nav ul { display: flex; gap: 4px; list-style: none; }
         #navbar nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: 0.3s;
-            border-radius: 5px;
-            font-weight: 500;
-            white-space: nowrap;
+            color: var(--text-secondary); text-decoration: none; padding: 8px 16px; transition: all 0.25s ease;
+            border-radius: 8px; font-weight: 500; font-size: 0.9rem; white-space: nowrap; font-family: var(--font-body);
         }
+        #navbar nav a:hover, #navbar nav a.active { color: var(--text-primary); background: rgba(255, 255, 255, 0.06); }
+        #navbar nav a.active { color: var(--primary); }
 
-        #navbar nav a:hover,
-        #navbar nav a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #FFD700;
-        }
-
-        /* Main Content */
+        /* ===== MAIN CONTENT ===== */
         #main-content {
-            padding: clamp(80px, 15vw, 120px) clamp(20px, 4vw, 40px) 40px;
+            padding: 140px 24px 80px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .page-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
-
+        .page-header .section-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
         .page-header h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            color: #FFD700;
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 6vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 40%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
         .page-header p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            opacity: 0.9;
-            max-width: 600px;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 500px;
             margin: 0 auto;
         }
 
-        /* Course Selection Cards */
+        /* ===== SELECTION SECTION ===== */
         .selection-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
+            background: var(--dark-card);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius-lg);
+            padding: 40px;
             margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+        .selection-section:hover {
+            border-color: rgba(245, 158, 11, 0.12);
         }
 
         .section-title {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 30px;
-            color: #FFD700;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 10px;
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
             text-align: center;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            font-size: 0.95rem;
         }
 
         .selection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .selection-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        }
+        @media (min-width: 1024px) {
+            .selection-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
         }
 
         .selection-card {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 30px;
+            background: var(--dark-elevated);
+            border-radius: var(--radius);
+            padding: 32px 24px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
-
+        .selection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
         .selection-card:hover {
-            transform: translateY(-10px);
-            border-color: #FFD700;
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: rgba(245, 158, 11, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,158,11,0.03);
         }
+        .selection-card:hover::before { opacity: 1; }
 
         .selection-icon {
-            font-size: 3.5rem;
-            color: #FFD700;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+            transition: transform 0.3s ease;
         }
-
-        .selection-card h3 {
-            font-size: 1.8rem;
-            color: #FFD700;
-            margin-bottom: 15px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .selection-card p {
-            flex-grow: 1;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
+        .selection-card:hover .selection-icon { transform: scale(1.1); }
 
         .status-badge {
             display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 16px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
+        .status-current { background: rgba(16, 185, 129, 0.15); color: #4ade80; border: 1px solid rgba(16, 185, 129, 0.25); }
+        .status-upcoming { background: rgba(245, 158, 11, 0.15); color: var(--primary-light); border: 1px solid rgba(245, 158, 11, 0.25); }
 
-        .status-current {
-            background: #4ade80;
-            color: black;
+        .selection-card h3 {
+            font-family: var(--font-body);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
+            line-height: 1.3;
         }
-
-        .status-upcoming {
-            background: #f59e0b;
-            color: black;
+        .selection-card p {
+            flex-grow: 1;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         .selection-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 26px;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--primary-light);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
             width: 100%;
-            max-width: 250px;
+            max-width: 220px;
             margin: 0 auto;
+            cursor: pointer;
+            font-family: var(--font-body);
         }
-
         .selection-btn:hover {
-            background: linear-gradient(135deg, #0056b3, #004494);
+            background: var(--primary);
+            color: #000;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,123,255,0.4);
+            box-shadow: 0 8px 28px rgba(245, 158, 11, 0.25);
+            border-color: var(--primary);
         }
+        .selection-btn i { transition: transform 0.3s ease; }
+        .selection-btn:hover i { transform: translateX(3px); }
 
         .coming-soon-btn {
-            background: #6c757d;
+            background: rgba(108, 117, 125, 0.15);
+            color: #6c757d;
+            border-color: rgba(108, 117, 125, 0.25);
             cursor: not-allowed;
         }
-
         .coming-soon-btn:hover {
-            background: #6c757d;
+            background: rgba(108, 117, 125, 0.15);
+            color: #6c757d;
             transform: none;
             box-shadow: none;
+            border-color: rgba(108, 117, 125, 0.25);
         }
+        .coming-soon-btn:hover i { transform: none; }
 
-        /* Course Categories */
-        .category-title {
-            font-size: 1.3rem;
-            color: #4ade80;
-            margin: 40px 0 20px 0;
-            padding-left: 10px;
-            border-left: 4px solid #4ade80;
-        }
-
-        /* Footer */
+        /* ===== FOOTER ===== */
         footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
+            background: rgba(8, 8, 12, 0.95);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 60px 24px 40px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(20px);
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
         }
-
-        .social-icons {
-            margin-bottom: 20px;
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
         }
-
+        @media (min-width: 768px) { .footer-inner { grid-template-columns: 1.5fr 1fr 1fr; } }
+        .footer-brand h3 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 12px; font-weight: 700; }
+        .footer-brand p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .social-icons a {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            color: white;
-            margin: 0 10px;
-            transition: 0.3s;
-            display: inline-block;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border-radius: 10px; background: var(--dark-elevated); color: var(--text-secondary);
+            font-size: 1.1rem; transition: all 0.3s ease; border: 1px solid var(--border);
         }
-
-        .social-icons a:hover {
-            color: #FFD700;
-            transform: translateY(-3px);
+        .social-icons a:hover { color: var(--primary); border-color: rgba(245, 158, 11, 0.3); transform: translateY(-3px); }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; }
+        .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; padding: 6px 0; transition: all 0.2s ease; }
+        .footer-col a:hover { color: var(--primary-light); transform: translateX(4px); }
+        .footer-contact p { font-size: 0.9rem; margin-bottom: 10px; color: var(--text-secondary); }
+        .footer-contact a { color: var(--primary-light); text-decoration: none; }
+        .footer-contact a:hover { text-decoration: underline; }
+        .footer-bottom {
+            max-width: 1200px; margin: 40px auto 0; padding-top: 24px;
+            border-top: 1px solid var(--border); display: flex; flex-wrap: wrap;
+            justify-content: space-between; align-items: center; gap: 12px;
         }
+        .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
 
-        .footer-links {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: #FFD700;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-            opacity: 0.9;
-        }
-
-        footer p {
-            margin: 10px 0;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            margin: 15px 0;
-            font-size: 0.95rem;
-        }
-
-        .contact-info a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Styles */
+        /* ===== RESPONSIVE ===== */
         @media (min-width: 768px) {
-            #navbar {
-                padding: 15px 40px;
-            }
-
-            #navbar #logo {
-                font-size: 1.3em;
-            }
-
-            #main-content {
-                padding: 100px 40px 50px;
-            }
-
-            .selection-section {
-                padding: 40px;
-            }
-
-            .selection-grid {
-                gap: 40px;
-            }
+            #navbar { padding: 16px 48px; }
+            #main-content { padding: 160px 40px 80px; }
+            .selection-section { padding: 48px; }
         }
-
         @media (min-width: 1024px) {
-            #navbar #logo {
-                font-size: 1.5em;
-            }
-
-            #navbar nav ul {
-                gap: 25px;
-            }
-
-            .selection-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            #navbar #logo { font-size: 1.35em; }
+            #navbar nav ul { gap: 8px; }
         }
-
         @media (max-width: 767px) {
-            .menu-toggle {
-                display: flex;
-            }
-
+            .menu-toggle { display: flex; }
             #navbar nav ul {
-                display: none;
-                position: fixed;
-                top: 100%;
-                left: 0;
-                right: 0;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.98);
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-                margin: 0;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                width: 100%; height: 100vh; background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px); flex-direction: column; padding: 100px 32px 40px;
+                text-align: left; margin: 0; gap: 4px; z-index: 999;
             }
-
-            #navbar nav ul.active {
-                display: flex;
-            }
-
-            #navbar nav a {
-                display: block;
-                padding: 15px 20px;
-                margin: 0;
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            #navbar nav a:last-child {
-                border-bottom: none;
-            }
-
-            .selection-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
+            #navbar nav ul.active { display: flex; }
+            #navbar nav a { display: block; padding: 16px 20px; font-size: 1.1rem; border-radius: 12px; }
+            .selection-section { padding: 28px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
+
+        .fade-up {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: #3a3a45; }
     </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
+    <!-- ===== BACKGROUND TEXTURE LAYERS ===== -->
+    <div class="bg-image"></div><div class="bg-gradient"></div><div class="bg-dots"></div><div class="bg-crosshatch"></div>
+    <div class="bg-hexagons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(245,158,11,0.2)" /><stop offset="100%" stop-color="rgba(0,0,0,0.05)" />
+                </linearGradient>
+                <pattern id="hexPattern" width="30" height="17.32" patternUnits="userSpaceOnUse" patternTransform="scale(0.7)">
+                    <path d="M15 0 L30 5 L30 12.32 L15 17.32 L0 12.32 L0 5 Z" fill="url(#hexGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+                    <path d="M30 8.66 L45 13.66 L45 21 L30 26 L15 21 L15 13.66 Z" fill="url(#hexGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hexPattern)" />
+        </svg>
+    </div>
+    <div class="bg-noise">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)" opacity="0.035"/></svg>
+    </div>
+    <div class="bg-weave"></div>
+    <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <div class="bg-shapes">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <div class="line-h"></div><div class="line-h"></div><div class="line-h"></div>
+        <div class="cross"></div><div class="cross"></div><div class="cross"></div><div class="cross"></div><div class="cross"></div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
     <header id="navbar">
-        <div id="logo">Honour Language Centre</div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <div id="logo">Honour Learning Centre</div>
+        <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
         <nav>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
@@ -429,190 +470,130 @@
         </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div id="main-content">
-        <div class="page-header">
+        <div class="page-header fade-up">
+            <span class="section-label">Our Programs</span>
             <h1>Choose Your Course</h1>
-            <p>Select from our comprehensive language and exam preparation programs</p>
+            <p>Select from our comprehensive GED preparation and language programs</p>
         </div>
 
-        <!-- Current Courses Section -->
-        <div class="selection-section">
+        <!-- Available Courses Section -->
+        <div class="selection-section fade-up">
             <h2 class="section-title">Available Courses</h2>
-            <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">Click on any course below to view detailed information, schedules, and enrollment options.</p>
+            <p class="section-subtitle">Click on any course below to view detailed information, schedules, and enrollment options.</p>
             
             <div class="selection-grid">
                 <!-- Basic English Grammar Course -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-language"></i></div>
                     <span class="status-badge status-current">Enrolling Now</span>
                     <h3>Basic English Grammar In Use Class</h3>
-                    <p>Master English fundamentals with our comprehensive beginner-friendly course. Perfect for building strong grammar foundation.</p>
-                    <a href="BEGIU.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
+                    <p>Master English fundamentals with our comprehensive beginner-friendly course. Perfect for building a strong grammar foundation.</p>
+                    <a href="BEGIU.html" class="selection-btn"><i class="fas fa-info-circle"></i> View Details</a>
                 </div>
 
-                <!-- GED Mathematical Reasoning Course -->
+                <!-- GED Group Class -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-users"></i></div>
                     <span class="status-badge status-current">Enrolling Now</span>
-                    <h3>GED Preparation Class</h3>
-                    <p>Prepare for your GED exam with our comprehensive 4-month preparation course.</p>
-                    <a href="GEDP.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
+                    <h3>GED Group Class</h3>
+                    <p>Learn together in a collaborative group setting. Structured 4-month program covering all four GED subjects with live weekly workshops.</p>
+                    <a href="GEDP.html" class="selection-btn"><i class="fas fa-info-circle"></i> View Details</a>
                 </div>
 
-                <!-- Intensive GED Mathematical Reasoning Course -->
+                <!-- GED 1-on-1 Class -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-user-graduate"></i></div>
                     <span class="status-badge status-current">Enrolling Now</span>
-                    <h3>GED Intensive Class</h3>
-                    <p>Accelerate your GED preparation with our intensive 2-month program designed for quick completion.</p>
-                    <a href="GEDI.html" class="selection-btn">
-                        <i class="fas fa-info-circle" style="margin-right: 8px;"></i>View Details
-                    </a>
+                    <h3>GED 1-on-1 Class</h3>
+                    <p>Personalised private tutoring with flexible scheduling. Intensive 2-month program tailored to your pace and individual needs.</p>
+                    <a href="GEDI.html" class="selection-btn"><i class="fas fa-info-circle"></i> View Details</a>
                 </div>
             </div>
         </div>
 
-        <!-- Upcoming Courses Section -->
-        <div class="selection-section">
+        <!-- Coming Soon Section -->
+        <div class="selection-section fade-up">
             <h2 class="section-title">Coming Soon</h2>
-            <p style="text-align: center; margin-bottom: 30px; opacity: 0.9;">New language courses launching soon. Register your interest now!</p>
+            <p class="section-subtitle">New language courses launching soon. Register your interest now!</p>
             
             <div class="selection-grid">
                 <!-- Chinese Course -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-dragon"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-dragon"></i></div>
                     <span class="status-badge status-upcoming">Coming Soon</span>
                     <h3>Chinese Mandarin</h3>
                     <p>Learn Mandarin Chinese with our comprehensive course covering pronunciation, characters, and conversation skills.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
+                    <button class="selection-btn coming-soon-btn" disabled><i class="fas fa-clock"></i> Coming Soon</button>
                 </div>
 
                 <!-- Japanese Course -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-torii-gate"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-torii-gate"></i></div>
                     <span class="status-badge status-upcoming">Coming Soon</span>
                     <h3>Japanese</h3>
                     <p>Master Japanese with courses covering hiragana, katakana, kanji characters, and conversational skills.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
+                    <button class="selection-btn coming-soon-btn" disabled><i class="fas fa-clock"></i> Coming Soon</button>
                 </div>
 
                 <!-- Korean Course -->
                 <div class="selection-card">
-                    <div class="selection-icon">
-                        <i class="fas fa-hat-cowboy"></i>
-                    </div>
+                    <div class="selection-icon"><i class="fas fa-hat-cowboy"></i></div>
                     <span class="status-badge status-upcoming">Coming Soon</span>
                     <h3>Korean</h3>
                     <p>Learn Korean with our structured curriculum covering Hangul writing system, pronunciation, and conversation.</p>
-                    <button class="selection-btn coming-soon-btn" disabled>
-                        <i class="fas fa-clock" style="margin-right: 8px;"></i>Coming Soon
-                    </button>
+                    <button class="selection-btn coming-soon-btn" disabled><i class="fas fa-clock"></i> Coming Soon</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
-                <i class="fab fa-tiktok"></i>
-            </a>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Honour Learning Centre</h3>
+                <p>Myanmar's dedicated GED preparation and language education partner. Professional, accessible, and results‑driven.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@honour.languae.centre" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="Aboutpage.html">About Us</a>
+                <a href="Courses.html">Our Courses</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Get In Touch</h4>
+                <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+                <p><strong>Location:</strong> Yangon, Myanmar</p>
+                <p><strong>Hours:</strong> Everyday, 9:00 AM – 9:00 PM</p>
+            </div>
         </div>
-        
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-            <a href="Aboutpage.html">About Us</a>
-            <a href="Courses.html">Our Courses</a>
-            <a href="contact.html">Contact Us</a>
+        <div class="footer-bottom">
+            <p>© 2025 Honour Learning Centre. All rights reserved.</p>
+            <p>GED Preparation Excellence in Myanmar</p>
         </div>
-        
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
-            <p><strong>Location:</strong> Yangon, Myanmar</p>
-            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
-        </div>
-        
-        <p>© 2025 Honour Language Centre – All rights reserved.</p>
-        <p>Professional Language Education in Myanmar</p>
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Set active page
+        mobileMenu.addEventListener('click', () => { navMenu.classList.toggle('active'); mobileMenu.classList.toggle('active'); });
+        document.querySelectorAll('#nav-menu a').forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); mobileMenu.classList.remove('active'); }); });
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
+        document.querySelectorAll('#nav-menu a').forEach(link => { link.classList.toggle('active', link.getAttribute('href') === currentPage); });
+        document.addEventListener('click', (e) => { if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) { navMenu.classList.remove('active'); mobileMenu.classList.remove('active'); } });
+        window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Animation for selection cards
-        document.addEventListener('DOMContentLoaded', () => {
-            const selectionCards = document.querySelectorAll('.selection-card');
-            selectionCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 300 + (index * 150));
-            });
-        });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
     <script src="keep-alive.js"></script>
 </body>

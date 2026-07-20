@@ -3,811 +3,565 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honour Learning Centre</title>
-    <meta name="description" content="Honour Learning Centre offers professional GED courses for all levels in Myanmar. Learn GED with expert teachers through video classes and live Zoom sessions.">
-    <meta name="keywords" content="English grammar course, Myanmar English class, learn English online, Zoom English lessons, Honour Language Centre, English classes Myanmar">
+    <title>Honour Learning Centre | GED Preparation Myanmar</title>
+    <meta name="description" content="Honour Learning Centre specialises in professional GED preparation courses for all subjects in Myanmar. Expert teachers, video classes & live Zoom sessions.">
+    <meta name="keywords" content="GED course Myanmar, GED preparation class, online GED lessons, Zoom GED classes, Honour Learning Centre, GED exam Myanmar">
     <meta name="author" content="Honour Learning Centre">
     <link rel="icon" type="image/x-icon" href="BG.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6357373994928687"
      crossorigin="anonymous"></script>
 
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #f59e0b;
+            --primary-light: #fbbf24;
+            --primary-dark: #d97706;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --dark: #0a0a0f;
+            --dark-card: rgba(16, 16, 22, 0.88);
+            --dark-elevated: rgba(28, 28, 38, 0.75);
+            --text-primary: #fafafa;
+            --text-secondary: #b0b0b8;
+            --text-muted: #6b6b76;
+            --border: rgba(255,255,255,0.07);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             width: 100%;
             min-height: 100vh;
-            background-image: url(Slide1.jpg);
-            background-color: rgb(233, 230, 230);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            line-height: 1.6;
+            background-color: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
-        /* Navigation - Consistent across all pages */
+        /* ===== TEXTURED BACKGROUND SYSTEM ===== */
+        .bg-image {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url(Slide1.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;
+            opacity: 0.18; z-index: -6;
+        }
+        .bg-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -5;
+            background:
+                radial-gradient(ellipse 80% 60% at 10% 10%, rgba(245, 158, 11, 0.09) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 80% at 90% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+                radial-gradient(ellipse 70% 50% at 50% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 80% 70%, rgba(244, 63, 94, 0.04) 0%, transparent 40%),
+                linear-gradient(180deg, rgba(10,10,15,0.6) 0%, rgba(10,10,15,0.8) 40%, rgba(10,10,15,0.95) 100%);
+        }
+        .bg-dots {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -4;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .bg-crosshatch {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -4; opacity: 0.5;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px);
+        }
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.07; pointer-events: none;
+        }
+        .bg-noise svg { width: 100%; height: 100%; }
+        .bg-hexagons {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.25; pointer-events: none;
+        }
+        .bg-hexagons svg { width: 100%; height: 100%; }
+        .bg-weave {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .bg-orbs {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; overflow: hidden;
+        }
+        .bg-orbs .orb { position: absolute; border-radius: 50%; filter: blur(70px); animation: float 20s ease-in-out infinite; }
+        .bg-orbs .orb:nth-child(1) { width: 500px; height: 500px; background: rgba(245, 158, 11, 0.08); top: -10%; left: -8%; animation-duration: 26s; }
+        .bg-orbs .orb:nth-child(2) { width: 420px; height: 420px; background: rgba(99, 102, 241, 0.06); top: 25%; right: -12%; animation-delay: -6s; animation-duration: 22s; }
+        .bg-orbs .orb:nth-child(3) { width: 380px; height: 380px; background: rgba(16, 185, 129, 0.055); bottom: 5%; left: 8%; animation-delay: -12s; animation-duration: 30s; }
+        .bg-orbs .orb:nth-child(4) { width: 280px; height: 280px; background: rgba(244, 63, 94, 0.04); top: 55%; left: 55%; animation-delay: -18s; animation-duration: 24s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(35px, -45px) scale(1.06); }
+            50% { transform: translate(-25px, 25px) scale(0.94); }
+            75% { transform: translate(20px, 40px) scale(1.03); }
+        }
+        .bg-shapes {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .bg-shapes .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245, 158, 11, 0.08); }
+        .bg-shapes .ring:nth-child(1) { width: 400px; height: 400px; top: 8%; right: -100px; animation: spin-slow 60s linear infinite; }
+        .bg-shapes .ring:nth-child(2) { width: 250px; height: 250px; top: 12%; right: -25px; border-color: rgba(99, 102, 241, 0.06); animation: spin-slow 45s linear infinite reverse; }
+        .bg-shapes .ring:nth-child(3) { width: 500px; height: 500px; bottom: -150px; left: -150px; border-color: rgba(16, 185, 129, 0.06); animation: spin-slow 80s linear infinite; }
+        .bg-shapes .ring:nth-child(4) { width: 180px; height: 180px; top: 45%; left: 5%; border-style: dashed; border-color: rgba(255,255,255,0.04); animation: spin-slow 35s linear infinite reverse; }
+        .bg-shapes .line-h { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.06), transparent); }
+        .bg-shapes .line-h:nth-child(5) { width: 60%; top: 20%; left: 20%; }
+        .bg-shapes .line-h:nth-child(6) { width: 40%; top: 65%; left: 35%; background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent); }
+        .bg-shapes .line-h:nth-child(7) { width: 50%; top: 85%; left: 10%; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.04), transparent); }
+        .bg-shapes .cross { position: absolute; width: 12px; height: 12px; opacity: 0.15; }
+        .bg-shapes .cross::before, .bg-shapes .cross::after { content: ''; position: absolute; background: rgba(255,255,255,0.3); }
+        .bg-shapes .cross::before { width: 12px; height: 1px; top: 50%; left: 0; }
+        .bg-shapes .cross::after { width: 1px; height: 12px; left: 50%; top: 0; }
+        .bg-shapes .cross:nth-child(8) { top: 15%; left: 12%; }
+        .bg-shapes .cross:nth-child(9) { top: 35%; right: 8%; }
+        .bg-shapes .cross:nth-child(10) { top: 70%; left: 20%; }
+        .bg-shapes .cross:nth-child(11) { top: 50%; right: 15%; }
+        .bg-shapes .cross:nth-child(12) { top: 88%; right: 25%; }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* ===== NAVIGATION ===== */
         #navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 15px 20px;
-            background-color: rgba(0, 0, 0, 0.95);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 16px 24px;
+            background: rgba(10, 10, 15, 0.82); color: white; position: fixed; top: 0; left: 0; z-index: 1000;
+            backdrop-filter: blur(20px) saturate(1.4); border-bottom: 1px solid var(--border); transition: all 0.3s ease;
         }
-
+        #navbar.scrolled { padding: 12px 24px; background: rgba(10, 10, 15, 0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
         #navbar #logo {
-            font-size: 1.1em;
-            font-weight: bold;
-            white-space: nowrap;
+            font-family: var(--font-body); font-size: 1.15em; font-weight: 700; white-space: nowrap;
+            letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
         }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        #navbar nav ul {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
-
+        #navbar #logo::before { content: ''; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 12px var(--primary); }
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; padding: 8px; gap: 5px; z-index: 1001; }
+        .menu-toggle span { width: 22px; height: 2px; background: white; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 2px; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+        #navbar nav ul { display: flex; gap: 4px; list-style: none; }
         #navbar nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: 0.3s;
-            border-radius: 5px;
-            font-weight: 500;
-            white-space: nowrap;
+            color: var(--text-secondary); text-decoration: none; padding: 8px 16px; transition: all 0.25s ease;
+            border-radius: 8px; font-weight: 500; font-size: 0.9rem; white-space: nowrap; font-family: var(--font-body);
         }
+        #navbar nav a:hover, #navbar nav a.active { color: var(--text-primary); background: rgba(255, 255, 255, 0.06); }
+        #navbar nav a.active { color: var(--primary); }
 
-        #navbar nav a:hover,
-        #navbar nav a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #FFD700;
+        /* ===== HERO ===== */
+        .hero {
+            width: 100%; min-height: 100vh; padding: 140px 24px 80px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1;
         }
-
-        /* Main Content */
-        #rectangle_box1 {
-            width: 100%;
-            min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 100px 20px 40px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2); padding: 8px 18px; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 500; color: var(--primary-light); margin-bottom: 32px; letter-spacing: 0.5px; text-transform: uppercase;
+            backdrop-filter: blur(10px); font-family: var(--font-body);
         }
-
-        #titleintherectanglebox1 {
-            font-size: clamp(2rem, 8vw, 4rem);
-            margin-bottom: 15px;
-            font-family: "Trebuchet MS", Arial, sans-serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+        .hero h1 {
+            font-family: var(--font-heading); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 700; letter-spacing: -1px;
+            line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 40%, var(--primary-light) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
-        #coursename {
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            margin-bottom: 15px;
+        .hero-subtitle { font-size: clamp(1.1rem, 3vw, 1.4rem); color: var(--text-secondary); margin-bottom: 40px; font-weight: 300; max-width: 600px; }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; margin-bottom: 16px; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: #000; padding: 14px 32px;
+            border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none; cursor: pointer; font-family: var(--font-body);
         }
-
-        #announcements-title {
-            font-size: clamp(1.5rem, 5vw, 2rem);
-            margin-bottom: 30px;
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245, 158, 11, 0.3); background: var(--primary-light); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px; background: rgba(16, 185, 129, 0.12); color: var(--accent);
+            padding: 14px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(16, 185, 129, 0.25); cursor: pointer; backdrop-filter: blur(10px);
         }
+        .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2); background: rgba(16, 185, 129, 0.2); }
+        .hero-cta-note { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
 
-        /* NEW ANNOUNCEMENTS BOX */
-        .announcement-box {
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 40px;
-            max-width: 1200px;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        /* ===== SECTIONS ===== */
+        .section-wrapper { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+        .section-header { margin-bottom: 48px; }
+        .section-label { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 12px; display: block; }
+        .section-title { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.5px; color: var(--text-primary); line-height: 1.2; }
+
+        /* ===== ANNOUNCEMENT CARDS ===== */
+        .announcements-section { padding: 80px 0; }
+        .announcement-card {
+            display: grid; grid-template-columns: 1fr; background: var(--dark-card); border-radius: var(--radius-lg); overflow: hidden;
+            margin-bottom: 32px; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; backdrop-filter: blur(16px);
         }
-
-        .announcement-content {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
+        .announcement-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent); opacity: 0; transition: opacity 0.4s ease; }
+        .announcement-card:hover { border-color: rgba(245, 158, 11, 0.15); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,158,11,0.03); }
+        .announcement-card:hover::before { opacity: 1; }
         @media (min-width: 768px) {
-            .announcement-content {
-                flex-direction: row;
-                align-items: center;
-            }
+            .announcement-card { grid-template-columns: 340px 1fr; }
+            .announcement-card:nth-child(even) { grid-template-columns: 1fr 340px; }
+            .announcement-card:nth-child(even) .announcement-image { order: 2; }
+            .announcement-card:nth-child(even) .announcement-details { order: 1; }
         }
-
-        .announcement-image {
-            flex: 0 0 auto;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
+        .announcement-image { position: relative; overflow: hidden; min-height: 220px; }
+        .announcement-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .announcement-card:hover .announcement-image img { transform: scale(1.05); }
+        .announcement-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,10,15,0.2), transparent); }
+        .announcement-details { padding: 36px; display: flex; flex-direction: column; justify-content: center; }
+        .announcement-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 14px; font-family: var(--font-body); }
+        .announcement-tag::before { content: ''; width: 16px; height: 2px; background: var(--primary); border-radius: 1px; }
+        .announcement-details h3 { font-family: var(--font-body); font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 600; margin-bottom: 14px; color: var(--text-primary); letter-spacing: -0.3px; line-height: 1.3; }
+        .announcement-details p { margin-bottom: 18px; line-height: 1.7; font-size: 0.95rem; color: var(--text-secondary); }
+        .course-features { margin: 16px 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+        .course-features li { position: relative; padding-left: 28px; font-size: 0.9rem; color: var(--text-secondary); }
+        .course-features li::before { content: "✓"; color: var(--accent); font-weight: 700; position: absolute; left: 0; font-size: 0.75rem; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: rgba(16, 185, 129, 0.12); border-radius: 50%; top: 2px; }
+        .course-price { font-family: var(--font-body); font-size: 1.15rem; font-weight: 700; color: var(--primary-light); margin: 8px 0; display: block; }
+        .course-note { font-style: italic; color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; display: block; }
+        .announcement-btn {
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(245, 158, 11, 0.1); color: var(--primary-light);
+            padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 20px;
+            transition: all 0.3s ease; border: 1px solid rgba(245, 158, 11, 0.2); width: fit-content;
         }
+        .announcement-btn:hover { background: var(--primary); color: #000; transform: translateX(4px); border-color: var(--primary); }
+        .announcement-btn i { transition: transform 0.3s ease; }
+        .announcement-btn:hover i { transform: translateX(3px); }
 
+        /* ===== CONTENT SECTIONS ===== */
+        .content-block { padding: 80px 0; }
+        .content-card {
+            background: var(--dark-card); border-radius: var(--radius-lg); padding: 48px; border: 1px solid var(--border);
+            position: relative; overflow: hidden; backdrop-filter: blur(16px);
+        }
+        .content-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--primary), transparent); border-radius: 0 2px 2px 0; }
+        .content-card .section-title { margin-bottom: 24px; }
+        .content-text { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); font-family: var(--font-body); }
+        .content-text p { margin-bottom: 18px; }
+        .content-text p:last-child { margin-bottom: 0; }
+        .content-text strong { color: var(--text-primary); font-weight: 600; }
+        .methodology-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
+        @media (min-width: 768px) { .methodology-grid { grid-template-columns: 1fr 1fr; } }
+        .methodology-list { list-style: none; padding: 0; display: grid; gap: 16px; }
+        .methodology-list li {
+            display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--dark-elevated);
+            border-radius: var(--radius-sm); border: 1px solid var(--border); transition: all 0.3s ease; backdrop-filter: blur(10px);
+        }
+        .methodology-list li:hover { border-color: rgba(245, 158, 11, 0.2); transform: translateX(4px); }
+        .methodology-list li .icon { width: 36px; height: 36px; min-width: 36px; display: flex; align-items: center; justify-content: center; background: rgba(245, 158, 11, 0.1); border-radius: 8px; color: var(--primary); font-size: 0.85rem; }
+        .methodology-list li .text strong { display: block; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 4px; font-family: var(--font-body); }
+        .methodology-list li .text span { font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-body); }
+
+        /* ===== VIDEO GALLERY ===== */
+        .video-section { padding: 80px 0; }
+        #video-gallery { display: grid; grid-template-columns: 1fr; gap: 24px; width: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; background-color: var(--dark-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .video-container:hover { border-color: rgba(245, 158, 11, 0.2); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section { padding: 80px 0; }
+        .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        @media (min-width: 768px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
+        .testimonial-card { background: var(--dark-card); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); position: relative; transition: all 0.3s ease; backdrop-filter: blur(16px); }
+        .testimonial-card:hover { border-color: rgba(245, 158, 11, 0.15); transform: translateY(-3px); }
+        .testimonial-card::before { content: '"'; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--primary); opacity: 0.3; position: absolute; top: 16px; left: 24px; line-height: 1; }
+        .testimonial-card p { font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 20px; padding-top: 20px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: #000; }
+        .testimonial-author strong { font-size: 0.9rem; color: var(--text-primary); }
+
+        /* ===== CTA ===== */
+        .cta-section { padding: 60px 0 100px; text-align: center; }
+        .clickHere { display: inline-flex; align-items: center; gap: 12px; padding: 20px 48px; background: var(--dark-card); color: var(--text-primary); text-decoration: none; border-radius: var(--radius); cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid var(--border); font-weight: 600; font-size: 1.1rem; backdrop-filter: blur(16px); }
+        .clickHere:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 16px 48px rgba(245, 158, 11, 0.15); }
+        .clickHere i { color: var(--primary); }
+
+        /* ===== FOOTER ===== */
+        footer { background: rgba(8, 8, 12, 0.95); border-top: 1px solid var(--border); color: var(--text-secondary); padding: 60px 24px 40px; position: relative; z-index: 1; backdrop-filter: blur(20px); }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; }
+        @media (min-width: 768px) { .footer-inner { grid-template-columns: 1.5fr 1fr 1fr; } }
+        .footer-brand h3 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 12px; font-weight: 700; }
+        .footer-brand p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; }
+        .social-icons { display: flex; gap: 12px; }
+        .social-icons a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: var(--dark-elevated); color: var(--text-secondary); font-size: 1.1rem; transition: all 0.3s ease; border: 1px solid var(--border); }
+        .social-icons a:hover { color: var(--primary); border-color: rgba(245, 158, 11, 0.3); transform: translateY(-3px); }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; }
+        .footer-col a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; padding: 6px 0; transition: all 0.2s ease; }
+        .footer-col a:hover { color: var(--primary-light); transform: translateX(4px); }
+        .footer-contact p { font-size: 0.9rem; margin-bottom: 10px; color: var(--text-secondary); }
+        .footer-contact a { color: var(--primary-light); text-decoration: none; }
+        .footer-contact a:hover { text-decoration: underline; }
+        .footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+        .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* ===== RESPONSIVE ===== */
         @media (min-width: 768px) {
-            .announcement-image {
-                width: 300px;
-                margin: 0;
-            }
+            #navbar { padding: 16px 48px; } .hero { padding: 160px 48px 100px; }
+            #video-gallery { grid-template-columns: repeat(2, 1fr); } .content-card { padding: 56px; }
         }
-
-        .announcement-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .announcement-image img:hover {
-            transform: scale(1.02);
-        }
-
-        .announcement-details {
-            flex: 1;
-            text-align: left;
-            padding: 15px 0;
-        }
-
-        @media (min-width: 768px) {
-            .announcement-details {
-                padding: 0 0 0 30px;
-            }
-        }
-
-        .announcement-details h3 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 15px;
-            color: #FFD700;
-        }
-
-        .announcement-details p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            opacity: 0.9;
-        }
-
-        .course-features {
-            margin: 20px 0;
-            padding-left: 20px;
-            list-style: none;
-        }
-
-        .course-features li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .course-features li:before {
-            content: "✓";
-            color: #4CAF50;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-        }
-
-        .course-price {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #FFD700;
-            margin: 15px 0;
-            display: block;
-        }
-
-        .course-note {
-            font-style: italic;
-            opacity: 0.8;
-            margin-top: 10px;
-            display: block;
-        }
-
-        .announcement-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .announcement-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-            background: linear-gradient(135deg, #FFA500, #FFD700);
-        }
-
-        /* Additional Content Sections */
-        .content-section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 40px;
-            max-width: 1200px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: left;
-        }
-
-        .section-title {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            margin-bottom: 20px;
-            color: #FFD700;
-            border-bottom: 2px solid #FFD700;
-            padding-bottom: 10px;
-        }
-
-        .content-text {
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        /* Video Gallery */
-        #video-gallery {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 30px auto;
-        }
-
-        .video-wrapper {
-            width: 100%;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            background-color: #000;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Clickable Box */
-        .clickHere {
-            width: min(300px, 90%);
-            height: 70px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 30px;
-            font-weight: bold;
-        }
-
-        .clickHere:hover {
-            transform: scale(1.05);
-            background-color: white;
-            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
-        }
-
-        /* Footer */
-        footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        .social-icons {
-            margin-bottom: 20px;
-        }
-
-        .social-icons a {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            color: white;
-            margin: 0 10px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-
-        .social-icons a:hover {
-            color: #FFD700;
-            transform: translateY(-3px);
-        }
-
-        .footer-links {
-            margin: 20px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: #FFD700;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-            opacity: 0.9;
-        }
-
-        footer p {
-            margin: 10px 0;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            margin: 15px 0;
-            font-size: 0.95rem;
-        }
-
-        .contact-info a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Tablet Styles */
-        @media (min-width: 768px) {
-            #navbar {
-                padding: 15px 40px;
-            }
-
-            #navbar #logo {
-                font-size: 1.3em;
-            }
-
-            #rectangle_box1 {
-                padding: 120px 40px 60px;
-            }
-
-            #video-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-
-            .content-section {
-                padding: 40px;
-            }
-        }
-
-        /* Desktop Styles */
         @media (min-width: 1024px) {
-            #navbar #logo {
-                font-size: 1.5em;
-            }
-
-            #navbar nav ul {
-                gap: 25px;
-            }
-
-            #video-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
-            }
-
-            .clickHere {
-                width: 350px;
-                height: 80px;
-            }
-
-            .announcement-image {
-                width: 350px;
-            }
-
-            .footer-links {
-                gap: 30px;
-            }
+            #navbar #logo { font-size: 1.35em; } #navbar nav ul { gap: 8px; }
+            #video-gallery { grid-template-columns: repeat(3, 1fr); } .announcement-details { padding: 44px; }
         }
-
-        /* Mobile Menu Styles */
         @media (max-width: 767px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            #navbar nav ul {
-                display: none;
-                position: fixed;
-                top: 100%;
-                left: 0;
-                right: 0;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.98);
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-                margin: 0;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            }
-
-            #navbar nav ul.active {
-                display: flex;
-            }
-
-            #navbar nav a {
-                display: block;
-                padding: 15px 20px;
-                margin: 0;
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            #navbar nav a:last-child {
-                border-bottom: none;
-            }
-
-            #navbar nav a:hover {
-                background-color: rgba(255, 255, 255, 0.15);
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
+            .menu-toggle { display: flex; }
+            #navbar nav ul { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100vh; background: rgba(10, 10, 15, 0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 100px 32px 40px; text-align: left; margin: 0; gap: 4px; z-index: 999; }
+            #navbar nav ul.active { display: flex; }
+            #navbar nav a { display: block; padding: 16px 20px; font-size: 1.1rem; border-radius: 12px; }
+            .hero { padding: 120px 20px 60px; } .hero-cta { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .announcement-details { padding: 28px; } .content-card { padding: 28px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
+
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: #3a3a45; }
     </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <header id="navbar">
-        <div id="logo">Honour Learning Centre</div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="Courses.html">Courses</a></li>
-                <li><a href="Aboutpage.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <div id="rectangle_box1">
-        <h1 id="titleintherectanglebox1">HONOUR LEARNING CENTRE</h1>
-        <h2 id="coursename">သင့်ရဲ့အနာဂတ်အတွက် အမြဲရှိနေမှာ Honour Learning Centre</h2>
-        
-        <!-- Shop & Verify Buttons Row -->
-        <div style="margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
-            <a href="shop.html" class="announcement-button" style="font-size: 1.3rem; padding: 15px 40px;">
-                <i class="fas fa-shopping-cart"></i> Visit Our Shop
-            </a>
-            <a href="verify.html" class="announcement-button" style="font-size: 1.3rem; padding: 15px 40px; background: linear-gradient(135deg, #4CAF50, #2E7D32); box-shadow: 0 4px 15px rgba(76,175,80,0.3);">
-                <i class="fas fa-check-circle"></i> Verify Certificate
-            </a>
-        </div>
-        <p style="margin-top: 5px; font-size: 1rem; opacity: 0.9;">
-            Get quality English learning materials and books &nbsp;|&nbsp; Check GED certificate authenticity
-        </p>
-
-        <h3 id="announcements-title">New Announcements</h3>
-
-        <!-- NEW ANNOUNCEMENT BOX - Basic English Grammar -->
-        <div class="announcement-box">
-            <div class="announcement-content">
-                <div class="announcement-image">
-                    <img src="1.jpg" alt="Basic English Grammar Course - Honour Language Centre">
-                </div>
-                <div class="announcement-details">
-                    <h3>Basic English Grammar In Use Video Class</h3>
-                    <p>We're excited to announce our new comprehensive Basic English Grammar course designed for beginners and intermediate learners. This course will help you master the fundamentals of English grammar in a practical, engaging way through a combination of video lessons and live interactive sessions.</p>
-                    
-                    <ul class="course-features">
-                        <li>2 comprehensive video lessons every weekend</li>
-                        <li>Live Friday night Zoom meetings for practice</li>
-                        <li>Zoom meeting time: 10:00 PM - 10:45 PM (Myanmar Time)</li>
-                        <li>Complete course duration: 2 months</li>
-                        <li>Age requirement: 13 years and above</li>
-                        <li>Starting date: January 17, 2026</li>
-                    </ul>
-                    
-                    <span class="course-price">Special Price: 140,000 Ks</span>
-                    <span class="course-note">(Special price valid only before January 2, 2026)</span>
-                    
-                    <a href="Courses.html#basic-english" class="announcement-button">View Course Details & Enroll Now</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- NEW ANNOUNCEMENT BOX - GED Mathematical Reasoning -->
-        <div class="announcement-box">
-            <div class="announcement-content">
-                <div class="announcement-image">
-                    <img src="Batch2_Preparation Schedule.png" alt="GED Mathematical Reasoning Preparation Class">
-                </div>
-                <div class="announcement-details">
-                    <h3>GED Preparation Class</h3>
-                    <p>Prepare for your GED Reasoning exam with our comprehensive 4-month preparation course. Our expert instructors will guide you through all the concepts and problem-solving strategies needed to excel in the GED exam. Perfect for students aiming to complete their high school equivalency certification.</p>
-                    
-                    <span class="course-price">Monthly Fee(4 subjects): 200,000 Ks</span>
-                    <span class="course-price">Monthly Fee(1 subject): 60,000 Ks</span>
-                    <span class="course-note">Complete 4-month program for comprehensive GED preparation</span>
-                    
-                    <a href="Courses.html#ged-math" class="announcement-button">View Course Details & Enroll Now</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- NEW ANNOUNCEMENT BOX - Intensive GED Mathematical Reasoning Class -->
-        <div class="announcement-box">
-            <div class="announcement-content">
-                <div class="announcement-image">
-                    <img src="Batch2_Intensive Schedule.png" alt="Intensive GED Mathematical Reasoning Class">
-                </div>
-                <div class="announcement-details">
-                    <h3>GED Intensive Class</h3>
-                    <p>Accelerate your GED preparation with our intensive 2-month program. Designed for students who want to complete their GED requirements quickly, this intensive course covers all essential topics with focused, in-depth instruction and extensive practice sessions.</p>
-                    
-                    <span class="course-price">Monthly Fee(4 subjects): 200,000 Ks</span>
-                    <span class="course-price">Monthly Fee(1 subject): 60,000 Ks</span>
-                    <span class="course-note">Complete 2-month intensive GED program</span>
-                    
-                    <a href="Courses.html#intensive-ged-math" class="announcement-button">View Course Details & Enroll Now</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Why Choose Us Section -->
-        <div class="content-section">
-            <h2 class="section-title">Why Choose Honour Language Centre?</h2>
-            <div class="content-text">
-                <p>At Honour Language Centre, we believe that language learning should be accessible, effective, and enjoyable. Our innovative approach combines expert instruction with modern technology to create a comprehensive learning experience that works for everyone.</p>
-                
-                <p>Our courses are designed with the Myanmar learner in mind, addressing common challenges and providing practical solutions. We focus on real-world applications of English grammar, ensuring that our students can use what they learn in everyday situations.</p>
-                
-                <p>What sets us apart is our commitment to quality education combined with social responsibility. A portion of our proceeds goes toward educational charity initiatives, helping to provide free language resources to underprivileged communities across Myanmar.</p>
-            </div>
-        </div>
-
-        <!-- Teaching Methodology Section -->
-        <div class="content-section">
-            <h2 class="section-title">Our Teaching Methodology</h2>
-            <div class="content-text">
-                <p>We employ a unique blended learning approach that combines:</p>
-                <ul class="course-features">
-                    <li><strong>Interactive Video Lessons</strong>: High-quality pre-recorded lessons available 24/7</li>
-                    <li><strong>Live Zoom Sessions</strong>: Real-time practice and Q&A with instructors</li>
-                    <li><strong>Practical Exercises</strong>: Real-world application of grammar concepts</li>
-                    <li><strong>Personalized Feedback</strong>: Individual attention to each student's progress</li>
-                    <li><strong>Community Support</strong>: Peer learning and group activities</li>
-                </ul>
-                
-                <p>Our curriculum is based on Raymond Murphy's "English Grammar in Use" series, adapted for the Myanmar context. We focus on practical grammar usage rather than rote memorization, helping students build confidence in their English communication skills.</p>
-            </div>
-        </div>
-
-        <!-- VIDEO GALLERY -->
-        <h3 style="margin: 40px 0 20px; font-size: clamp(1.5rem, 4vw, 2rem); color: #FFD700;">Our Latest Videos</h3>
-        <div id="video-gallery">
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/1terDkG3HcE?si=FoBESNrsSl7K0uqk" 
-                            title="English in Songs Ep2"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/9SO1vJiP4Rw?si=-fKzNFhQP6eYkrXS" 
-                            title="English in Songs Ep1"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/UoXnysy0m10?si=d11-x7RgR_h63Otd" 
-                            title="Independent Clause & Dependent Clause"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <!-- Testimonial Section -->
-        <div class="content-section">
-            <h2 class="section-title">What Our Students Say</h2>
-            <div class="content-text">
-                <p>"I'm so happy I took the Basic English Grammar class at Honour Language Centre. Over the last two months, I've gained a much better understanding of things I used to find confusing, along with so much extra general knowledge!" - <strong>Swan Thura Hla</strong></p>
-                
-                <p>"During my one month in the Basic English Grammar Class, I've learned about words with similar spellings but different pronunciations. The teacher explains everything from the basics, is very patient, and has a great personality." - <strong>Moe Naing Win</strong></p>
-            </div>
-        </div>
-
-        <!-- CLICKABLE BOX -->
-        <a href="login.html" class="clickHere">
-            <h2>Access Student Learning Resources</h2>
-        </a>
+    <!-- ===== BACKGROUND TEXTURE LAYERS ===== -->
+    <div class="bg-image"></div><div class="bg-gradient"></div><div class="bg-dots"></div><div class="bg-crosshatch"></div>
+    <div class="bg-hexagons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(245,158,11,0.2)" /><stop offset="100%" stop-color="rgba(0,0,0,0.05)" />
+                </linearGradient>
+                <pattern id="hexPattern" width="30" height="17.32" patternUnits="userSpaceOnUse" patternTransform="scale(0.7)">
+                    <path d="M15 0 L30 5 L30 12.32 L15 17.32 L0 12.32 L0 5 Z" fill="url(#hexGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+                    <path d="M30 8.66 L45 13.66 L45 21 L30 26 L15 21 L15 13.66 Z" fill="url(#hexGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hexPattern)" />
+        </svg>
+    </div>
+    <div class="bg-noise">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)" opacity="0.035"/></svg>
+    </div>
+    <div class="bg-weave"></div>
+    <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <div class="bg-shapes">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <div class="line-h"></div><div class="line-h"></div><div class="line-h"></div>
+        <div class="cross"></div><div class="cross"></div><div class="cross"></div><div class="cross"></div><div class="cross"></div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ===== NAVBAR ===== -->
+    <header id="navbar">
+        <div id="logo">Honour Learning Centre</div>
+        <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+        <nav><ul id="nav-menu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="Aboutpage.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul></nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-badge">GED Preparation — 2026 Batch</div>
+        <h1>HONOUR LEARNING CENTRE</h1>
+        <p class="hero-subtitle">Your trusted partner for earning a GED diploma. Expert instruction, proven strategies, and unwavering support.</p>
+        <div class="hero-cta">
+            <a href="shop.html" class="btn-primary"><i class="fas fa-shopping-cart"></i> Visit Our Shop</a>
+            <a href="verify.html" class="btn-secondary"><i class="fas fa-check-circle"></i> Verify Certificate</a>
+        </div>
+        <p class="hero-cta-note">Quality learning materials & books &nbsp;·&nbsp; GED certificate verification</p>
+    </section>
+
+    <!-- ===== ANNOUNCEMENTS: GED GROUP & 1-ON-1 ===== -->
+    <section class="announcements-section">
+        <div class="section-wrapper">
+            <div class="section-header fade-up">
+                <span class="section-label">GED Programs</span>
+                <h2 class="section-title">Choose Your Learning Format</h2>
+            </div>
+
+            <!-- GED Group Class -->
+            <article class="announcement-card fade-up">
+                <div class="announcement-image">
+                    <img src="Batch2_Preparation%20Schedule.png" alt="GED Group Class">
+                </div>
+                <div class="announcement-details">
+                    <span class="announcement-tag">Group Class</span>
+                    <h3>GED Group Class – Learn Together</h3>
+                    <p>Join a collaborative learning environment. Study all four GED subjects with peers, following a structured 4‑month program. Benefit from group discussions, live weekly workshops, and shared motivation.</p>
+                    <ul class="course-features">
+                        <li>Small group sizes for active participation</li>
+                        <li>Peer collaboration & discussion</li>
+                        <li>Live weekly review workshops</li>
+                        <li>Duration: 4 months</li>
+                    </ul>
+                    <span class="course-price">4 Subjects: 200,000 Ks/month</span>
+                    <span class="course-price" style="font-size:1rem;">1 Subject: 60,000 Ks/month</span>
+                    <span class="course-note">Steady, collaborative progress in a group setting</span>
+                    <a href="Courses.html#ged-prep" class="announcement-btn">View Details & Enroll <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <!-- GED 1-on-1 Class -->
+            <article class="announcement-card fade-up">
+                <div class="announcement-image">
+                    <img src="Batch2_Intensive%20Schedule.png" alt="GED 1-on-1 Class">
+                </div>
+                <div class="announcement-details">
+                    <span class="announcement-tag">1‑on‑1 Class</span>
+                    <h3>GED 1‑on‑1 Private Tutoring</h3>
+                    <p>Accelerate your progress with fully personalised, one‑on‑one instruction. A customised study plan adapts to your pace and strengths, covering all four GED subjects in an intensive 2‑month program with flexible scheduling.</p>
+                    <ul class="course-features">
+                        <li>Individualised lesson plans</li>
+                        <li>Flexible schedule tailored to you</li>
+                        <li>Personalised feedback & mock tests</li>
+                        <li>Duration: 2 months (fast‑track)</li>
+                    </ul>
+                    <span class="course-price">4 Subjects: 200,000 Ks/month</span>
+                    <span class="course-price" style="font-size:1rem;">1 Subject: 60,000 Ks/month</span>
+                    <span class="course-note">Private 1‑on‑1 intensive for rapid results</span>
+                    <a href="Courses.html#intensive-ged" class="announcement-btn">View Details & Enroll <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="content-block">
+        <div class="section-wrapper">
+            <div class="content-card fade-up">
+                <span class="section-label">Our Promise</span>
+                <h2 class="section-title">Why Choose Honour Learning Centre?</h2>
+                <div class="content-text">
+                    <p>We specialise exclusively in GED preparation, bringing together experienced Myanmar educators and internationally aligned study materials. Our students benefit from a structured blend of self‑paced video lessons, live interactive sessions, and targeted exam practice.</p>
+                    <p>Every enrolment supports our mission to provide free GED resources to underserved communities across Myanmar. When you prepare with us, you’re also helping others access life‑changing education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== METHODOLOGY ===== -->
+    <section class="content-block" style="padding-top:0;">
+        <div class="section-wrapper">
+            <div class="section-header fade-up">
+                <span class="section-label">How We Prepare You</span>
+                <h2 class="section-title">Our GED Teaching Methodology</h2>
+            </div>
+            <div class="methodology-grid fade-up">
+                <div>
+                    <ul class="methodology-list">
+                        <li><div class="icon"><i class="fas fa-play"></i></div><div class="text"><strong>On‑demand Video Lessons</strong><span>High‑quality recorded classes covering every GED topic</span></div></li>
+                        <li><div class="icon"><i class="fas fa-video"></i></div><div class="text"><strong>Live Zoom Workshops</strong><span>Weekly live sessions for problem‑solving & doubt clearing</span></div></li>
+                        <li><div class="icon"><i class="fas fa-pen"></i></div><div class="text"><strong>Realistic Practice Tests</strong><span>Full‑length mock exams modelled on the official GED</span></div></li>
+                        <li><div class="icon"><i class="fas fa-user-check"></i></div><div class="text"><strong>Personalised Progress Tracking</strong><span>Individual feedback and custom study plans</span></div></li>
+                        <li><div class="icon"><i class="fas fa-users"></i></div><div class="text"><strong>Supportive Community</strong><span>Peer study groups and motivational guidance</span></div></li>
+                    </ul>
+                </div>
+                <div class="content-card" style="border-left:none;">
+                    <div class="content-text">
+                        <p>Our curriculum aligns with the official <strong>GED Testing Service</strong> standards and has been refined specifically for Myanmar learners. We focus on critical thinking and test‑taking strategies, not rote learning, so you walk into the exam with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEOS ===== -->
+    <section class="video-section">
+        <div class="section-wrapper">
+            <div class="section-header fade-up">
+                <span class="section-label">Helpful Resources</span>
+                <h2 class="section-title">Learning Videos</h2>
+            </div>
+            <div id="video-gallery" class="fade-up">
+                <div class="video-wrapper"><div class="video-container"><iframe src="https://www.youtube.com/embed/65NsgC-r95A?si=Izu45wQuelIRIOnE" title="Two Types of Modifier Errors" allowfullscreen></iframe></div></div>
+                <div class="video-wrapper"><div class="video-container"><iframe src="https://www.youtube.com/embed/1terDkG3HcE" title="English in Songs Ep2" allowfullscreen></iframe></div></div>
+                <div class="video-wrapper"><div class="video-container"><iframe src="https://www.youtube.com/embed/9SO1vJiP4Rw" title="English in Songs Ep1" allowfullscreen></iframe></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+        <div class="section-wrapper">
+            <div class="section-header fade-up">
+                <span class="section-label">Student Success</span>
+                <h2 class="section-title">What Our Students Say</h2>
+            </div>
+            <div class="testimonial-grid fade-up">
+                <div class="testimonial-card">
+                    <p>"I'm so happy I took the Basic English Grammar class at Honour Language Centre. Over the last two months, I've gained a much better understanding of things I used to find confusing, along with so much extra general knowledge</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">ST</div><strong>Swan Thura Hla</strong></div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"During my one month in the Basic English Grammar Class, I've learned about words with similar spellings but different pronunciations. The teacher explains everything from the basics, is very patient, and has a great personality."</p>
+                    <div class="testimonial-author"><div class="testimonial-avatar">MN</div><strong>Moe Naing Win</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="section-wrapper">
+            <a href="login.html" class="clickHere fade-up"><i class="fas fa-graduation-cap"></i> Access Student Learning Resources</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank" aria-label="Facebook">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank" aria-label="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://www.tiktok.com/@honour.languae.centre?_r=1&_t=ZS-91ie8N7ypAi" target="_blank" aria-label="TikTok">
-                <i class="fab fa-tiktok"></i>
-            </a>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Honour Learning Centre</h3>
+                <p>Myanmar's dedicated GED preparation partner. Professional, accessible, and results‑driven.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61572913585489" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@HLC-HonourLanguageCentre" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@honour.languae.centre" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="Aboutpage.html">About Us</a>
+                <a href="Courses.html">Our Courses</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-col footer-contact">
+                <h4>Get In Touch</h4>
+                <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
+                <p><strong>Location:</strong> Yangon, Myanmar</p>
+                <p><strong>Hours:</strong> Everyday, 9:00 AM – 9:00 PM</p>
+            </div>
         </div>
-        
-        <div class="footer-links">
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-            <a href="Aboutpage.html">About Us</a>
-            <a href="Courses.html">Our Courses</a>
-            <a href="contact.html">Contact Us</a>
+        <div class="footer-bottom">
+            <p>© 2025 Honour Learning Centre. All rights reserved.</p>
+            <p>GED Preparation Excellence in Myanmar</p>
         </div>
-        
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:honourlanguagecentrehlc@gmail.com">honourlanguagecentrehlc@gmail.com</a></p>
-            <p><strong>Location:</strong> Yangon, Myanmar</p>
-            <p><strong>Hours:</strong> Everyday, 9:00 AM - 9:00 PM</p>
-        </div>
-        
-        <p>© 2025 Honour Language Centre - All rights reserved.</p>
-        <p>Professional Language Education in Myanmar</p>
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Set active page
+        mobileMenu.addEventListener('click', () => { navMenu.classList.toggle('active'); mobileMenu.classList.toggle('active'); });
+        document.querySelectorAll('#nav-menu a').forEach(link => { link.addEventListener('click', () => { navMenu.classList.remove('active'); mobileMenu.classList.remove('active'); }); });
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Add animation to announcement boxes on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const announcementBoxes = document.querySelectorAll('.announcement-box');
-            announcementBoxes.forEach((box, index) => {
-                box.style.opacity = '0';
-                box.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    box.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    box.style.opacity = '1';
-                    box.style.transform = 'translateY(0)';
-                }, 300 + (index * 200));
-            });
-        });
+        document.querySelectorAll('#nav-menu a').forEach(link => { link.classList.toggle('active', link.getAttribute('href') === currentPage); });
+        document.addEventListener('click', (e) => { if (!e.target.closest('#navbar') && navMenu.classList.contains('active')) { navMenu.classList.remove('active'); mobileMenu.classList.remove('active'); } });
+        window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const el = document.querySelector(this.getAttribute('href')); if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' }); }); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
-
     <script src="keep-alive.js"></script>
-
 </body>
 </html>
